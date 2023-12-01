@@ -24,7 +24,7 @@ export class Global {
     public USER_ID = 'user-id';
     public SUBSCRIPTION_TIME = 'SubscriptionTime';
     public USER_JWT_TOKEN_KEY = 'user-jwt-token-key';
-    public PORTAL_ID = 72;
+    public PORTAL_ID = 73;
     // HTTP CODE START
     // 200
     public HTTP_CODE_200 = '200';
