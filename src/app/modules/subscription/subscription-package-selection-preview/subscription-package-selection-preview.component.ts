@@ -193,7 +193,7 @@ export class SubscriptionPackageSelectionPreviewComponent implements OnInit {
       userId: +this._localStorage.GetUserId(),
       productId: this._localStorage.GetSubscriptionPackageDetails().productId,
       jwtToken: jewToken,
-      portalId: 72
+      portalId: this._global.PORTAL_ID,
     };
     const accountBody: UserAccountDetailREQUEStBODyPOST = {
       jwtToken: jewToken,

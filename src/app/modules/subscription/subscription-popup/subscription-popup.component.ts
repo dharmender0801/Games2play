@@ -152,7 +152,7 @@ export class SubscriptionPopupComponent implements OnInit {
       userId: this.userId,
       productId: this.currentProduct.productId,
       jwtToken: jewToken,
-      portalId: 72
+      portalId: this._global.PORTAL_ID
     };
     const productSubscriber = this._subscriptionService
       .NewSubscription(newSubBodyPost)

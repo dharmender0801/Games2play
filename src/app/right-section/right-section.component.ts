@@ -161,7 +161,7 @@ export class RightSectionComponent implements OnInit {
 
     var language =localStorage.getItem('lang');
     let data = {
-      'portalId': 72,
+      'portalId': 73,
       //'pageName' : this.pageUrl,
       'pageId':pageid,
       'genre': this.genreName,

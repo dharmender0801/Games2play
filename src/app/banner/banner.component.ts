@@ -209,7 +209,7 @@ else{
     const token = localStorage.getItem(this._global.USER_JWT_TOKEN_KEY);
     var language =localStorage.getItem('lang');
     const data = {
-      portalId: 72,
+      portalId: this._global.PORTAL_ID,
       pageName: 'Index Page',
       subPageId: 0,
       userId: this._localStorage.GetUserId(),

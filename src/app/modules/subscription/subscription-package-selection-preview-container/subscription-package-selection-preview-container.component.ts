@@ -84,7 +84,7 @@ export class SubscriptionPackageSelectionPreviewContainerComponent
           productId: this._localStorage.GetSubscriptionPackageDetails()
             .productId,
           jwtToken: jewToken,
-          portalId: 72
+          portalId: this._global.PORTAL_ID
         };
         // this.GetUserSubscriptionDetails();
         this.GetUserSubscriptionDetails()

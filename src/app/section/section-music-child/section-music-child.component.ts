@@ -258,7 +258,7 @@ export class SectionMusicChildComponent implements OnInit, AfterViewInit {
     const data = {
       // "jwtToken":"eyJ0eXBlIjoiSldUIiwia2lkIjoiMTU1MTMzMzA0NTAzMiIsImFsZyI6IlJTNTEyIn0.eyJpc3MiOiJFdGlzYWxhdCBBcHAgU3RvcmUgVmFsaWRhdGUgUGluIFRva2VuIiwiZXhwIjoxNTUyMTk3MDgxLCJqdGkiOiJHbXNQRmJtX0ZKSUNGQ1BOLVk5NUN3IiwiaWF0IjoxNTUxMzMzMDgxLCJuYmYiOjE1NTEzMzI5NjEsInN1YiI6IjkxNzIwNjY2NTc2OSJ9.TzmEv-BuUc-Jz-K_X5xXBagVqM9oZR87ZQf6qTxtZyvYWlk3QndeRGHqE1e71HOVELAFzlYVxmhWmAws1-cnStgLqlCLq2R2098zpnK3Yn_iho_gAAu95ZyLVOKfVcH9qbiQzLB5PtMlYTyGHDji_s5h_75YGa2O4An5vFa0mBe_HDIgNxWbNfosFH8MdvKYQIWJe9GJuxl5pbxyDwv5hTr_nHb_gu6kpWPs2uYMsp7PA5SnAejCr_arkGEzTTLSnz8ogRlPziZai6GQOWrY_UdfudDUcamDNggHnfuXskpNV-667sH5w4Fc-HZ3H-oxKrZuWVyQRMBmyaifQpUPPg",
       contentId: +this.contentId,
-      portalId: 72,
+      portalId: this._global.PORTAL_ID,
       language: language
       // "userId":169
     };

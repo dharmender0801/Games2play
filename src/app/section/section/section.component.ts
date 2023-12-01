@@ -135,7 +135,7 @@ export class SectionComponent implements OnInit {
     var language =localStorage.getItem('lang');
   
     let data = {
-      'portalId': 72,
+      'portalId': 73,
       'pageName': 'Index Page',
       'subPageId': 0,
       'userId' : this._localStorage.GetUserId(),

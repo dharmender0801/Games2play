@@ -80,7 +80,7 @@ export class SubscriptionPopupUpgradeComponent implements OnInit, OnDestroy {
       userId: this.userId,
       productId: this.currentProduct.productId,
       jwtToken: jewToken,
-      portalId: 72
+      portalId: this._global.PORTAL_ID
     };
     const productSubscriber = this._subscriptionService
       .UpgradeSubscriptionRequestPIN(newSubBodyPost)

@@ -72,7 +72,7 @@ export class HomeComponent implements OnInit {
     let data = {
       'userId':userId,
       'jwtToken': token,
-      'portalId': 72,
+      'portalId': this._global.PORTAL_ID,
       'pageId': 1,
       'subPageId': 0
     }

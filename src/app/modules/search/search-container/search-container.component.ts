@@ -1,33 +1,33 @@
-import { SearchByKeywordItemTypeRESPONSePOST } from './../../../model/search/api/search-by-keyword-item-type-response-post';
-import { Global } from 'src/app/global/global';
-import { SearchByKeywordRESPONSePOST } from './../../../model/search/api/search-by-keyword-response-post';
-import { ErrorService } from './../../../Services/error.service';
-import { Router, ActivatedRoute } from '@angular/router';
-import { Component, OnInit, ViewChild, Input } from '@angular/core';
-import { catchError } from 'rxjs/operators';
-import { throwError } from 'rxjs/internal/observable/throwError';
-import { SearchService } from 'src/app/Services/search.service';
-import { SearchByKeywordREQUEStBodyPOST } from 'src/app/model/search/api/search-by-keyword-request-body-post';
-import { SearchDataItem } from 'src/app/model/search/search-data-item';
-import { SearchByKeywordItemTypeREQUEStBodyPOST } from 'src/app/model/search/api/search-by-keyword-item-type-request-body-post';
-import { NgxSpinnerService } from 'ngx-spinner';
-import { SearchBarComponent } from '../search-bar/search-bar.component';
-import { ResultDataItem } from 'src/app/model/search/search-result-item';
-import { data } from '../../../model/banner/api/banner-main-text-without-login-response-post';
-import { DeviceDetectorService } from 'ngx-device-detector';
+import { SearchByKeywordItemTypeRESPONSePOST } from "./../../../model/search/api/search-by-keyword-item-type-response-post";
+import { Global } from "src/app/global/global";
+import { SearchByKeywordRESPONSePOST } from "./../../../model/search/api/search-by-keyword-response-post";
+import { ErrorService } from "./../../../Services/error.service";
+import { Router, ActivatedRoute } from "@angular/router";
+import { Component, OnInit, ViewChild, Input } from "@angular/core";
+import { catchError } from "rxjs/operators";
+import { throwError } from "rxjs/internal/observable/throwError";
+import { SearchService } from "src/app/Services/search.service";
+import { SearchByKeywordREQUEStBodyPOST } from "src/app/model/search/api/search-by-keyword-request-body-post";
+import { SearchDataItem } from "src/app/model/search/search-data-item";
+import { SearchByKeywordItemTypeREQUEStBodyPOST } from "src/app/model/search/api/search-by-keyword-item-type-request-body-post";
+import { NgxSpinnerService } from "ngx-spinner";
+import { SearchBarComponent } from "../search-bar/search-bar.component";
+import { ResultDataItem } from "src/app/model/search/search-result-item";
+import { data } from "../../../model/banner/api/banner-main-text-without-login-response-post";
+import { DeviceDetectorService } from "ngx-device-detector";
 declare var $: any;
 @Component({
-  selector: 'app-search-container',
-  templateUrl: './search-container.component.html',
-  styleUrls: ['./search-container.component.css']
+  selector: "app-search-container",
+  templateUrl: "./search-container.component.html",
+  styleUrls: ["./search-container.component.css"],
 })
 export class SearchContainerComponent implements OnInit {
-  layoutToRender = 'home';
-  
+  layoutToRender = "home";
+
   layoutDataForRenderingSearchResults: SearchDataItem[];
- //layoutDataForRenderingSearchResults: ResultDataItem[];
-  searchCategoryFromUrl = 'all';
-  searchItemType = '-1';
+  //layoutDataForRenderingSearchResults: ResultDataItem[];
+  searchCategoryFromUrl = "all";
+  searchItemType = "-1";
   showSelectAll = false;
   IsAndroidPhone: boolean = true;
   deviceInfo = null;
@@ -45,7 +45,9 @@ export class SearchContainerComponent implements OnInit {
     private _searchService: SearchService,
     private _global: Global,
     private _ngxSpinnerService: NgxSpinnerService
-  ) {this.getDeviceFunction();}
+  ) {
+    this.getDeviceFunction();
+  }
 
   ngOnInit() {
     this.GetRouteParamForLayoutMapping();
@@ -54,16 +56,13 @@ export class SearchContainerComponent implements OnInit {
   getDeviceFunction() {
     this.deviceInfo = this.deviceService.getDeviceInfo();
     const isMobile = this.deviceService.isMobile();
-    if (this.deviceInfo.os === 'Android') {
-
+    if (this.deviceInfo.os === "Android") {
       this.IsAndroidPhone = true;
       this.IsIOSPhone = false;
-    }
-    else if (this.deviceInfo.os === 'iOS') {
+    } else if (this.deviceInfo.os === "iOS") {
       this.IsIOSPhone = true;
       this.IsAndroidPhone = false;
-    }
-    else {
+    } else {
       this.IsAndroidPhone = false;
       this.IsIOSPhone = false;
     }
@@ -72,23 +71,23 @@ export class SearchContainerComponent implements OnInit {
   GetRouteParamForLayoutMapping() {
     this._activatedRoute.paramMap
       .pipe(
-        catchError(x => {
+        catchError((x) => {
           this._errorService.LogError(x);
           return throwError(x);
         })
       )
-      .subscribe(data => {
-        if (data.get('layout')) {
-          this.layoutToRender = data.get('layout').toLowerCase();
-          this.searchCategoryFromUrl = data.get('layout').toLowerCase();
-          this.searchCategoryFromUrlForHeading = data.get('layout');
+      .subscribe((data) => {
+        if (data.get("layout")) {
+          this.layoutToRender = data.get("layout").toLowerCase();
+          this.searchCategoryFromUrl = data.get("layout").toLowerCase();
+          this.searchCategoryFromUrlForHeading = data.get("layout");
           this.ShowSelecteAllOnHomeOnly();
           // this.SearchValue(this.searchTerm);
         }
       });
   }
-  ShowSelecteAllOnHomeOnly(){
-    if(this.searchCategoryFromUrl === 'home'){
+  ShowSelecteAllOnHomeOnly() {
+    if (this.searchCategoryFromUrl === "home") {
       this.showSelectAll = true;
       this.searchBarComponent.showSelectAll = true;
     } else {
@@ -99,22 +98,21 @@ export class SearchContainerComponent implements OnInit {
 
   OnInitialLoadFillDataForHomeParam() {
     const bodyData: SearchByKeywordREQUEStBodyPOST = {
-      portalId:72,
-      keyword: 'Hel',
-      lang:localStorage.getItem('lang'),
-      androidPhone:this.IsAndroidPhone
+      portalId: this._global.PORTAL_ID,
+      keyword: "Hel",
+      lang: localStorage.getItem("lang"),
+      androidPhone: this.IsAndroidPhone,
     };
     const subscriber = this._searchService
       .GetSearchDataForHomeLayout(bodyData)
       .pipe(
-        catchError(x => {
+        catchError((x) => {
           this._errorService.LogError(x);
           subscriber.unsubscribe();
           return throwError(x);
         })
       )
       .subscribe((data: SearchByKeywordRESPONSePOST) => {
-        
         if (data.result.length > 0) {
           this.layoutDataForRenderingSearchResults = data.result;
         }
@@ -123,54 +121,48 @@ export class SearchContainerComponent implements OnInit {
   }
   OnInitialLoadFillDataForOtheraram() {}
   SearchValue(searchTerm: string) {
-   
     this.hasSearched = true;
     this.searchTerm = searchTerm;
-   
-    if(this.searchTerm.length >=1)
-{
-    if (this.searchCategoryFromUrl === 'home') {
-      if (this.searchItemType !== '-1') {
-        this.SearchValueForKyewordAndItemType(this.searchItemType);
-      } else {
-        if (searchTerm) {
-          this.SearchValueForKyeword(searchTerm);
+
+    if (this.searchTerm.length >= 1) {
+      if (this.searchCategoryFromUrl === "home") {
+        if (this.searchItemType !== "-1") {
+          this.SearchValueForKyewordAndItemType(this.searchItemType);
         } else {
-          this.SearchValueForKyeword('');
+          if (searchTerm) {
+            this.SearchValueForKyeword(searchTerm);
+          } else {
+            this.SearchValueForKyeword("");
+          }
         }
+      } else {
+        this.SearchValueForKyewordAndItemType(this.searchCategoryFromUrl);
       }
     } else {
-      this.SearchValueForKyewordAndItemType(this.searchCategoryFromUrl);
+      let json: any = [
+        {
+          type: "Videos",
+          data: [],
+        },
+        {
+          type: "Music",
+          data: [],
+        },
+        {
+          type: "Games",
+          data: [],
+        },
+      ];
+      this.layoutDataForRenderingSearchResults = json;
     }
   }
-  else
-  {
-    let json : any = [
-      {
-        "type": "Videos",
-        "data": []
-    },
-    {
-      "type": "Music",
-      "data": []
-  },
-  {
-      "type": "Games",
-      "data": []
-  }
-  ];
-    this.layoutDataForRenderingSearchResults = json;
-  }
-  }
   SearchValueWithItemType(itemType: string) {
-   //debugger;
-   this._ngxSpinnerService.show();
+    //debugger;
+    this._ngxSpinnerService.show();
     this.searchItemType = itemType;
     this.SearchValueForKyewordAndItemType(itemType);
   }
   SearchValueForKyewordAndItemType(itemType: string) {
-    
-  
     //this.ShowLoader();
     //debugger;
     const bodyData: SearchByKeywordItemTypeREQUEStBodyPOST = {
@@ -178,29 +170,27 @@ export class SearchContainerComponent implements OnInit {
       itemtype: itemType,
       keyword: this.searchTerm,
       androidPhone: this.IsAndroidPhone,
-      lang:localStorage.getItem('lang')
+      lang: localStorage.getItem("lang"),
     };
     const subscriber = this._searchService
       .GetSearchDataForOtherLayout(bodyData)
       .pipe(
-        catchError(x => {
+        catchError((x) => {
           this._errorService.LogError(x);
           return throwError(x);
         })
       )
       .subscribe((data: SearchByKeywordItemTypeRESPONSePOST) => {
-         this._ngxSpinnerService.hide();
+        this._ngxSpinnerService.hide();
         //this.HideLoader();
         if (+data.statusDescription.statusCode === 200) {
-         
           if (data.result.length > 0) {
             this.layoutDataForRenderingSearchResults = data.result;
-           
           }
           // if (data.result.length > 0) {
           //   this.layoutDataForRenderingSearchResults = data.result;
           // }
-           else {
+          else {
             this.layoutDataForRenderingSearchResults = [];
           }
         } else if (+data.statusDescription.statusCode === 450) {
@@ -208,24 +198,24 @@ export class SearchContainerComponent implements OnInit {
         }
       });
   }
-  ShowLoader(){
-    $('#search-loader').show();
+  ShowLoader() {
+    $("#search-loader").show();
   }
-  HideLoader(){
-    $('#search-loader').hide();
+  HideLoader() {
+    $("#search-loader").hide();
   }
   SearchValueForKyeword(searchTerm: string) {
-     this._ngxSpinnerService.show();
+    this._ngxSpinnerService.show();
     const bodyData: SearchByKeywordREQUEStBodyPOST = {
-      portalId:72,
+      portalId: this._global.PORTAL_ID,
       keyword: searchTerm,
-      lang:localStorage.getItem('lang'),
-      androidPhone:this.IsAndroidPhone
+      lang: localStorage.getItem("lang"),
+      androidPhone: this.IsAndroidPhone,
     };
     const subscriber = this._searchService
       .GetSearchDataForHomeLayout(bodyData)
       .pipe(
-        catchError(x => {
+        catchError((x) => {
           this._errorService.LogError(x);
           subscriber.unsubscribe();
           return throwError(x);
@@ -237,7 +227,6 @@ export class SearchContainerComponent implements OnInit {
         // debugger
         if (data.result.length > 0) {
           this.layoutDataForRenderingSearchResults = data.result;
-        
         }
         // if (data.result.length > 0) {
         //   this.layoutDataForRenderingSearchResults = data.result;
@@ -245,7 +234,7 @@ export class SearchContainerComponent implements OnInit {
         subscriber.unsubscribe();
       });
   }
-  SetCurrentCategorySoWeCanSearchAllData(value){
-    this.searchItemType = '-1';
+  SetCurrentCategorySoWeCanSearchAllData(value) {
+    this.searchItemType = "-1";
   }
 }

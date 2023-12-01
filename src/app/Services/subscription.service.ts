@@ -88,7 +88,7 @@ export class SubscriptionService {
     return this.httpClient.post<SubscriptionProductGetProductsModelApi>(
       url,
       {
-        portalId: 72,
+        portalId: this.global.PORTAL_ID,
         itemtypeId: itemTypeId,
         language:language
       },
@@ -103,7 +103,7 @@ export class SubscriptionService {
     return this.httpClient.post<SubscriptionProductGetProductsModelApi>(
       url,
       {
-        portalId: 72,
+        portalId: this.global.PORTAL_ID,
         userId: this._localStorage.GetUserId(),
         jwtToken: this._localStorage.GetUserJwtToken(),
         language:language

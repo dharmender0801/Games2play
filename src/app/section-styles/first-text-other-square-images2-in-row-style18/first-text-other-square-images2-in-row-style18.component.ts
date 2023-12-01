@@ -238,7 +238,7 @@ export class FirstTextOtherSquareImages2InRowStyle18Component implements OnInit 
     const data = {
       'userId': newUserId,
       'jwtToken': token,
-      'portalId': 72,
+      'portalId': this._global.PORTAL_ID,
     };
   
           this.loginService.GetlogoutDatapin(data).subscribe((data: any) => {
