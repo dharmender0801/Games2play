@@ -1,0 +1,57 @@
+/* .banner_pricing .caption {
+  top: 120px;
+  bottom: auto;
+}
+.caption .font_big_green {
+  font-size: 32px;
+  color: #BEE70D;
+  line-height: 40px;
+}
+.caption .caption_tag {
+  color: #fff;
+  font-size: 16px;
+  line-height: 24px;
+  display: block;
+  margin-top: 8px;
+}
+.pricing_section {
+  background-color: #232531;
+  padding: 0 0 80px 0;
+}
+.package_for {
+  background-color: #15181d;
+  padding-bottom: 32px;
+  border-radius: 10px;
+  margin-top: 30px;
+}
+.pricing_tab .nav-tabs {
+  border-bottom: 0;
+}
+.pricing_tab .nav-tabs > li > a, .pricing_tab .nav-tabs > li > a:hover, .pricing_tab .nav-tabs > li > a:focus {
+  margin-right: 0;
+  line-height: 12px;
+  border: 0;
+  border-radius: 0;
+  border-bottom: 2px solid transparent;
+  letter-spacing: 5.33px;
+  padding-left: 0;
+  padding-right: 0;
+  background-color: transparent;
+}
+.pricing_tab .nav-tabs > li.active > a, .pricing_tab .nav-tabs > li.active > a:hover, .pricing_tab .nav-tabs > li.active > a:focus {
+  color: #fff;
+  cursor: pointer;
+  background-color: transparent;
+  border: 0;
+  font-size: 16px;
+  line-height: 12px;
+  letter-spacing: 5.33px;
+  border-bottom: 2px solid #fff;
+}
+.nav-tabs > li {
+  margin-right: 48px;
+}
+.pricing_section .tab-content {
+  margin-top: 30px;
+}
+ */

@@ -1,0 +1,96 @@
+<section class="banner_section banner_pricing">
+  <div class="banner">
+    <img
+      src="assets/images/banners/illustrated_banner/2_Only Particles/03.6_Illustrated Banner_Only Particles_Desktop_1.png"
+      class="img-responsive"
+      alt="banner_only_particles_desktop"
+    />
+  </div>
+</section>
+<section class="page_header_section">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+            <div class="user_account_name">
+                <!-- <span *ngIf="accountDetial?.userAccountDetail?.profileImage!=null">
+                  <img
+                  src="{{accountDetial?.userAccountDetail?.profileImage}}"
+                  alt="avatars_avatar_5_default"
+                />
+              </span> -->
+              
+                <img *ngIf="accountDetial?.userAccountDetail?.profileImage !=null && accountDetial?.userAccountDetail?.profileImage !=''"
+                  id="userAccountProfileImage"
+                  src="{{ accountDetial?.userAccountDetail?.profileImage }}"
+                  alt="avatars_avatar_5_default"
+                />
+
+                <img *ngIf="accountDetial?.userAccountDetail?.profileImage==null && accountDetial?.userAccountDetail?.profileImage ==''"
+                id="userAccountProfileImage"
+                src="/assets/images/icons/top_nav/top_nav_avatar_5.svg"
+                alt="avatars_avatar_5_default"
+              />
+                <div class="change_pic">
+                  <input
+                    type="file"
+                    class="form-control"
+                    id="imageupload"
+                    (change)="onSelectFile($event)"
+                    title="Edit Profile Image"
+                  />
+                 
+                  <label
+                  *ngIf="imageformatinvalid"
+                  for="imageupload"
+                  class="error label_error" style="color:red"
+                >
+                  {{'user.imgformat'|translate}}</label
+                >
+                  <!-- <img src="/assets/images/icons/page/name_editor_edit_all.svg" alt="image_edit" /> -->
+                </div>
+               
+                <!-- <span *ngIf="accountDetial?.userAccountDetail?.profileImage == null">
+                  <img
+                    src="/assets/images/icons/top_nav/top_nav_avatar_5.svg"
+                    alt="top_nav_avatar_5"
+
+                  />
+                </span> -->
+                <span class="name" *ngIf="hasUsernameEmpty">{{ 'user.name' | translate }} </span>
+                <span class="name" *ngIf="IsUserNameShow"
+                  >{{ accountDetial?.userAccountDetail?.name }}
+                  <img
+                    src="assets/images/icons/page/name_editor_edit_all.svg"
+                    alt="name_editor_edit_all"
+                    (click)="editUserName()"
+                /></span>
+                <div *ngIf="IsEditUpdateShow">
+                  <input
+                    type="text"
+                    [(ngModel)]="userName"
+                    minlength="3"
+                    maxlength="50"
+                  />
+                  <button type="button" (click)="cancelUserName()"> {{ 'user.cncel' | translate }}</button>
+                  <button id="btnUpdate"
+                    [disabled]="userName.length < 3 || userName.length > 50"
+                    [class.disabled]="userName.length < 3 || userName.length > 50"
+                    type="button"
+                    (click)="updateUserName()"
+                  >
+                   {{ 'user.updte' | translate }}
+                  </button>
+                </div>
+                <span class="user_notValid" *ngIf="!this.userNameValid"
+                  >{{'user.Special'|translate}}</span
+                >
+                <span class="user_contact_no">{{ currentUserNumber }}</span>
+                <span class="user_contact_no">{{ currentUserNumber }}</span>
+                
+              </div>
+
+
+      </div>
+    </div>
+  </div>
+</section>

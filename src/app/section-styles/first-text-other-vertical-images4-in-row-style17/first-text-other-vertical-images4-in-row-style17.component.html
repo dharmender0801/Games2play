@@ -1,0 +1,27 @@
+<!-- <h1>{{pageData.length}}</h1> -->
+<!-- <h1>{{pageData | json}}</h1>  -->
+
+ <div class="col-sm-3 col-xs-6" *ngFor="let section of pageData;let i = index">
+        <div class="subs_plans featured_images">
+         <a (click)="redirectVideoChildPage(section.id)"> 
+         <img [defaultImage]="defaultImage" 
+           [lazyLoad]="section.imagepage" class="img-responsive custom-img-size"
+          alt="listing_desktop_tablet_1" />
+        </a>
+         <div class="img_desc">
+            <h2  class="creative_name font_lato">{{section.info}}</h2>
+            <ul class="star_rating inline">
+              <app-star-rating [starRating]="section.rating"></app-star-rating>
+            </ul>
+            <span class="rating font_lato">{{section.rating}}</span>
+            <div class="creative_type_year font_lato">
+              <span class="creative_type">{{section.usercomment}}</span> | <span class="creative_year">{{section.year}}</span>
+            </div>
+          </div>
+        </div>
+    </div>
+ 
+
+
+
+

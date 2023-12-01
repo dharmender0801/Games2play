@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="80px" height="80px" viewBox="0 0 80 80" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: sketchtool 52.4 (67378) - http://www.bohemiancoding.com/sketch -->
+    <title>B4801DBB-DE5E-4DCB-965A-CC48B884712A</title>
+    <desc>Created with sketchtool.</desc>
+    <g id="Assets" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="02.-Icons" transform="translate(-120.000000, -4545.000000)">
+            <g id="05.-Profile-/-Avatar-2" transform="translate(120.000000, 4545.000000)">
+                <circle id="Bg---oval" stroke="#719E19" cx="40" cy="40" r="39.5"></circle>
+                <g id="avatar_2" fill-rule="evenodd">
+                    <circle id="Oval" fill="#00B49C" cx="40" cy="40" r="40"></circle>
+                    <path d="M51.743,48.477 C50.9477918,48.4808452 50.2011314,48.8601071 49.729,49.5 C47.4377668,52.5710497 43.8310918,54.3800641 39.9995,54.3800641 C36.1679082,54.3800641 32.5612332,52.5710497 30.27,49.5 C29.7985009,48.8596337 29.0522101,48.4796296 28.257,48.475 L28.2,48.475 C26.155,48.475 24.981,50.804 26.2,52.448 C29.4372644,56.8254985 34.559019,59.407983 40.0035,59.407983 C45.447981,59.407983 50.5697356,56.8254985 53.807,52.448 C55.024,50.804 53.851,48.475 51.807,48.475 L51.743,48.477 Z" id="Path" fill="#FFFFFF"></path>
+                    <circle id="Oval" fill="#FFFFFF" cx="26.377" cy="30.343" r="4.587"></circle>
+                    <circle id="Oval" fill="#FFFFFF" cx="53.623" cy="30.343" r="4.587"></circle>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

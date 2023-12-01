@@ -1,0 +1,358 @@
+<div class="subscribe_data">
+ <div *ngIf="showsubspack" class="accordian_box" >
+    <h1 class="data_title">{{'user.Nosubscription' | translate  }}</h1>
+    
+ </div> 
+  <div
+    class="panel-group"
+    id="accordion"
+    role="tablist"
+    aria-multiselectable="true"
+  >
+    <div
+      class="panel panel-default collapse_menu"
+      *ngFor="let item of subscritionList"
+    >
+      <div class="panel-heading active_pack" role="tab" id="headingOne">
+        <h4 class="panel-title font_lato">
+          <a
+            role="button"
+            data-toggle="collapse"
+            data-parent="#accordion"
+            href="#collapse{{ item.id }}"
+            aria-expanded="true"
+            aria-controls="collapseOne"
+          >
+            <div class="col-sm-3">
+                <span *ngIf="item.mappedItemtypeId == 0">      
+                    <img src="assets/images/icons/page/billing_all_active_plan_all.svg"
+                    />
+                  </span>             
+              <span *ngIf="item.mappedItemtypeId == 1">                
+                  <img src="assets/images/icons/page/billing_music_active_plan_all.svg"
+                  />
+              </span>
+              <span *ngIf="item.mappedItemtypeId == 2">
+                  <img src="assets/images/icons/page/billing_video_active_plan_all.svg"
+                  />
+              </span>
+              <span *ngIf="item.mappedItemtypeId == 3">
+                  <img src="assets/images/icons/page/billing_games_active_plan_all.svg"
+                  />
+              </span>
+              <span *ngIf="item.mappedItemtypeId == 4">     
+                  <img src="assets/images/icons/page/billing_apps_active_plan_all.svg"
+                  />
+                </span>   
+              {{ item.productName }} 
+            </div>
+            <div class="col-sm-3">
+                {{'user.AED' | translate  }} {{ item.amount | number: "2.2-2" }} /
+              <span *ngIf="item.productType === daily">
+                  {{'user.DAY' | translate  }} 
+              </span>
+              <span *ngIf="item.productType === weekly">
+                  {{'user.WEEK' | translate  }}  
+              </span>
+              <span *ngIf="item.productType === monthly">
+                  {{'user.MONTH' | translate  }}   
+              </span>
+            </div>
+            <div class="col-sm-3">
+                <span *ngIf="item.activeStatus == 1">
+                    {{ 'user.Renew' | translate}} {{ item.expiryDate | date }}
+            </span>
+            <span *ngIf="item.activeStatus == 2">
+               
+              </span>
+            </div>
+            <span
+              class="carat_accordian more-less carat_sub_accordian_down pull-right"
+            ></span>
+          </a>
+        </h4>
+      </div>
+      <div
+        id="collapse{{ item.id }}"
+        class="panel-collapse collapse active_pack subscription_details"
+        role="tabpanel"
+        aria-labelledby="headingOne"
+      >
+        <div class="panel-body font_lato">
+          <div class="col-sm-3">
+            <h4>{{ 'user.DETAILS' | translate}}</h4>
+            <span class="download_type">{{ item.productName }}</span>
+            <span class="active_sub_plan_date">{{ 'user.Activatedon' | translate}} {{ item.chargeDate | date }}</span>
+            <a style="cursor: pointer" class="billing_frequency"
+              (click)="changeBillingFrequency(item.productId,item.mappedItemtypeId)">{{ 'user.ChangeBilling' | translate}} &gt;</a>
+            <button style="display: none" id="changeBillingFrequencyHidden" data-backdrop="static" data-keyboard="false"
+              data-toggle="modal" data-target="#changebilling"></button>
+          </div>
+          <div class="col-sm-3">
+            <h4>{{ 'user.ACCOUNT' | translate}}</h4>
+            <span class="active_acc_number">{{ item.msisdn }}</span>
+          </div>
+          <div class="col-sm-3">
+            <h4>{{ 'user.BILLING' | translate}}</h4>
+            <span class="active_acc_number">{{item.billingSource}}</span>
+           
+          </div>
+          <div class="col-sm-3" *ngIf="item.activeStatus == 1">
+            <h4 class="hidden">{{ 'user.SUBSheading' | translate}}</h4>
+            <span >
+            <a
+              style="cursor: pointer;"
+              class="plan_unsub"
+              data-toggle="modal"
+              data-target="#myModal"
+              (click)="SetupCurrentProductToUnsubscribe(item)"
+              >{{ 'user.Unsubscribe' | translate}} ></a
+            >
+          </span>       
+        
+          </div>
+          <div class="col-sm-3 unsuscribe" *ngIf="item.activeStatus == 2">
+              <h4 class="hidden">{{ 'user.SUBSheading' | translate}}</h4>
+              <span  >
+                  <a
+                    style="cursor: pointer;"
+                    >{{ 'user.Unsubscribed' | translate}} </a
+                  >                
+                </span>
+                <span class="active_sub_plan_date"
+              > {{ item.unsubDate | date }}</span
+            >
+            
+            </div>
+            <div class="col-sm-3" *ngIf="item.activeStatus == 706">
+                <h4 class="hidden">heading</h4>
+                <span>
+                    <a
+                      style="cursor: pointer;"
+                      >Expired </a
+                    >                
+                  </span>
+                  <span class="active_sub_plan_date"
+                > {{ item.expiryDate | date }}</span
+              >
+              
+              </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="subscribe_data_previous subscribe_data">
+  <h4 class="data_title">{{'user.PREVIOUSSUBSCRIPTIONS' | translate  }}</h4>
+
+  <div *ngIf="previousSubscription?.length>0" class="accordian_box" >
+    <div
+      class="panel-group"
+      id="accordion"
+      role="tablist"
+      aria-multiselectable="true"
+      *ngFor="let item of previousSubscription; let index=index; let odd=odd; let even=even;"
+       >
+      <div class="panel panel-default collapse_menu">
+        <div class="panel-heading" [ngClass]="{ inactive_pack_video: odd, inactive_pack: even }" role="tab" id="oldplan">
+          <h4 class="panel-title font_lato">
+            <a
+              role="button"
+              data-toggle="collapse"
+              data-parent="#accordion"
+              href="#previous_sub"
+              aria-expanded="true"
+              aria-controls="previous_sub"
+            >
+              <div [ngClass]="subscritionList.length>0 && subscritionList[0].activeStatus==2 ? 'col-sm-3' : 'col-sm-4'">
+                  <span *ngIf="item.mappedItemtypeId == 0">      
+                      <img src="assets/images/icons/page/billing_all_disabled_all.svg"
+                      />
+                    </span>             
+                <span *ngIf="item.mappedItemtypeId == 1">
+                  <img src="assets/images/icons/page/billing_music_disabled_all.svg"
+                  />
+                </span>
+                <span *ngIf="item.mappedItemtypeId == 2">
+                  <img src="assets/images/icons/page/billing_video_disabled_all.svg"
+                  /> 
+                </span>
+                <span *ngIf="item.mappedItemtypeId == 3">
+                  <img src="assets/images/icons/page/billing_games_disabled_all.svg"
+                  />
+                </span>
+                <span *ngIf="item.mappedItemtypeId == 4">     
+                    <img src="assets/images/icons/page/billing_apps_disabled_all.svg"
+                  />
+                  </span>   
+                {{ item.productName }} 
+              </div>
+              <div [ngClass]="subscritionList.length>0 && subscritionList[0].activeStatus==2 ? 'col-sm-3' : 'col-sm-4'">
+                {{ item.amount | number: "2.2-2" }} {{'user.AED' | translate  }} /
+               
+                <span *ngIf="item.productType === daily">
+                    {{'user.DAY' | translate  }}  
+                </span>
+                <span *ngIf="item.productType === weekly">
+                    {{'user.WEEK' | translate  }}   
+                </span>
+                <span *ngIf="item.productType === monthly">
+                    {{'user.MONTH' | translate  }}  
+                </span>
+              </div>
+              <div [ngClass]="subscritionList.length>0 && subscritionList[0].activeStatus==2 ? 'col-sm-3' : 'col-sm-4'">
+                  {{'user.Started' | translate  }}   {{ item.subscriptionDate | date }} <br />
+                  {{'user.Ended' | translate  }}     {{ item.expiryDate | date }}
+              </div>
+              <div class="auto_width" [ngClass]="subscritionList.length>0 && subscritionList[0].activeStatus==2 ? 'col-sm-3' : 'col-sm-4'" *ngIf="subscritionList.length>0 && subscritionList[0].activeStatus==2" > 
+                <h4 class="hidden">{{'user.heading' | translate  }}</h4>
+                <span class="plan_unsub" (click)="showSubscribepack(item)"
+                  > {{'user.headingSubscribe' | translate  }}
+                  <img
+                    src="assets/images/icons/arrows/arrows_third_action_button.svg"
+                /></span>
+              </div>
+            </a>
+          </h4>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div *ngIf="previousSubscription.length===0" class="accordian_box" >
+    <h1 class="data_title">{{'user.NoPrevioussubscription' | translate  }}</h1>
+ </div> 
+
+</div>
+
+<button class="hidden" data-toggle="modal" data-target="#upgradeSubscriptionPackModal" id="upgradeSubscriptionHiddenBtn"
+data-keyboard="false" data-backdrop="static"></button>
+
+<!--cancel subscription modal-->
+<div class="modal fade" id="myModal" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true"><img src="assets/images/icons/login_overlays/login_overlays_close.svg"
+              alt="login_overlays_close" /></span>
+        </button>
+        <h4 class="modal-title color_green" id="myModalLabel">
+         {{'user.Cancelsubscription' |translate}}
+        </h4>
+      </div>
+      <div class="modal-body font_lato">
+        <p>
+          {{'user.proceedingconfirm' |translate}}
+          {{ currentProductToUnsubscribe?.productName }}
+
+          {{'user.subscriptionrenewed' |translate}}
+          {{ currentProductToUnsubscribe?.expiryDate | date }}
+        </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary full_width font_lato"
+          (click)="UnsubscribeUserFromProduct(currentProductToUnsubscribe)">
+          {{'user.CONFIRMCANCELLATION' | translate}}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--change billing frequency modal popup-->
+<div class="modal fade change_billing" id="changebilling" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" id="changeBillingFrequencyClosebtn" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><img
+              src="assets/images/icons/login_overlays/login_overlays_close.svg"
+              alt="login_overlays_close" /></span></button>
+              <button type="button" id="modelOpenUpgradeError" class="hidden"  data-toggle="modal"
+              data-target="#modelShowValidityUpgradeError"></button>
+        <h4 class="modal-title color_green" id="myModalLabel">{{'user.likechange'| translate}}<br>
+          {{'user.billingfrequency'| translate}}</h4>
+      </div>
+      <div class="modal-body font_lato">
+        <!-- <p>Your new subscription will be activated from </p>
+        <p class="user_entered_number activation_date">{{billingFrequencyCurrentDate}}</p> -->
+      
+        <div class="checkbox checkbox_custom radiobtn_custom"
+
+          [ngClass]="{ selected_sub_pack: ProductPackageType == data.packType }" *ngFor="let data of productList">
+        
+          
+          <label>{{data.packTypeName}} <span class="price_charges">{{data.pricePoint}}
+              <small class="price_currency" *ngIf="data.packType=='Daily'">{{'user.AED' | translate  }} / {{'user.DAY' | translate  }} <br> {{'user.VAT' | translate  }}</small>
+              <small class="price_currency" *ngIf="data.packType=='Weekly'">{{'user.AED' | translate  }} /{{'user.WEEK' | translate  }}  <br> {{'user.VAT' | translate  }}</small>
+              <small class="price_currency" *ngIf="data.packType=='Monthly'">{{'user.AED' | translate  }} /{{'user.MONTH' | translate  }} <br> {{'user.VAT' | translate  }}</small>
+            </span>
+            <input type="radio" value="" name="packtime" (click)="changePackType(data.packType,data.pricePoint,data.productId)">
+            <span class="checkmark"></span>
+          </label>
+        </div>
+        <p class="text-center account_term">{{'user.accept' |translate}} <a target="_blank" class="color_green_dark"
+            href="https://www.etisalat.ae/en/terms-and-conditions.jsp">{{'user.Terms' |translate}}</a></p>
+      </div>
+      <div class="modal-footer">
+        <span *ngIf="hasPackageTypeSelected" class="buy_pack_price">{{selectedPricePoint}} <small
+            class="price_currency">{{'user.AED' | translate  }} / {{selectedPackageType}} <br> {{'user.VAT' | translate  }}</small></span>
+        <button [disabled]="!hasPackageTypeSelected" type="button" class="btn btn-primary pull-right font_lato"
+          (click)="updateSubscription(productId)" >{{'user.UPDATESUBSCRIPTION'|translate}}
+          </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+ <!-- modal for expiry-->
+ <div class="modal fade" id="modelShowValidityUpgradeError" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true"><img src="assets/images/icons/login_overlays/login_overlays_close.svg"
+              alt="login_overlays_close" /></span>
+        </button>
+        <h4 class="modal-title color_green" id="myModalLabel">
+        Error message
+        </h4>
+      </div>
+      <div class="modal-body font_lato">
+        <p>
+        {{UpgradeErrorMessage}}
+        </p>
+      </div>
+      <div class="modal-footer">
+        <!-- <a href="#/Pricing"><button type="button" class="btn btn-primary full_width font_lato">
+           Subscribe again
+        </button></a> -->
+      </div>
+    </div>
+  </div>
+</div>
+<!--Update subscription modal popup-->
+<!-- <div class="modal fade" id="updateSubscriptionModal" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" id="updateSubscriptionClosebtn" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true"><img src="assets/images/icons/login_overlays/login_overlays_close.svg"
+              alt="login_overlays_close" /></span>
+        </button>
+        <h4 class="modal-title color_green" id="myModalLabel">
+          Update subscription
+        </h4>
+      </div>
+      <div class="modal-body font_lato">
+        <p>
+          Are you sure to update the subscription.
+        </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary full_width font_lato" (click)="updateSubscription()">CONFIRM SUBSCRIPTION</button>
+      </div>
+    </div>
+  </div>
+</div> -->

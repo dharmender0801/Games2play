@@ -1,0 +1,24 @@
+  <!--Recently played albums section-->
+  <section class="new_this_week_music_section">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <span class="block_heading">{{sectionContent.title}}</span>
+            <!-- <app-section-view-all [sectionContent]="sectionContent" [pageId]="pageId"></app-section-view-all> -->
+        </div>
+        <div class="col-sm-4  margin_bottom24" *ngFor="let data of sectionContent.data">
+          <div class="subs_plans featured_images">
+            <img (click)="redirectToMenuChild(sectionContent.pageName,data.contentId)" style="height:180px;width:180px;cursor: pointer;" src="{{data.previewImage}}" class="img-responsive inline" alt="listing_desktop_tablet_1" />
+            <div class="img_desc_horizontal">
+              <h2 class="creative_name font_lato margin_top0">{{data.text}}</h2>
+              <div class="creative_type_year font_lato margin_top0">
+                <span class="creative_type">Rita Ora</span> | <span class="creative_year">Pop</span>
+                <!-- <span class="count">16 Songs</span> -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--Recently played albums section end-->

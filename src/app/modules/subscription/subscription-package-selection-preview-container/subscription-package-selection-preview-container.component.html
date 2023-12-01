@@ -1,0 +1,37 @@
+<!-- <app-menu-header (loginConfirmed)="LoginConfirmed($event)"></app-menu-header> -->
+<app-login (loginConfirmed)="LoginConfirmed($event)"></app-login>
+<app-subscription-package-selection-preview-banner
+  [bannerImageLink]="
+    'assets/images/banners/illustrated_banner/1_Pricing/1/03.6_Illustrated Banner_Pricing_Desktop_1.png'
+  "
+  [heading]="'subs.selectionpreviewHeading' | translate"
+></app-subscription-package-selection-preview-banner>
+<app-subscription-package-selection-preview
+  (subscriptionConfirmClicked)="OpenLoginPopopAsUserIsNotLoggedIn($event)"
+  (setUserHasFreeTrial)="GetUserAccountAndSetFreeTrialVar()"
+></app-subscription-package-selection-preview>
+<app-footer></app-footer>
+<app-subscription-free-trial-popup
+  (subscriptionPackageSelectionPreviewContainerComponent)="
+    FreeTrialPopupCloseOpenNewSubscription($event)"
+  class="modal fade"
+  id="OpenFreeTrialModal"
+  role="dialog"
+></app-subscription-free-trial-popup>
+
+<!-- <app-subscription-confirm-popup class="modal fade" id="ConfirmSubscriptionModal" role="dialog">
+</app-subscription-confirm-popup> -->
+
+<button
+  style="display: none;"
+  id="btnOpenFreeTrialModal"
+  data-target="#OpenFreeTrialModal"
+  data-toggle="modal"
+></button>
+
+<!-- <button
+  style="display: none;"
+  id="btnConfirmSubscriptionModal"
+  data-target="#ConfirmSubscriptionModal"
+  data-toggle="modal" data-backdrop="static" data-keyboard="false"
+></button> -->

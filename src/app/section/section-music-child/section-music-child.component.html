@@ -1,0 +1,138 @@
+<!--Banner section-->
+<section class="banner_section bg_dynamic banner_section_child">
+  <div class="banner">
+    <!-- <img src="/assets/images/banners/music_app_details_page_banner/1_Music/Banner/music_details_page_banner_desktop.png"
+      class="img-responsive" alt="music_details_page_banner_desktop" /> -->
+      <img [defaultImage]="defaultImageBig" 
+      [lazyLoad]="'/assets/images/banners/music_app_details_page_banner/1_Music/Banner/music_details_page_banner_desktop.png'"
+      class="img-responsive" alt="movie_details_page_banner_desktop" />
+    <div class="caption container" *ngIf="(contentDetails | json) != '{}'">
+      <div class="row">
+        <div class="col-sm-10 col-sm-offset-1">
+          <div class="poster_img_music" id="mainMusic">
+              <img [defaultImage]="defaultImage" 
+              [lazyLoad]="contentDetails.thumbnails"
+              class="img-responsive image-profile" alt="video_detail_default_img_282x422" />
+            <!-- <img src="{{contentDetails.thumbnails}}"
+              class="img-responsive image-profile" (load)="ImageLoaded()" (error)="UpdateNotFoundImage()" />
+              <div class="lds-ripple image-num-placeholder"><div></div><div></div></div> -->
+            </div>
+          <div class="img_desc img_desc_poster">
+            <h2 class="creative_name">{{contentDetails.creativeTitle}}</h2>
+            <div class="creative_type_year font_lato">
+              <span class="creative_type">{{contentDetails.director}}</span> | <span
+                class="creative_year">{{contentDetails.genre}}</span>
+            </div>
+
+            <!-- <button id="playalbum" (click)="playMusicAlbum()" class="btn btn-default font_lato">PLAY Album</button>
+   --> 
+
+        <button type="button" id="modelOpenMusic" class="hidden"  data-toggle="modal"
+   data-target="#modelShowValidityVideo"></button>
+
+            <!-- <button *ngIf="VideoPlayButtonHide && (subscriptionForMusic === '-1'||subscriptionForMusic === '0' || subscriptionForMusic === '1')"
+              (click)="playMusicAlbum()" class="btn btn-default font_lato">{{'video.PLAY' |translate }}</button>
+            <button *ngIf="loggedIn === true && VideoPlayButtonHide && (subscriptionForMusic === '2' || subscriptionForMusic === '3'|| subscriptionForMusic === '4')"
+              id="playalbum" class="btn btn-default font_lato">{{'video.PLAY' |translate }}</button> -->
+
+   <button *ngIf="VideoPlayButtonHide && !IsLoggedIn" class="btn btn-default font_lato" (click)="playMusicAlbum()">{{'video.PLAY' | translate}}</button>
+   <a target="targetforlink" *ngIf="IsLoggedIn"   href="{{ PlayMusicUrl }}"><button class="btn btn-default font_lato">{{'video.PLAY' | translate}}</button></a>
+            
+            
+
+
+            <!-- <button class="btn btn-default font_lato" (click)="AddwishlistMusic()">{{WishlistbtnName}}</button> -->
+            <!-- <button *ngIf="showwishlistADD && VideoPlayButtonHide" class="btn btn-default font_lato" (click)="AddwishlistMusic()">{{'wishlist.Add' |translate}}</button>
+            <button  *ngIf="showwishlistRemove && VideoPlayButtonHide" class="btn btn-default font_lato" (click)="AddwishlistMusic()">{{'wishlist.Remove' |translate}}</button> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!--Banner section end-->
+
+<!--coming soon section-->
+<!--coming soon section-->
+<!-- <section *ngIf="loggedIn === true && (subscriptionForMusic === '0' || subscriptionForMusic === '1')"
+  class="browse_section">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7 col-sm-offset-4 category_content music_content">
+        <div id="plwrap">
+          <ul id="plList" class="list-group song_list font_lato"></ul>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section> -->
+<!--audio player section end-->
+<!-- <section *ngIf="loggedIn === true && (subscriptionForMusic === '0' || subscriptionForMusic === '1')"
+  class="audio_player">
+  <span class="song_play_img">
+    <img src="{{contentDetails.thumbnails}}" alt="song_pic" class="img-rersponsive" />
+  </span>
+ 
+  <span class="song_play_name">
+    <div id="nowPlay">
+      <span id="npTitle"></span>
+    </div>
+  </span>
+  
+  <div class="column add-bottom">
+    <div id="mainwrap">
+       
+    
+      <div id="audiowrap">
+        <div id="audio0">
+          <audio id="audio1" preload controls>Your browser does not support HTML5 Audio! ??</audio>
+        </div>
+        <div id="tracks">
+          <a id="btnPrev"><img src="/assets/images/icons/music/music_music_player_widget_previous_desktop.svg"
+              alt="music_music_player_widget_previous_desktop" class="img-responsive" /></a>
+          <a id="btnNext"><img src="/assets/images/icons/music/music_music_player_widget_next_desktop.svg"
+              alt="music_music_player_widget_next_desktop" class="img-responsive" /></a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+ 
+  <span class="close_player">
+    <a href="#">
+      <img src="/assets/images/icons/music/music_music_player_widget_close_desktop.svg" class="img-responsive" />
+    </a>
+  </span>
+
+ 
+</section> -->
+<!--coming soon section end-->
+
+
+<!-- modal for expiry-->
+<div class="modal fade" id="modelShowValidityVideo" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true"><img src="assets/images/icons/login_overlays/login_overlays_close.svg"
+                alt="login_overlays_close" /></span>
+          </button>
+          <h4 class="modal-title color_green" id="myModalLabel">
+           Pack Expired
+          </h4>
+        </div>
+        <div class="modal-body font_lato">
+          <p>
+            Your validity of pack has been expired. Please recharge your account and try again
+          </p>
+        </div>
+        <div class="modal-footer">
+          <!-- <a href="#/Pricing"><button type="button" class="btn btn-primary full_width font_lato">
+             Subscribe again
+          </button></a> -->
+        </div>
+      </div>
+    </div>
+  </div>

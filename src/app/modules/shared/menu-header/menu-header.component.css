@@ -1,0 +1,88 @@
+
+.Pricing:after {
+    content: "";
+    position: absolute;
+    height: 47px;
+    width: 1px;
+    background: #fff;
+    top: 50%;
+    transform: translatey(-50%);
+    opacity: 0.4;
+    left: 0px;
+}
+.menuHeighlight{
+    color: #ef1515 !important;
+}
+a.Pricing {
+    position: relative;
+}
+.hand.hand-m {
+    margin-left: 10px;
+}
+countdown {
+    color: #fff;
+}
+.modal-header .resend {
+    float: left !important;
+    color: #bee710 !important;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-shadow: none;
+    font-weight: 400;
+    font-size: 16px;
+    margin-top: 0 !important;
+    display: inline-block;
+    width: 100%;
+    text-align: left;
+    margin-bottom: 10px;
+}
+/* .modal-title {
+    margin-bottom: 14px;
+} */
+.prefix .input-group-addon {
+    font-weight: 600;
+    background: #2d303f;
+    border: none;
+    color: #fff;
+    letter-spacing: 1px;
+    border-right: 1px solid #719e18;
+}
+.modal-header .changePhoneNumber {
+    float: left !important;
+    color: #bee710 !important;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-shadow: none;
+    font-weight: 400;
+    font-size: 16px;
+    margin-top: 0 !important;
+    display: inline-block;
+    width: 100%;
+    text-align: left;
+    margin-bottom: 10px;
+    padding-top: 10px;
+}
+a{
+    cursor: pointer;
+}
+.custom_input input.required, .custom_input span.required {
+	border: 1px solid #94243f;
+	color: #ed1b3f !important;
+}
+.error {
+	color: #ed1b3f;
+	font-size: 12px;
+	line-height: 12px;
+}
+.label_error {
+    position: absolute;
+    left: 0;
+    bottom: -35px;
+    width: 100%;
+    font-weight: normal;
+    
+}
+#unsubModal .modal-header .close {
+    margin-top: 0;
+    margin-right: 0;
+}

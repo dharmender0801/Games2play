@@ -1,0 +1,16 @@
+.custom_input input.required, .custom_input span.required {
+	border: 1px solid #94243f;
+	color: #ed1b3f !important;
+}
+.error {
+	color: #ed1b3f;
+	font-size: 12px;
+	line-height: 12px;
+}
+.label_error {
+    position: absolute;
+    left: 0;
+    bottom: -24px;
+    width: 100%;
+    font-weight: normal;
+}

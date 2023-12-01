@@ -1,0 +1,206 @@
+<section class="search_result_section">
+  <!-- <h1>{{ searchCategories | json }}</h1> -->
+  <div class="container_full">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="modal_search">
+          <div class="result_dialog_search">
+            <div class="modal_content_search">
+              <div class="search_header">
+                <!-- <a (click)="navigatehomefromsearchpage()" -->
+                    <a href=""
+                  ><button
+                    type="button"
+                    class="close"
+                    data-dismiss="modal"
+                    aria-label="Close"
+                  >
+                    <span aria-hidden="true"
+                      ><img
+                        src="assets/images/icons/login_overlays/login_overlays_close.svg"
+                        alt="login_overlays_close"
+                    /></span></button
+                ></a>
+                <div class="form-group custom_input" *ngIf="lang === 'ar'">
+                  <div class="input-group">
+                    <div class="input-group-addon">
+                      <img
+                        src="assets/images/icons/top_nav/top_nav_search_onselect.png"
+                        class="img-responsive"
+                      />
+                    </div>
+                    <input
+                      autofocus="true"
+                      type="text"
+                      #inputForSearch
+                      (keyup)="SearchTermChanged($event)"
+                      class="form-control"
+                      placeholder="ابحث عن شيء ما"
+                    />
+                    {{ inputForSearch.focus() }}
+                  </div>
+                </div>
+                <div class="form-group custom_input" *ngIf="lang === 'en'">
+                  <div class="input-group">
+                    <div class="input-group-addon">
+                      <img
+                        src="assets/images/icons/top_nav/top_nav_search_onselect.png"
+                        class="img-responsive"
+                      />
+                    </div>
+                    <input
+                      autofocus="true"
+                      type="text"
+                      #inputForSearch
+                      (keyup)="SearchTermChanged($event)"
+                      class="form-control"
+                      placeholder="Search for something …"
+                    />
+                    {{ inputForSearch.focus() }}
+                  </div>
+                </div>
+              </div>
+              <div class="search_result_body font_lato">
+                <div class="pack_access_cat">
+                  <!-- <span
+                    #videoFilter
+                    class="video_pack"
+                    [class.clickable]="searchCategory === 'home' && !selectAll"
+                    [class.active_pack]="(searchCategory === 'videos'  || currentCategory === 'videos' || selectAll) && searchTerm?.length >= 3"
+                    [class.disabled]="(searchCategory !== 'videos' && searchCategory !== 'home' ) || selectAll || searchTerm?.length < 3"
+                    (click)="videoFilter.classList.contains('disabled') ? null : SearchTermFilterChanged('Videos')">
+                      <img
+                        src="assets/images/icons/search/search_video.png" alt="searchvideo" />{{'subs.Video' |translate}}
+                    </span> -->
+
+                  <span
+                    #videoFilter
+                    class="video_pack" style="display: none;"
+                    [class.active_pack]="
+                      ActivePackCheck('Videos') == true ||
+                      routerIsHome == 1 ||
+                      routerIsVideos == 1
+                    "
+                    (click)="
+                      videoFilter.classList.contains('disabled')
+                        ? null
+                        : SearchTermFilterChanged('Videos')
+                    "
+                  >
+                    <img
+                      src="assets/images/icons/search/search_video.png"
+                      alt="searchvideo"
+                    />{{ "subs.Video" | translate }}
+                  </span>
+
+                  <!-- <span class="music_pack"
+                    #musicFilter
+                    [class.clickable]="searchCategory === 'home' && !selectAll"
+                    [class.disabled]="(searchCategory !== 'music' && searchCategory !== 'home') || selectAll || searchTerm?.length < 3"
+                    [class.active_pack]="(searchCategory === 'music'  || currentCategory === 'music' || selectAll) && searchTerm?.length >= 3"
+                    (click)="videoFilter.classList.contains('disabled') ? null : SearchTermFilterChanged('Music')">
+                      <img src="assets/images/icons/search/search_music.png" alt="searchmusic"
+                         />{{'subs.Musics' |translate}}
+                    </span> -->
+
+                  <span
+                    class="music_pack" style="display: none;"
+                    #musicFilter
+                    [class.active_pack]="
+                      ActivePackCheck('Music') ||
+                      routerIsHome == 1 ||
+                      routerIsMusic == 1
+                    "
+                    (click)="
+                      videoFilter.classList.contains('disabled')
+                        ? null
+                        : SearchTermFilterChanged('Music')
+                    "
+                  >
+                    <img
+                      src="assets/images/icons/search/search_music.png"
+                      alt="searchmusic"
+                    />{{ "subs.Musics" | translate }}
+                  </span>
+
+                  <!-- <span
+                    #gamesFilter
+                    class="game_pack"
+                    [class.clickable]="searchCategory === 'home' && !selectAll"
+                    [class.disabled]="(searchCategory !== 'games' && searchCategory !== 'home' ) || selectAll || searchTerm?.length < 3"
+                    [class.active_pack]="(searchCategory === 'games' || currentCategory === 'games' || selectAll) && searchTerm?.length >= 3"
+                    (click)="videoFilter.classList.contains('disabled') ? null : SearchTermFilterChanged('Games')"
+                    >
+                      <img
+                        src="assets/images/icons/search/search_game.png" alt="searchgame"
+                        [class.active_pack]="searchCategory === 'games'" />{{'subs.Games' |translate}}
+                      </span> -->
+                  <span *ngIf="lang === 'en'"
+                    #gamesFilter
+                    class="game_pack"
+                    [class.active_pack]="
+                      ActivePackCheck('Games') ||
+                      routerIsHome == 1 ||
+                      routerIsGames == 1
+                    "
+                    (click)="
+                      videoFilter.classList.contains('disabled')
+                        ? null
+                        : SearchTermFilterChanged('Games')
+                    "
+                  >
+                    <img
+                      src="assets/images/icons/search/search_game.png"
+                      alt="searchgame"
+                      [class.active_pack]="searchCategory === 'games'"
+                    />Games
+                  </span>
+                  <span *ngIf="lang === 'ar'"
+                    #gamesFilter
+                    class="game_pack"
+                    [class.active_pack]="
+                      ActivePackCheck('Games') ||
+                      routerIsHome == 1 ||
+                      routerIsGames == 1
+                    "
+                    (click)="
+                      videoFilter.classList.contains('disabled')
+                        ? null
+                        : SearchTermFilterChanged('Games')
+                    "
+                  >
+                    <img
+                      src="assets/images/icons/search/search_game.png"
+                      alt="searchgame"
+                      [class.active_pack]="searchCategory === 'games'"
+                    />العاب
+                  </span>
+
+                  <a
+                    [class.disabled]="searchTerm?.length < 3" style="display: none;"
+                    (click)="SelectedAllClicked();SelectAllFunctionality()"
+                    *ngIf="searchCategories.length < 3" 
+                    >{{ "search.SelectAll" | translate
+                    }}<img
+                      src="assets/images/icons/arrows/arrows_third_action_button.png"
+                      alt="selectall"
+                  /></a>
+                  <a
+                    [class.disabled]="searchTerm?.length < 3" style="display: none;"
+                    (click)="UnselectedAllClicked();UnSelectAllFunctionality()"
+                    *ngIf="searchCategories.length === 3" 
+                    class="all_search clickable"
+                    >{{ "search.UnSelectAll" | translate
+                    }}<img
+                      src="assets/images/icons/arrows/arrows_third_action_button.png"
+                      alt="selectall"
+                  /></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

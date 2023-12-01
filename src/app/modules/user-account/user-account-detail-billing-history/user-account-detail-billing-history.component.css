@@ -1,0 +1,28 @@
+.billing_data {
+  margin-top: 32px;
+}
+.billing_data table {
+  border-collapse: separate;
+  border: solid #232531 1px;
+  -moz-border-radius: 12px;
+  -webkit-border-radius: 12px;
+  border-radius: 12px;
+  overflow: hidden;
+}
+.billing_data table tr td {
+  color: #D1D2D1;
+  vertical-align: middle;
+  font-size: 14px;
+  line-height: 17px;
+  padding: 24px;
+  border: 0;
+}
+.billing_data .table-striped > tbody > tr {
+  background-color: #2e303b;
+}
+.billing_data .table-striped > tbody > tr:nth-of-type(2n+1) {
+  background-color: #393b46;
+}
+.billing_data .table-striped > tbody > tr:first-child td:first-child {
+  border-radius: 12px 0 0 0;
+}

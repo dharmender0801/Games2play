@@ -1,0 +1,8 @@
+<!-- <app-menu-header></app-menu-header> -->
+
+<app-search-bar  (searchValue)="SearchValue($event)"  [searchCategory]="searchCategoryFromUrl" (searchCategoryEventEmmiter)="SearchValueWithItemType($event)"
+(searchCategoryRemoveCurrentForAllSelectionEventEmmiter)="SetCurrentCategorySoWeCanSearchAllData($event)"></app-search-bar>
+<app-search-result [selectSearchAll]="searchBarComponent.selectSearchAll"  [searchCategoryFromUrl]="searchCategoryFromUrl"  [layoutData]="layoutDataForRenderingSearchResults" [searchCategory]="searchCategoryFromUrlForHeading"
+[hasSearched]="hasSearched"></app-search-result>
+
+<app-footer></app-footer>

@@ -1,0 +1,16 @@
+::ng-deep .owl-theme{
+    display: inline-flex !important;
+}
+::ng-deep .owl-carousel.owl-theme {
+    direction: ltr;
+}
+.carousel_slider {
+      min-height: 336px;
+      background: url("../../assets/images/DefaultImages/Loader_180X270.gif") no-repeat center center;
+}
+
+/* @media (max-width: 667px) {
+    .carousel_slider {
+        min-height: auto;
+    }
+} */

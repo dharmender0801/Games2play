@@ -1,0 +1,52 @@
+<div class="billing_data">
+  <div class="table-responsive">
+ 
+    <table class="table table-striped table-ordered" *ngIf="subBillHistory?.length > 0">
+      <tbody>
+        <tr  *ngFor="let item of subBillHistory" >
+          <td>
+              <span *ngIf="item.mappedItemtypeId == '0'">
+                  <img src="assets/images/icons/page/billing_all_disabled_all.svg"
+                  />
+                </span>
+            <span *ngIf="item.mappedItemtypeId == '1'">
+              <img src="assets/images/icons/page/billing_music_disabled_all.svg"
+              />
+            </span>
+            <span *ngIf="item.mappedItemtypeId == '2'">
+              <img src="assets/images/icons/page/billing_video_disabled_all.svg"
+              />
+            </span>
+            <span *ngIf="item.mappedItemtypeId == '3'">
+              <img src="assets/images/icons/page/billing_games_disabled_all.svg"
+              />
+            </span>
+            <span *ngIf="item.mappedItemtypeId == '4'">
+                <img src="assets/images/icons/page/billing_apps_disabled_all.svg"
+              />
+              </span>
+            {{item.productName}}
+          </td>
+          <td>{{'user.AED' | translate  }} {{item.amount}}</td>
+          <td>{{item.dateTime | date:'shortTime'  }}</td>
+          <!-- <td>{{item.chargeDate | date}}</td> -->
+          <td>{{item.chargeDate | date}}</td>
+          <!-- <td>#{{item.productId}}</td> -->
+          <td>{{item.transactionId}}</td>
+         
+        </tr>
+
+      </tbody>
+    </table>
+
+    <table class="table table-striped table-ordered" *ngIf="subBillHistory?.length === 0 || subBillHistory == null">
+        <tbody>
+            <tr>
+              <td>
+                {{'no.billing.record' | translate}}
+              </td>
+            </tr>
+          </tbody>
+      </table>
+  </div>
+</div>

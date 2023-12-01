@@ -1,0 +1,33 @@
+<ng-template #template >
+  <div class="game_popup">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="cursor: pointer;" (click)="closeModal()"><span aria-hidden="true">&times;</span></button>
+    <!-- <h4 class="modal-title text-center" id="exampleModalLabel3">
+<img src="{{sectionData.banner}}" alt="" class="img-rounded img-responsive" style="width: 331px;margin: 10px auto;">
+</h4> -->
+  </div>
+
+  <div class="modal-body">
+    <form>
+      <div style="min-height: 273px;margin-top: 20px;" class="margin_bottom24">
+        <img [defaultImage]="defaultImage" 
+        [lazyLoad]="sectionData.banner" class="img-responsive inline custom-img-size"
+             alt="listing_games_desktop_tablet_landscape_1" />
+      </div>
+      
+     <p>{{sectionData.appName}}</p>
+     <p>{{sectionData.usercomment}}</p>
+
+<div class="form-group">
+        <button type="button" class="btn btn-danger round_btn" *ngIf="sectionData.contentType===1" style="cursor: pointer;" (click)="userLoginCheck()"> {{'play.game' | translate}} </button>
+        <a *ngIf="sectionData.contentType===2"><button type="button" class="btn btn-danger round_btn" style="cursor: pointer;" *ngIf="IsAndroidPhone" (click)="userLoginCheckDownload()"> {{'donwload.game' | translate}} </button></a>
+        <a *ngIf="sectionData.contentType===3">
+            <button type="button" class="btn btn-danger round_btn" style="cursor: pointer;" (click)="userLoginCheck()"> {{'play.game' | translate}} </button>
+          <button type="button" class="btn btn-danger round_btn" style="cursor: pointer;" *ngIf="IsAndroidPhone" (click)="userLoginCheckDownload()"> {{'donwload.game' | translate}} </button>
+        </a>
+    </div>
+
+    </form>
+  </div>
+</div>
+</ng-template>

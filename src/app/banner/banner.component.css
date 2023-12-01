@@ -1,0 +1,145 @@
+.page_header_section {
+  background-color: #232531;
+  padding: 0 0 56px 0;
+}
+.name {
+  font-size: 20px;
+  line-height: 20px;
+  color: #719E19;
+  margin-left: 10px;
+}
+.user_contact_no {
+  position: absolute;
+  top: 53px;
+  left: 107px;
+  color: #848789;
+  font-size: 14px;
+  line-height: 18px;
+}
+.subscribe_data .panel-title .col-sm-3 {
+  float: none;
+  color: #fff;
+  display: inline-block;
+}
+.subscribe_data .collapse_menu .panel-heading {
+  padding: 0;
+  border-bottom: 0;
+  border-radius: 8px 8px 0 0;
+}
+.subscribe_data {
+  margin-top: 32px;
+}
+.subscribe_data .panel-title a {
+  color: #D1D2D1;
+  font-size: 14px;
+  line-height: 17px;
+  display: block;
+  padding: 25px 0;
+}
+.carat_sub_accordian_up {
+  /* background-image: url('../images/icons/page/arrows_subscription_accordion_arrows_up_all.svg'); */
+  background-repeat: no-repeat;
+  width: 24px;
+  height: 14px;
+}
+.carat_sub_accordian_down {
+  /* background-image: url('../images/icons/page/arrows_subscription_accordion_arrows_down_all.svg'); */
+  background-repeat: no-repeat;
+  width: 24px;
+  height: 14px;
+}
+.subscribe_data .carat_accordian {
+  margin-right: 40px;
+}
+.subscribe_data .panel-body .col-sm-3 h4 {
+  font-size: 20px;
+  line-height: 24px;
+  margin: 16px 0;
+  color: #D1D2D1;
+}
+.subscribe_data .panel-body .col-sm-3 h4 {
+  font-size: 20px;
+  line-height: 24px;
+  margin: 16px 0;
+  color: #D1D2D1;
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 1.14px;
+}
+.download_type, .active_sub_plan_date, .active_acc_number {
+  font-size: 16px;
+  color: #D1D2D1;
+  line-height: 26px;
+  display: block;
+}
+.billing_frequency, .plan_unsub {
+  text-transform: uppercase;
+  color: #D1D2D1;
+  display: block;
+  line-height: 26px;
+  letter-spacing: 2px;
+  margin-top: 16px;
+}
+.subscribe_data .panel-collapse {
+  border-radius: 0 0 8px 8px;
+}
+.subscribe_data .panel-body {
+  background-color: rgba(0,0,0,0.3);
+}
+.subscribe_data_previous .panel-title .col-sm-3 {
+  float: none;
+  color: #848789;
+  display: inline-block;
+}
+.subscribe_data_previous .inactive_pack {
+  background-color: #393b46;
+}
+.subscribe_data_previous .inactive_pack_video {
+  background-color: #2e303b;
+}
+.subscribe_data_previous .panel-title a {
+  color: #D1D2D1;
+  font-size: 14px;
+  line-height: 17px;
+  display: block;
+  padding: 17px 0;
+}
+.auto_width {width: auto !important;}
+.subscribe_data_previous .plan_unsub {
+  color: #719E19;
+}
+.data_title {
+  font-size: 16px;
+  line-height: 12px;
+  color: #fff;
+  letter-spacing: 5.33px;
+  margin-bottom: 30px;
+}
+.subscribe_data_previous.subscribe_data {
+  margin: 64px 0 0 0;
+}
+#subscription_pack .panel-group {
+  margin-bottom: 0;
+}
+.subscribe_data_previous .collapse_menu .panel-heading {
+  border-radius: 0;
+}
+.accordian_box {
+  border-radius: 8px;
+  padding: 2px;
+  background-color: #393b46;
+}
+
+
+.reppleonbanner .insiderepple {
+  margin: auto;
+  left: 0;
+  right: 0;
+}
+
+
+.lds-ripple.image-num-placeholder.reppleonbanner {
+  width: 100%;
+  text-align: center;
+
+}

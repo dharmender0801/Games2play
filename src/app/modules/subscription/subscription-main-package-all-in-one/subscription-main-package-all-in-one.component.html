@@ -1,0 +1,129 @@
+<div class="package_for">
+  <ul class="nav_cat list-inline">
+    <li class="package_title">{{'subs.Allpackagecontains' | translate }}</li>
+    <li>
+      <a
+        ><img src="assets/images/icons/menu/Video/default.svg"/><br />{{'subs.AllpackageVideo' | translate }}
+        <div class="checkbox checkbox_custom">
+          <label class="pricing_check">
+            <input disabled checked type="checkbox" value="">
+            <span class="checkmark"></span>
+          </label>
+        </div></a>
+    </li>
+    <li>
+      <a
+        ><img src="assets/images/icons/menu/Music/default.svg"/><br />{{'subs.AllpackageMusics' | translate }}
+        <div class="checkbox checkbox_custom">
+          <label class="pricing_check">
+            <input  disabled checked type="checkbox" value="">
+            <span class="checkmark"></span>
+          </label>
+        </div></a>
+    </li>
+    <li>
+      <a
+        ><img src="assets/images/icons/menu/Games/default.svg"/><br />{{'subs.AllpackageGames' | translate }}
+        <div class="checkbox checkbox_custom">
+          <label class="pricing_check">
+            <input disabled checked type="checkbox" value="">
+            <span class="checkmark"></span>
+          </label>
+        </div></a>
+    </li>
+    <li>
+      <a
+        ><img src="assets/images/icons/menu/Apps/default.svg"/><br />{{'subs.AllpackageApps' | translate }}
+        <div class="checkbox checkbox_custom">
+          <label class="pricing_check">
+            <input disabled checked type="checkbox" value="">
+            <span class="checkmark"></span>
+          </label>
+        </div></a>
+    </li>
+  </ul>
+  <div class="billing_packs">
+
+      <!-- Different billing texts START -->
+      <!-- <div *ngIf="item.billingTime == 'Daily'" class="panel-body">
+        <span class="pack_price">{{ item.billingAmount | number:'1.2-2' }} AED/DAY</span>
+        <span class="pack_desc"
+          >Best for students.<br />
+          Change your mind any day.</span
+        >
+        <button class="btn btn-primary font_lato" (click)="SubscribeClicked('Daily')">SUBSCRIBE</button>
+      </div>
+      <div *ngIf="item.billingTime == 'Weekly'" class="panel-body">
+          <span class="pack_price">{{ item.billingAmount | number:'1.2-2' }} AED/WEEK</span>
+          <span class="pack_desc"
+            >Best for students.<br />
+            Change your mind any day.</span
+          >
+          <button class="btn btn-primary font_lato" (click)="SubscribeClicked('Weekly')">SUBSCRIBE</button>
+        </div>
+        <div *ngIf="item.billingTime == 'Monthly'" class="panel-body">
+            <span class="pack_price">{{ item.billingAmount | number:'1.2-2' }} AED/MONTH</span>
+            <span class="pack_desc"
+              >Best for students.<br />
+              Change your mind any day.</span
+            >
+            <button class="btn btn-primary font_lato" (click)="SubscribeClicked('Monthly')">SUBSCRIBE</button>
+          </div> -->
+      <!-- Different billing texts START -->
+      <div class="panel panel-default col-sm-4" *ngFor="let item of allProducts">
+        <div class="panel-heading">{{item.productName}}</div>
+        <div class="panel-body panel-pad">
+          <!-- <span class="pack_price" *ngIf="item.packType=='Daily'">{{item.pricePoint}} {{'user.AED' | translate }}/{{'user.DAY' | translate }}</span>
+          <span class="pack_price" *ngIf="item.packType=='Weekly'">{{item.pricePoint}} {{'user.AED' | translate }}/{{'user.WEEK' | translate }}</span>
+          <span class="pack_price" *ngIf="item.packType=='Monthly'">{{item.pricePoint}} {{'user.AED' | translate }}/{{'user.MONTH' | translate }}</span> -->
+
+
+          <span class="pack_price" *ngIf="item.packType=='Daily'"><span class="pack_price"><strong class="pricing_big">{{item.pricePoint}}</strong>
+            <strong>{{'user.AED' | translate }}</strong>/{{'user.DAY' | translate }}</span></span>
+            
+            <span class="pack_price" *ngIf="item.packType=='Weekly'"><span class="pack_price"><strong class="pricing_big">{{item.pricePoint}}</strong> 
+            <strong>{{'user.AED' | translate }}</strong>/{{'user.WEEK' | translate }}</span></span>
+            
+             <span class="pack_price" *ngIf="item.packType=='Monthly'"><span class="pack_price"><strong class="pricing_big">{{item.pricePoint}}</strong> 
+             <strong>{{'user.AED' | translate }}</strong>/{{'user.MONTH' | translate }}</span></span>
+             
+          <span class="pack_desc"
+            >{{item.description}}</span>
+          <button class="btn btn-primary font_lato" (click)="SubscribeClicked(item.id)">{{'subs.AllpackageSUBSCRIBE' | translate }}</button>
+        </div>
+      </div>
+    <!-- <div class="panel panel-default col-sm-4">
+      <div class="panel-heading">Billing Daily</div>
+      <div class="panel-body">
+        <span class="pack_price">3.00 AED/DAY</span>
+        <span class="pack_desc"
+          >Best for students.<br />
+          Change your mind any day.</span
+        >
+        <button class="btn btn-primary font_lato">SUBSCRIBE</button>
+      </div>
+    </div>
+    <div class="panel panel-default col-sm-4">
+      <div class="panel-heading">Billing Weekly</div>
+      <div class="panel-body">
+        <span class="pack_price">3.00 AED/WEEK</span>
+        <span class="pack_desc"
+          >Best for students.<br />
+          Change your mind any day.</span
+        >
+        <button class="btn btn-primary font_lato">SUBSCRIBE</button>
+      </div>
+    </div>
+    <div class="panel panel-default col-sm-4 no_border">
+      <div class="panel-heading">Billing Monthly</div>
+      <div class="panel-body">
+        <span class="pack_price">3.00 AED/MONTH</span>
+        <span class="pack_desc"
+          >Best for students.<br />
+          Change your mind any day.</span
+        >
+        <button class="btn btn-primary font_lato">SUBSCRIBE</button>
+      </div>
+    </div> -->
+  </div>
+</div>

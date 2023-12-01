@@ -1,0 +1,86 @@
+<!--Trending apps section-->
+<section class="trending_app_section">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        
+        <span class="block_heading">{{sectionContent.title}}</span>
+          <!-- <app-section-view-all [sectionContent]="sectionContent" [pageId]="pageId"></app-section-view-all> -->
+      </div>
+      <div class="col-sm-8 no_padding" *ngIf="sectionContent.data.length>0">
+       
+        <div class="col-sm-6 col-xs-4 margin_bottom24" *ngFor="let data of sectionContent.data">
+          <div class="subs_plans  featured_images">
+           
+           <!-- <img  [defaultImage]="defaultImage" (click)="redirectToMenuChild(sectionContent.pageName,data.contentId)" 
+           style="height: 104px;width: 104px;cursor: pointer;" [lazyLoad]="data.previewImage" 
+           class="img-responsive inline"  alt="listing_games_desktop_tablet_landscape_1"/> -->
+           <a *ngIf="sectionContent.pageName=='Videos'" href="#/section/video-details?id={{ data.contentId }}" (click)="redirectToMenuChild(sectionContent.pageName,data.contentId)" >
+            <img  [defaultImage]="defaultImage" 
+            style="height: 104px;width: 104px;cursor: pointer;" [lazyLoad]="data.previewImage" 
+            class="img-responsive inline"  alt="listing_games_desktop_tablet_landscape_1"/>
+           </a>
+           <a *ngIf="sectionContent.pageName=='Music'" href="#/section/music-details?id={{ data.contentId }}" (click)="redirectToMenuChild(sectionContent.pageName,data.contentId)" >
+             <img  [defaultImage]="defaultImage" 
+             style="height: 104px;width: 104px;cursor: pointer;" [lazyLoad]="data.previewImage" 
+             class="img-responsive inline"  alt="listing_games_desktop_tablet_landscape_1"/>
+            </a>
+            <a *ngIf="sectionContent.pageName=='Games'" href="#/section/game-details?id={{ data.contentId }}" (click)="redirectToMenuChild(sectionContent.pageName,data.contentId)" >
+             <img  [defaultImage]="defaultImage" 
+             style="height: 104px;width: 104px;cursor: pointer;" [lazyLoad]="data.previewImage" 
+             class="img-responsive inline"  alt="listing_games_desktop_tablet_landscape_1"/>
+            </a>
+            <div class="img_desc_horizontal">
+              <h2 (click)="redirectToMenuChild(sectionContent.pageName,data.contentId)"  style="cursor: pointer;" class="creative_name font_lato margin_top0">{{data.text}}</h2>
+              <ul class="star_rating star_rating_custom inline">
+                <app-star-rating [starRating]="data.rating"></app-star-rating>
+              </ul>
+                <div class="creative_type_year font_lato margin_top0 inline">
+                  <span class="rating font_lato v_align_normal">{{data.rating}}</span> | <span class="creative_type margin_top0">{{data.genere}}</span>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-4 mobile_hide" *ngIf="lastSectionContent.length>0">
+          <div class="subs_plans featured_images subs_plans_a">
+
+            <!-- <img  [defaultImage]="defaultImageBig"  (click)="redirectToMenuChild(sectionContent.pageName,lastSectionContent[0].contentId)"
+             style="cursor: pointer;"  [lazyLoad]="lastSectionContent[0].previewImage" 
+             
+              class="img-responsive fix_W_H_horizantal_rectangle"  
+              alt="featured_apps_desktop_tablet_landscape_1"/> -->
+              <a *ngIf="sectionContent.pageName=='Videos'" href="#/section/video-details?id={{ lastSectionContent[0].contentId }}" (click)="redirectToMenuChild(sectionContent.pageName,lastSectionContent[0].contentId)">
+                <img  [defaultImage]="defaultImageBig"  
+                 style="cursor: pointer;"  [lazyLoad]="lastSectionContent[0].previewImage" 
+          
+                  class="img-responsive fix_W_H_horizantal_rectangle border-radius-10"  
+                  alt="featured_apps_desktop_tablet_landscape_1"/>
+                </a>
+                <a *ngIf="sectionContent.pageName=='Music'" href="#/section/music-details?id={{ lastSectionContent[0].contentId }}" (click)="redirectToMenuChild(sectionContent.pageName,lastSectionContent[0].contentId)">
+                  <img  [defaultImage]="defaultImageBig"  
+                   style="cursor: pointer;"  [lazyLoad]="lastSectionContent[0].previewImage" 
+            
+                    class="img-responsive fix_W_H_horizantal_rectangle border-radius-10"  
+                    alt="featured_apps_desktop_tablet_landscape_1"/>
+                  </a>
+                  <a *ngIf="sectionContent.pageName=='Games'" href="#/section/game-details?id={{ lastSectionContent[0].contentId }}" (click)="redirectToMenuChild(sectionContent.pageName,lastSectionContent[0].contentId)">
+                    <img  [defaultImage]="defaultImageBig"  
+                     style="cursor: pointer;"  [lazyLoad]="lastSectionContent[0].previewImage" 
+              
+                      class="img-responsive fix_W_H_horizantal_rectangle"  
+                      alt="featured_apps_desktop_tablet_landscape_1"/>
+                    </a>
+            <div class="img_desc ab_img absolute_position">
+              <h2 (click)="redirectToMenuChild(sectionContent.pageName,lastSectionContent[0].contentId)" style="cursor: pointer;" class="creative_name font_lato">{{lastSectionContent[0].text}}</h2>
+                <ul class="star_rating inline">
+                    <app-star-rating [starRating]="lastSectionContent[0].rating"></app-star-rating>
+                </ul>
+                <span class="rating font_lato color_white">{{lastSectionContent[0].rating}}</span>  | <span class="creative_type margin_top0 color_white">{{lastSectionContent[0].genere}}</span>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+</section>
+<!--Trending apps section end-->

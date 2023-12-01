@@ -1,0 +1,37 @@
+<section class="banner_section banner_pricing success_banner_section">
+  <div class="banner">
+
+    <img src="assets/images/banners/illustrated_banner/1_Pricing/2/03.6_Illustrated Banner_Success_Desktop_2.png"
+      class="img-responsive" alt="illustrated_banner_pricing_desktop" />
+    <div id="Scrolldown">
+      <div class="caption container" *ngIf="!startYourSubscription">
+        <span class="font_big_green">{{'subs.successfully'|translate}}</span>
+        <!-- <span class="subscribe_pack_name"></span> -->
+        <span class="sel_package_name"><img src="assets/images/icons/filters/filters_music_onselect.svg" />
+          {{productType}} - {{productName}}</span>
+        <span class="caption_tag font_lato"> {{'subs.content'|translate}}<br />
+         {{'subs.library'|translate}}</span>
+        <span *ngIf="billedDate != null" class="billing_duration font_lato">{{'subs.BILLED'|translate}}<br />
+          <h4 class="billing_date">{{billedDate | date}}</h4>
+        </span>
+      </div>
+      <div class="caption container" *ngIf="startYourSubscription">
+        <span class="font_big_green">{{'subs.already'|translate}}<br> {{'subs.Entertainment'|translate}}</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="pricing_section pricing_section_btn">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="banner_success_btn">
+          <a href="#"><button class="btn btn-primary font_lato" id="BrowseArena">{{'subs.Browse'|translate}} </button></a>
+          <a href="#/Account/detail"><button class="btn btn-default font_lato">{{'subs.Personalise'|translate}}</button></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

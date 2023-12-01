@@ -1,0 +1,13 @@
+.video_back {
+  z-index: 9999999;
+  top: 20px;
+  position: fixed;
+  color: #fff;
+  left: 20px;
+  font-size: 18px;
+  text-transform: uppercase;
+}
+.video_back img {
+  transform: rotate(90deg);
+  margin-right: 8px;
+}

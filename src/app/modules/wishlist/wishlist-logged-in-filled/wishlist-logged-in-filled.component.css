@@ -1,0 +1,10 @@
+.lds-ripple {
+  display: inline-block;
+  position: absolute;
+  width: 64px;
+  height: 64px;
+  top: 25%;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+}

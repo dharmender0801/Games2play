@@ -1,0 +1,44 @@
+<div class="modal-dialog" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="CloseSubModal()">
+        <span aria-hidden="true"><img src="assets/images/icons/login_overlays/login_overlays_close.svg"
+            alt="login_overlays_close" /></span>
+      </button>
+      <h4 class="modal-title color_green" id="myModalLabel">
+        Verify your subscription (Upgrade)
+      </h4>
+    </div>
+    <div class="modal-body font_lato">
+      <p class="text-center">We have sent you a text message to</p>
+      <p class="text-center">+{{ currentNumber }}</p>
+      <p class="text-center">with a code for you to enter here</p>
+      <div class="form-group custom_input">
+        <input (keypress)="restrictNumeric($event)" type="{{OTPType}}" maxlength="4" class="form-control"
+          [(ngModel)]="otpEntered" [ngClass]="{ 'required': otpsubvalidation == true || otpsubinvalid == true }"
+          required placeholder="Enter verification code" />
+          <span class="form-control-feedback see_pass" (click)="ShowOTPField()">
+              <img *ngIf="ShowOTP" src="/assets/images/icons/login_overlays/login_overlays_show_default.svg" />
+              <img *ngIf="!ShowOTP" src="/assets/images/icons/login_overlays/login_overlays_hide_default.svg" />
+            </span>
+          <label *ngIf="otpsubvalidation" style="color:red"  for="otpnumber" class="error label_error"> OTP Number is required</label>
+          <label *ngIf="otpsubinvalid" style="color:red"  for="otpnumber" class="error label_error"> Invalid OTP Number</label>
+        <p *ngIf="IsSignupFormResendCode" class="text-right"><a class="color_green_dark resend_code"
+            (click)="signUpformResendCode()">RESEND
+            CODE<img src="/assets/images/icons/arrows/arrows_third_action_button.svg" /></a></p>
+        <p class="text-right" *ngIf="IsSignupFormCountdown">
+          <a class="color_green_dark resend_code">
+            {{'Login.Resend' |translate}}<countdown #countdown [config]="{ leftTime: 45 }" (finished)="finishsignUpformTimer()">: $!m!:$!s!
+            </countdown>
+          </a>
+        </p>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button [disabled]="otpEntered.length<4" type="button" class="btn btn-primary full_width font_lato"
+        (click)="ConfirmClicked()">
+        Confirm
+      </button>
+    </div>
+  </div>
+</div>

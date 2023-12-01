@@ -1,0 +1,168 @@
+<section class="wishlist_section wishlist_section_filled">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12"><span class="page_title">{{ 'wishlist.Items' | translate }}</span></div>
+    </div>
+    <div class="row">
+      <aside class="sidebar_category col-sm-4">
+          <ul class="main_categories font_lato main_nav">
+              <li *ngFor="let data of userWishListitem"  >
+                <a *ngIf="data.count != 0"  style="cursor: pointer" [ngClass]="{'active': hasGenreName==data.pageName}" (click)="redirect(data.pageName)">{{data.name}}
+                <span>({{data.count}})</span></a></li>
+                <!-- <li *ngIf="hasgame" ><a style="cursor: pointer"  (click)="redirect($event)">Games
+                    <span>(0)</span></a></li>
+                    <li *ngIf="hasapp"><a style="cursor: pointer"  (click)="redirect($event)">App
+                        <span>(0)</span></a></li> -->
+        </ul>
+        <!-- <ul class="main_categories font_lato main_nav">
+          <li><a style="cursor: pointer" (click)="videowishlist($event)" class="active"><img
+                src="/assets/images/icons/filters/filters_video_onselect.svg" class="img-responsive" />Videos
+              <span>(2098)</span></a></li>
+          <li><a style="cursor: pointer" (click)="musicwishlist($event)"><img
+                src="/assets/images/icons/filters/filters_music_default.svg" class="img-responsive" />Musics
+              <span>(3425)</span></a></li>
+          <li><a style="cursor: pointer" (click)="gamewishlist($event)"><img
+                src="/assets/images/icons/filters/filters_games_default.svg" class="img-responsive" />Games
+              <span>(1452)</span></a></li>
+          <li><a style="cursor: pointer" (click)="appwishlist($event)"><img
+                src="/assets/images/icons/filters/filters_apps_default.svg" class="img-responsive" />Apps
+              <span>(2136)</span></a></li>
+
+        </ul> -->
+      </aside>
+
+      <div class="col-sm-8 category_content">
+        <div class="col-sm-12 filter_dropdown font_lato">
+          <ul class="nav navbar-nav">
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                aria-expanded="false">{{FilterText | uppercase}}
+                <span class="caret_down"><img src="assets/images/icons/arrows/arrows_sort_by_button_down_all.svg"
+                    class="img_valign_sort" /></span></a>
+              <ul class="dropdown-menu filter_options">
+                <li><a [class.active]="filterSelected === 'newest'" (click)="NewestClicked()" class="active">{{ 'wishlist.Newest' | translate }}</a></li>
+                <li><a style="cursor: pointer" [class.active]="filterSelected === 'AtoZ'" (click)="sortA_Z()">{{'rightsection.AtoZ' | translate}}</a></li>
+                <li><a style="cursor: pointer" [class.active]="filterSelected === 'ZtoA'" (click)="sortZ_A()">{{'rightsection.ZtoA' | translate}}</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <div *ngIf="showAll">
+          <div *ngFor="let item of userWishList;let i = index">
+            <div class="col-sm-3 col-xs-6">
+              <div class="subs_plans featured_images margin_bottom24">
+                <img (click)="removewishlistvideo(item.portletId,item.appId ,item.id)"  style="cursor: pointer;"  src="/assets/images/icons/page/wishlist_default_all.svg"  class="img-responsive fav_preference"
+                  alt="wishlist_default_all">
+                  <img [defaultImage]="defaultImage" 
+                  style="cursor: pointer;"
+                  [lazyLoad]="item.thumbnails"
+                  (click)="redirectVideoChildPage(item.portletId)"
+                  class="img-responsive fix_W_H_verticle_rectangle" alt="video_detail_default_img_282x422" />
+                <!-- <img
+                (click)="redirectVideoChildPage(item.portletId)"
+                style="cursor: pointer;"
+                class="img-responsive fix_W_H_verticle_rectangle image-num-{{i}}"
+                src="{{item.thumbnails}}"
+                  alt="listing_desktop_tablet_1"
+                  (load)="ImageLoaded(i)"  (error)="UpdateNotFoundImage(i)"
+                  /> -->
+                  <!-- <div class="lds-ripple image-num-placeholder-{{i}}"><div></div><div></div></div> -->
+                <div class="img_desc">
+                  <h2 class="creative_name font_lato">{{item.creativeTitle}}</h2>
+                  <ul class="star_rating inline">
+                    <app-star-rating [starRating]="item.rating"></app-star-rating>
+                  </ul>
+                  <span class="rating font_lato">{{item.rating}}</span>
+                  <div class="creative_type_year font_lato">
+                    <span class="creative_type">{{item.subCategories}}</span> | <span
+                      class="creative_year">{{item.yearOfRelease | splitAndGet:"-":0 }}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div  *ngIf="showmusic">
+            <div *ngFor="let ms of userWishListMusic;let i = index">
+                <div class="col-sm-3 col-xs-6">
+                    <div class="subs_plans featured_images margin_bottom24">
+
+                      <img (click)="removewishlist(ms.portletId,ms.appId,ms.id)"  style="cursor: pointer;" src="/assets/images/icons/page/wishlist_default_all.svg" class="img-responsive fav_preference" alt="wishlist_default_all">
+
+                      <img [defaultImage]="defaultImageMusicGame" 
+                      [lazyLoad]="ms.thumbnails"
+                      style="cursor: pointer;"
+                      (click)="redirectMusicChildPage(ms.portletId)"
+                      class="img-responsive fix_W_H_verticle_rectangle" alt="video_detail_default_img_282x422" />
+                <!-- <img  (click)="redirectMusicChildPage(ms.portletId)"  style="cursor: pointer;" class="img-responsive fix_W_H_verticle_rectangle image-num-{{i}}" src="{{ms.thumbnails}} "
+                (load)="ImageLoaded(i)"  (error)="UpdateNotFoundImage(i)"
+                />
+                <div class="lds-ripple image-num-placeholder-{{i}}"><div></div><div></div></div> -->
+                <div class="img_desc">
+                <h2 class="creative_name font_lato">{{ms.creativeTitle}}</h2>
+                <ul class="star_rating inline"><app-star-rating [starRating]="ms.rating"></app-star-rating></ul>
+                <span class="rating font_lato">{{ms.rating}}</span>
+                <div class="creative_type_year font_lato">
+                    <span class="creative_type">{{ms.subCategories}}</span> | <span
+                      class="creative_year">{{ms.yearOfRelease | splitAndGet:"-":0 }}</span>
+                  </div>
+            </div>
+            </div>
+              </div>
+            </div>
+          </div>
+
+            <div *ngIf="showgame">
+        <div *ngFor="let gm of userWishListGames;let i = index">
+            <div  class="col-sm-3 col-xs-6">
+                <div class="subs_plans featured_images margin_bottom24">
+                    <img (click)="removewishlistgame(gm.portletId,gm.appId,gm.id)"  style="cursor: pointer;" src="/assets/images/icons/page/wishlist_default_all.svg" class="img-responsive fav_preference" alt="wishlist_default_all">
+                    <img [defaultImage]="defaultImageMusicGame" 
+                    [lazyLoad]="gm.thumbnails"
+                    style="cursor: pointer;"
+                    (click)="redirectGameChildPage(gm.portletId)"
+                    class="img-responsive fix_W_H_verticle_rectangle" alt="video_detail_default_img_282x422" />
+                    <!-- <img
+            (click)="redirectGameChildPage(gm.portletId)"
+            style="cursor: pointer;"
+            class="img-responsive fix_W_H_verticle_rectangle image-num-{{i}}"
+            src="{{gm.thumbnails}}"
+            (load)="ImageLoaded(i)"  (error)="UpdateNotFoundImage(i)"
+            />
+            <div class="lds-ripple image-num-placeholder-{{i}}"><div></div><div></div></div> -->
+            <div class="img_desc">
+            <h2 class="creative_name font_lato">{{gm.creativeTitle}}</h2>
+            <ul class="star_rating inline"><app-star-rating [starRating]="gm.rating"></app-star-rating></ul>
+            <span class="rating font_lato">{{gm.rating}}</span>
+            <div class="creative_type_year font_lato">
+                <span class="creative_type">{{gm.subCategories}}</span>
+
+              </div>
+        </div>
+        </div>
+          </div>
+        </div>
+      </div>
+
+      <div *ngIf="showapp">
+        <h2> {{ 'wishlist.NoRecords' | translate }}</h2>
+          <!-- <div *ngFor="let ap of userWishListAPPS">
+              <div   class="col-sm-3">
+                  <div class="subs_plans featured_images margin_bottom24">
+                      <img src="/assets/images/icons/page/wishlist_default_all.svg" class="img-responsive fav_preference" alt="wishlist_default_all">
+              <img  class="img-responsive fix_W_H_verticle_rectangle"  src="{{ap.appStore.thumbnail}} "/>
+              <div class="img_desc">
+              <h2 class="creative_name font_lato">{{ap.appStore.appName}}</h2>
+              <ul class="star_rating inline"><app-star-rating [starRating]="ap.appStore.rating"></app-star-rating></ul>
+              <span class="rating font_lato">{{ap.appStore.rating}}</span>
+            </div>
+            </div>
+            </div>
+          </div> -->
+      </div>
+
+      </div>
+    </div>
+  </div>
+</section>

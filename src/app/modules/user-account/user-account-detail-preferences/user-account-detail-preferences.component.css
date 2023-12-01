@@ -1,0 +1,30 @@
+.user_preference aside{
+  padding: 0;
+  margin: 0;
+}
+.user_preference aside.sidebar_category ul.main_categories li a {
+  font-weight: normal;
+}
+.select_preference {
+  min-height: 200px;
+  background-color: #393d52;
+  border-radius: 8px;
+  padding: 37px;
+}
+.user_preference {
+  margin-top: 32px;
+  display: inline-block;
+    width: 100%;
+    line-height: normal;
+}
+.preference_heading {
+  font-size: 12px;
+  line-height: 12px;
+  letter-spacing: 2px;
+  color: #FFF;
+  margin: 0 0 34px 0;
+  font-weight: bold;
+}
+.cursor-pointer{
+  cursor: pointer;
+}

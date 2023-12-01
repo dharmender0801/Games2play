@@ -1,0 +1,210 @@
+
+
+  <div class="download_app" style="display: none;" *ngIf="IsAndroidPhone && !IsIOSPhone" >
+      <a  href="https://play.google.com/store/apps/details?id=ae.etisalat.arena&hl=en"><img src="/assets/images/logo.png" class="img-responsive" /> <div class="app_body_header"><h4 class="img_header">Etisalat Arena</h4><span class="img_body">Open in the ETISALAT APP</span></div> <span class="open_app">Open</span></a>
+    </div>
+  
+  
+  <ng-template #template >
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit(!registerForm.value)">
+      <div class="modal-header">
+        <button type="button" class="close pull-right" aria-label="Close" (click)="reset()">
+          <span aria-hidden="true"><img _ngcontent-c4="" alt="login_overlays_close" src="/assets/images/icons/login_overlays/login_overlays_close.svg"></span>
+        </button>
+        <img src="/assets/images/logo.png" width="230px"/>
+        <h3 class="clr-red bold text-uppercase font-25">{{'Explore.Unlimited' |translate}}</h3>
+        <h3 class="bold font-17 custom-margin clr-white">{{'Category.games' |translate}}</h3>
+        <!-- <p>{{'Login.Please' |translate}}</p> -->
+        <div class="modal-body font_lato">
+          <div *ngIf="buttonName == 'Login'">
+          <div class="form-group custom_input input-group prefix contact_custom_number" *ngIf="!loginFormVerifyNumber">
+            <span class="input-group-addon" [ngClass]="{ 'required': submitted && phonenovalidation == true || phonenoinvalid ==true }" style="background: #fff;color: black;">+234</span>
+            <input #myinput (keypress)="restrictNumeric($event)" type="text" maxlength="10" oncopy="return false" onpaste="return false" formControlName="phonenumber"
+              [(ngModel)]="phonenumber" class="form-control text-center" placeholder="{{'Login.Placeholder' | translate}}"
+              [ngClass]="{ 'required': submitted &&  phonenovalidation == true || phonenoinvalid ==true }" style="color: #000 !important;"/>
+              {{ myinput.focus() }}
+              <label *ngIf="phonenovalidation" for="phonenumber" class="error label_error" > {{'Login.MobNoAlert' |translate}}</label>
+              <label *ngIf="lengthValidation" for="phonenumber" class="error label_error" > {{'length.MobNoAlert' |translate}}</label>
+              <label *ngIf="validationMobile?.length>0" for="phonenumber" class="error label_error" > {{validationMobile}}</label>
+        
+            </div>
+          <div *ngIf="loginFormVerifyNumber">
+            <p>{{'Login.Message' |translate}}</p>
+            <p  dir="ltr" class="user_entered_number text_center">+234 {{phonenumber}}</p>
+          </div>
+        </div>
+  
+          <div *ngIf="show" class="form-group custom_input relative_position login_control">
+            <input id="loginVerificationCode" #myinput2 [(ngModel)]="loginFormOtpNumber" (keypress)="restrictNumeric($event)"
+              type="password" maxlength="4" formControlName="otpnumber"  class="form-control text-center w-60 width_otp"
+              placeholder="{{'Login.OTPPlaceholder' |translate}}" [ngClass]="{ 'required': submitted && otpvalidation == true || otpinvalid ==true }"/>
+              {{ myinput2.focus() }}
+              <span class="form-control-feedback see_pass" (click)="showLoginVerificationCode()">
+              <img *ngIf="!showLoginPassword" src="/assets/images/icons/login_overlays/login_overlays_show_default.svg" />
+              <img *ngIf="showLoginPassword" src="/assets/images/icons/login_overlays/login_overlays_hide_default.svg" />
+            </span>
+            <label *ngIf="otpvalidation" for="otpnumber" class="error label_error" style="font-size: 16px;"> {{'Login.OtpNO' |translate}}</label>
+            <label *ngIf="otpinvalid" for="otpnumber" class="error label_error" style="font-size: 16px;">{{'Login.OtpNOInvalid' |translate}}</label>
+          </div>
+  
+          <p *ngIf="IsResend" class="text-right"><a class="color_green_dark resend_code" (click)="resend()">{{'Login.ResendCode' |translate}}
+              <img src="/assets/images/icons/arrows/arrows_third_action_button.svg" /></a></p>
+          <p class="text-right" *ngIf="IsCoundown">
+            <a class="color_green_dark resend_code">
+              {{'Login.Resend' |translate}}:<countdown #countdown [config]="{ leftTime: 45 }" (finished)="finishTimer()"> $!m!:$!s!
+              </countdown>
+            </a>
+          </p>
+
+          <div *ngIf="buttonName == 'Register'">
+            <p class="plan_selection">{{'Select.plan' | translate}}</p>	
+            <div class="form-group">
+                <!-- <button type="button" id="pack{{product.sNo}}" class="{{product.className}} mr border-r" [ngClass]="product.ngClass" (click)="selectPack(product.sNo,product.productId)" *ngFor="let product of productList;let i = index" [attr.data-index]="i">{{product.description}} </button> -->
+                <button type="button" class="btn w-140 mr border-r" [ngClass]="selectedPack1" (click)="selectPack(1,20)">30 NGN/day</button>
+            <button type="button" class="btn btn-default w-140 mr border-r" [ngClass]="selectedPack2" (click)="selectPack(2,21)">50 NGN/Week</button>
+            </div>
+          </div>
+  	
+        </div>
+        <div class="modal-footer text-center">
+          <button  *ngIf="buttonName == 'Login'" class="btn font_lato btn-danger round_btn" style="background: #f96600;">{{ 'exist.login' |translate}}</button>
+          <button  *ngIf="buttonName == 'Submit'" class="btn font_lato btn-danger round_btn">{{ 'signup.ButtonVerify' |translate}}</button>
+          <button  *ngIf="buttonName == 'Register'" class="btn font_lato btn-danger round_btn">{{ 'exist.Register' |translate}}</button>
+        </div>
+      </div>
+    </form>
+  </ng-template>
+  
+  <ng-template #signUpTemplate>
+    <form [formGroup]="signUpForm" (ngSubmit)="onSignUpFormSubmit()">
+      <div class="modal-header">
+        <button type="button" (click)="closeSignUpModel()" class="close" data-dismiss="modal" aria-label="Close"><span
+            aria-hidden="true"><img src="/assets/images/icons/login_overlays/login_overlays_close.svg"
+              alt="login_overlays_close" /></span></button>
+        <!-- <h4 class="modal-title color_green" id="myModalLabel">{{signupFormHeaderText}}</h4> -->
+        <h4 *ngIf="ShowsignUpheaderCreate" class="modal-title color_green" id="myModalLabel">{{'signup.HeaderText' |translate}}</h4>
+        <h4 *ngIf="ShowsignUpHeaderVerify" class="modal-title color_green" id="myModalLabel">{{'signup.HeaderTextVerify' |translate}}</h4>
+      </div>
+      <div class="modal-body font_lato">
+        <div *ngIf="!hasPhoneNumberVerified">
+          <div class="form-group custom_input input-group prefix">
+            <span class="input-group-addon" [ngClass]="{ 'required': signUpPhoneNumberinvalid == true }">+234</span>
+            <input (keypress)="restrictNumeric($event)"  #myinput3 type="text" maxlength="10" oncopy="return false" onpaste="return false" formControlName="signUpPhoneNumber"
+              [(ngModel)]="signUpPhoneNumber" class="form-control" [ngClass]="{ 'required': signUpPhoneNumberinvalid == true }"  placeholder="{{'Login.Placeholder' | translate}}" />
+              {{myinput3.focus()}}
+              <label *ngIf="signUpPhoneNumberinvalid" for="signUpPhoneNumber" class="error label_error" >  {{'Login.MobNoInvalid' |translate}}</label>
+            
+            </div>
+          <div class="checkbox checkbox_custom">
+            <label>{{'signup.Agree' | translate}} <span class="color_green_dark"><a target="_blank"
+                  href="https://www.etisalat.ae/en/terms-and-conditions.jsp"> {{'signup.Terms' | translate}}</a></span>
+              <input type="checkbox" value="" formControlName="signUpTermsCondition" [(ngModel)]="signUpTermsCondition"
+                required>
+              <span class="checkmark"></span>
+            </label>
+          </div>
+          <p class="text-center">{{'signup.Already' | translate}} </p>
+          <p class="text-center login_anchor"><a (click)="openModal(template)" class="color_green_dark">{{'signup.Log' | translate}} <img
+                src="/assets/images/icons/arrows/arrows_third_action_button.svg" /></a> </p>
+        </div>
+  
+        <div *ngIf="hasPhoneNumberVerified">
+          <p>{{'signup.Message' | translate}}</p>
+          <p class="user_entered_number">+234 {{signUpPhoneNumber}}</p>
+          <p class="margin_t32">{{'signup.Code' | translate}}</p>
+          <div class="form-group custom_input relative_position">
+            <input type="password" #myinput4 (keypress)="restrictNumeric($event)" id="signUpVerificatioCode" class="form-control input_group_icon"
+              formControlName="signUpFormVerificationcode" [(ngModel)]="signUpFormVerificationcode"
+              [ngClass]="{ 'required':  signUpotpvalidation ==true  ||signUpotpinvalid ==true  }"
+              placeholder="{{'Login.OTPPlaceholder' |translate}}" maxlength="4">
+              {{myinput4.focus()}}
+            <span class="form-control-feedback see_pass" (click)="showVerificationCode()">
+                <img *ngIf="!showSignUpPassword" src="/assets/images/icons/login_overlays/login_overlays_show_default.svg" />
+                <img *ngIf="showSignUpPassword" src="/assets/images/icons/login_overlays/login_overlays_hide_default.svg" />
+              </span>
+              <label *ngIf="signUpotpvalidation" style="color:red"  for="otpnumber" class="error label_error" > {{'Login.OtpNO' |translate}}</label>
+            <label *ngIf="signUpotpinvalid" style="color:red"  for="otpnumber" class="error label_error" >{{'Login.OtpNOInvalid' |translate}}</label>
+          </div>
+          <p *ngIf="IsSignupFormResendCode" class="text-right"><a class="color_green_dark resend_code"
+              (click)="signUpformResendCode()">{{'Login.ResendCode' |translate}}
+              <img src="/assets/images/icons/arrows/imgpsh_fullsize_anim.png" /></a></p>
+          <p class="text-right" *ngIf="IsSignupFormCountdown">
+            <a class="color_green_dark resend_code">
+              {{'Login.Resend' |translate}}:<countdown #countdown [config]="{ leftTime: 45 }" (finished)="finishsignUpformTimer()">$!m!:$!s!
+              </countdown>
+            </a>
+          </p>
+          <p class="text-center">{{'signup.different' | translate}}</p>
+          <p class="text-center login_anchor"><a class="color_green_dark" (click)="changePhoneNumberSignupForm()">{{'signup.different' | translate}}
+            <img src="/assets/images/icons/arrows/imgpsh_fullsize_anim.png" /></a> </p>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <!-- <button [disabled]="signUpForm.invalid" type="submit"
+          class="btn btn-primary full_width font_lato">{{signupSubmitButtonText}}</button> -->
+          <button *ngIf="showsignupButtonContinue" [disabled]="signUpForm.invalid" type="submit"
+          class="btn btn-primary full_width font_lato">{{'signup.ButtonContinue'|translate}}</button>
+          <button *ngIf="showshowsignupButtonverify" [disabled]="signUpForm.invalid" type="submit"
+          class="btn btn-primary full_width font_lato">{{'signup.ButtonVerify'|translate}}</button>
+        
+      </div>
+    </form>
+  </ng-template>
+  
+  
+   <!--get app popup-->
+   <div  class="modal fade" id="find_app" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><img src="/assets/images/icons/login_overlays/login_overlays_close.svg" alt="login_overlays_close" /></span></button>
+          <h4 class="modal-title color_green" id="myModalLabel">Get Funtastic App</h4>
+        </div>
+        <div class="modal-body">
+            <a *ngIf="!IsIOSPhone && !IsAndroidPhone" href="https://play.google.com/store/apps/details?id=ae.etisalat.arena&hl=en"><img src="/assets/images/g_play_btn.png" alt="g_play_btn" class="img-responsive" /></a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--/get app popup-->
+  
+  <!--Etisalat Apps popup-->
+  <div class="apps_popup"   id="etisalat_apps" tabindex="" role="dialo" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" id="close_etisalatapp"   (click)="close_etisalatapp()" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><img src="/assets/images/icons/login_overlays/login_overlays_close.svg" alt="login_overlays_close" /></span></button>
+        <h4 class="modal-title" id="myModalLabel">{{'subs.Apps' |translate}}</h4>
+      </div>
+      <div class="modal-body font_lato">
+          <li *ngFor="let data of LinksItems">
+              <div class="col-sm-6 col-xs-12 hostedapp">
+  
+                  <div class="media-left">
+                      <!-- <a><img class="media-object img-responsive" src="{{data.image}}" alt="g_play_btn"  /></a>  -->
+                      <a><img src="{{data.image}}" alt="g_play_btn" class="media-object" /></a>
+                    </div>
+  
+  
+  
+              <div class="media-body">
+                 
+                  <!-- <a  class="btn btn-default btn_icon"><img src="{{data.image}}" alt="g_play_btn" class="img-responsive" /></a> -->
+                  <h4 class="media-heading">{{data.appName}}</h4>
+   <a href="{{data.url}}" *ngIf="!IsIOSPhone && !IsAndroidPhone"  target="_blank" class="btn btn-default btn_icon"><img src="/assets/images/etisalat_apps/g_play_btn.png" alt="g_play_btn" class="img-responsive" /></a>
+   <a href="{{data.url}}" *ngIf="IsAndroidPhone"  target="_blank" class="btn btn-default btn_icon"><img src="/assets/images/etisalat_apps/g_play_btn.png" alt="g_play_btn" class="img-responsive" /></a>
+   <a href="{{data.toAppStore}}" target="_blank" *ngIf="IsIOSPhone && !IsAndroidPhone"  class="btn btn-default btn_icon"><img src="/assets/images/etisalat_apps/a_store_btn.png" alt="a_store_btn" class="img-responsive" /></a>
+   <a href="{{data.toAppStore}}" target="_blank" *ngIf="!IsIOSPhone && !IsAndroidPhone"  class="btn btn-default btn_icon"><img src="/assets/images/etisalat_apps/a_store_btn.png" alt="a_store_btn" class="img-responsive" /></a>
+                 <a class="btn btn-transparent font_lato">{{data.categoryName}}<img src="/assets/images/icons/arrows/arrows_third_action_button.svg"  class="img_valign"/></a>
+                
+                </div>
+   
+              </div>
+          </li>
+      </div>
+    </div>
+  </div>
+  </div>
+  <!--/Etisalat Apps popup-->
+  
+  

@@ -1,0 +1,38 @@
+<app-game-details></app-game-details>
+<!-- <app-login (loginbanner)="loginbanner($event)" (languageChanged)="languageChanged()"></app-login> -->
+
+<app-login></app-login>
+
+<div class="col-sm-3 col-xs-6" *ngFor="let section of pageData;let i = index">
+  <div class="subs_plans featured_images blk">
+
+        <a (click)="userLoginCheckImg(section)">
+ <img [defaultImage]="defaultImage" 
+ [lazyLoad]="section.imagepage" class="img-responsive inline custom-img-size"
+      alt="listing_games_desktop_tablet_landscape_1" />
+
+      <!-- <img src="{{section.imagepage}}" class="img-responsive inline custom-img-size"
+      alt="listing_games_desktop_tablet_landscape_1" /> -->
+
+    </a>
+    <div class="below_text">
+        <p>{{section.info}}</p>
+          <ul style="display: none;">
+            <a (click)="userLoginCheck(section)"><li style="cursor: pointer;"><img src="../../../assets/images/play_btn.svg" alt=""></li></a>
+            <a *ngIf="IsAndroidPhone" (click)="userLoginCheck(section)"><li style="cursor: pointer;"><img src="../../../assets/images/dwon_btn.svg" alt=""></li></a>
+          </ul>
+      </div>
+    <div class="img_desc_horizontal" style="display: none;">
+      <h2 class="creative_name font_lato margin_top0">{{section.info}}</h2>
+      <ul class="star_rating star_rating_custom inline">
+        <app-star-rating [starRating]="section.rating"></app-star-rating>
+      </ul>
+
+      <div class="creative_type_year font_lato margin_top0 inline">
+        <span class="rating font_lato v_align_normal">{{section.rating}}</span> | <span class="creative_type margin_top0">{{section.usercomment}}</span>
+        <span class="play_click"><a  class="margin_left0" style="cursor:pointer;" (click)="redirectGameChildPage(section.id)" >{{'video.PLAY' |translate}}<img src="/assets/images/icons/arrows/arrows_third_action_button.svg"
+              class="img_valign"></a></span>
+      </div>
+    </div>
+  </div>
+</div>

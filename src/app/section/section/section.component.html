@@ -1,0 +1,70 @@
+<!-- <app-menu-header (bannerlanguageChanged)="bannerlanguageChanged()" (loginConfirmed)="LoginConfirmed($event)"></app-menu-header> -->
+<!-- <app-banner  (bannerlanguageChanged)="bannerlanguageChanged($event)" (subscribeTodayClicked)="subscribeTodayClicked($event)"></app-banner> -->
+<app-login (bannerlanguageChanged)="bannerlanguageChanged()" (loginConfirmed)="LoginConfirmed($event)"></app-login>
+<app-banner (subscribeTodayClicked)="subscribeTodayClicked($event)" style="display: none"></app-banner>
+<div>
+  <button type="button" id="modelOpensafaripopup" class="hidden"  data-toggle="modal"
+  data-target="#modelshowsafaripopup"></button>
+</div>
+<!-- <div *ngIf="!IsAndroidPhone && !showhowitwork "> -->
+    <div *ngIf="!IsAndroidPhone && showhowitwork">
+      
+    <!-- <div> -->
+<app-how-it-works style="display: none"></app-how-it-works>
+</div>
+
+<!-- <div *ngIf="!IsAndroidPhone"> -->
+    <div> 
+    <!-- <div> -->
+<div *ngFor="let section of sections" >
+ 
+  <div *ngIf="section.styleId=='13'" style="display: none;">
+    <app-first-square-other-vertical-images-style13 [sectionContent]="section" [pageId]="pageId"></app-first-square-other-vertical-images-style13>
+  </div>
+
+  <div *ngIf="section.styleId=='14'" style="display: none;">
+    <app-first-square-last-square-images-style14 [sectionContent]="section" [pageId]="pageId"></app-first-square-last-square-images-style14>
+  </div>
+
+  <div *ngIf="section.styleId=='15'" style="display: none;"> 
+    <app-first-rectangle-other-square-images-style15 [sectionContent]="section" [pageId]="pageId"></app-first-rectangle-other-square-images-style15>
+  </div>
+
+  <div *ngIf="section.styleId=='16'">
+    <app-first-square-last-rectangle-images-style16 [sectionContent]="section" [pageId]="pageId"></app-first-square-last-rectangle-images-style16>
+  </div>
+
+  <div *ngIf="section.styleId=='19'" style="display: none;">
+    <app-square-images3-in-row-style19 [sectionContent]="section" [pageId]="pageId"></app-square-images3-in-row-style19>
+  </div>
+
+</div>
+</div>
+<app-promotionalbanner *ngIf="!IsAndroidPhone" (bannerClicked)="BottomBannerClicked($event)" style="display: none"></app-promotionalbanner>
+<app-footer></app-footer>
+
+<!-- modal Safari Pop up setting Enable-->
+<div class="modal fade" id="modelshowsafaripopup" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true"><img src="assets/images/icons/login_overlays/login_overlays_close.svg"
+              alt="login_overlays_close" /></span>
+        </button>
+        <h4 class="modal-title color_green" id="myModalLabel">
+      
+        </h4>
+      </div>
+      <div class="modal-body font_lato">
+        <p>
+          Dear Customer ,
+          Please disable pop-up blocker in Safari Settings to use the service
+        </p>
+      </div>
+      <div class="modal-footer">
+       
+      </div>
+    </div>
+  </div>
+</div>

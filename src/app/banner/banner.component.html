@@ -1,0 +1,52 @@
+
+ <!--Banner section-->
+
+ <section class="banner_section" *ngIf="(banner | json) != '{}'">
+  
+    <div class="banner" id="mainBanner">
+      
+      <!-- <img id="bannerImage"  src="{{banner.banner}}" 
+      (load)="ImageLoaded()" (error)="UpdateNotFoundImage()" 
+       class="img-responsive" alt="home_page_banner" /> -->
+
+
+       <img [defaultImage]="defaultImageBanner" 
+       [lazyLoad]="banner.banner"
+       class="img-responsive" alt="home_page_banner" />
+
+       <div *ngIf="IsAndroidPhone">
+        <div  class="caption container android">
+          <span [class.font_big]="isFirst">
+            World Of Entertainment <br/> On Your Android device<br>
+          </span>
+         
+        </div>
+      </div>
+
+      <div *ngIf="!IsAndroidPhone || IsIOSPhone">
+     
+        <div *ngIf="banner?.bannerText?.length > 0; else NoTitle"  class="caption container">
+          <span *ngFor="let item of banner?.bannerText; let isFirst = first" [class.font_big]="isFirst">
+            {{item}}<br>
+          </span>
+          {{banner.usercomment}}      
+          <button class="btn btn-default font_lato hidden" [class.hidden]="subscribed"  (click)="subscribeToday()">{{'menu.SUBSCRIBETODAY' | translate}}</button>
+          <button *ngIf="IsAndroidPhone && !IsIOSPhone"  [class.hidden]="!subscribed" class="btn btn-default btn_icon">
+            <a target="_blank" href="https://play.google.com/store/apps/details?id=ae.etisalat.arena"><img src="/assets/images/g_play_btn.png" alt="g_play_btn" class="img-responsive" /></a></button>
+          <button *ngIf="!IsAndroidPhone && !IsIOSPhone"  [class.hidden]="!subscribed" class="btn btn-default btn_icon"><a target="_blank" href="https://play.google.com/store/apps/details?id=ae.etisalat.arena">
+            <img src="/assets/images/g_play_btn.png" alt="g_play_btn" class="img-responsive" /></a></button>
+        </div>
+      </div>
+
+      <div class="caption container" *ngIf="IsAndroidPhone && !IsIOSPhone" >
+        <strong class="clstrial">7 DAYS FREE TRIAL</strong>
+        <a  href="https://play.google.com/store/apps/details?id=ae.etisalat.arena&hl=en"><img src="/assets/images/g_play_btn.png" alt="g_play_btn" class="img-responsive" /></a>
+      </div>
+    </div>
+    <!-- <div style="background: rgba(0,0,0,0.6);" class="lds-ripple image-num-placeholder reppleonbanner"><div class="insiderepple"></div><div class="insiderepple"></div></div> -->
+
+  </section>
+  <!--Banner section end-->
+<ng-template #NoTitle>
+  <!-- <span>No Title Available</span> -->
+</ng-template>

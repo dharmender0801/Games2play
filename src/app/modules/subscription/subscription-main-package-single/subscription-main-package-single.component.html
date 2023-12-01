@@ -1,0 +1,112 @@
+<div class="package_for">
+  <ul class="nav_cat list-inline">
+    <li class="package_title"> {{'subs.Selectcategory' | translate }}</li>
+    <li>
+      <a
+        ><img src="assets/images/icons/menu/Video/default.svg" /><br />{{'subs.Video' | translate }}
+        <div class="checkbox checkbox_custom">
+          <label class="pricing_check">
+        <input
+          type="radio"
+          class="form-control-checkbox"
+          name="single-package"
+          [checked]="mappedItemtypeId=='2'"
+          (change)="SetMainProducts('video')"
+        />
+        <span class="checkmark"></span>
+      </label>
+    </div>
+      </a>
+    </li>
+    <li>
+      <a
+        ><img src="assets/images/icons/menu/Music/default.svg"/><br />{{'subs.Musics' | translate }}
+        <div class="checkbox checkbox_custom">
+          <label class="pricing_check">
+        <input
+          type="radio"
+          class="form-control-checkbox"
+          name="single-package"
+          [checked]="mappedItemtypeId=='1'"
+          (change)="SetMainProducts('music')"
+      />
+      <span class="checkmark"></span>
+    </label>
+  </div></a>
+    </li>
+    <li>
+      <a
+        ><img src="assets/images/icons/menu/Games/default.svg"/><br />{{'subs.Games' | translate }}
+        <div class="checkbox checkbox_custom">
+          <label class="pricing_check">
+        <input
+          type="radio"
+          class="form-control-checkbox"
+          name="single-package"
+          [checked]="mappedItemtypeId=='3'"
+          (change)="SetMainProducts('game')"
+      />  <span class="checkmark"></span>
+    </label>
+  </div></a>
+    </li>
+    <li>
+      <a
+        ><img src="assets/images/icons/menu/Apps/default.svg"/><br />{{'subs.Apps' | translate }}
+        <div class="checkbox checkbox_custom">
+          <label class="pricing_check">
+        <input
+          type="radio"
+          class="form-control-checkbox"
+          name="single-package"
+          [checked]="mappedItemtypeId=='4'"
+          (change)="SetMainProducts('app')"
+      /> <span class="checkmark"></span>
+    </label>
+  </div></a>
+    </li>
+  </ul>
+  <div class="billing_packs">
+    <div *ngFor="let item of mainProducts" class="panel panel-default col-sm-4">
+      <div class="panel-heading">{{ item.productName }}</div>
+      <div class="panel-body panel-pad ">
+          <!-- <span class="pack_price" *ngIf="item.packType=='Daily'">{{item.pricePoint}} {{'user.AED' | translate }}/{{'user.DAY' | translate }}</span>
+          <span class="pack_price" *ngIf="item.packType=='Weekly'">{{item.pricePoint}} {{'user.AED' | translate }}/{{'user.WEEK' | translate }}</span>
+          <span class="pack_price" *ngIf="item.packType=='Monthly'">{{item.pricePoint}} {{'user.AED' | translate }}/{{'user.MONTH' | translate }}</span> -->
+
+          <span class="pack_price" *ngIf="item.packType=='Daily'"><span class="pack_price"><strong class="pricing_big">{{item.pricePoint}}</strong>
+            <strong>{{'user.AED' | translate }}</strong>/{{'user.DAY' | translate }}</span></span>
+            
+            <span class="pack_price" *ngIf="item.packType=='Weekly'"><span class="pack_price"><strong class="pricing_big">{{item.pricePoint}}</strong> 
+            <strong>{{'user.AED' | translate }}</strong>/{{'user.WEEK' | translate }}</span></span>
+            
+             <span class="pack_price" *ngIf="item.packType=='Monthly'"><span class="pack_price"><strong class="pricing_big">{{item.pricePoint}}</strong> 
+             <strong>{{'user.AED' | translate }}</strong>/{{'user.MONTH' | translate }}</span></span>
+
+        <span class="pack_desc">{{ item.description }}.</span>
+        <button class="btn btn-primary font_lato" (click)="SubscribeClicked(item.id)">{{'subs.SUBSCRIBE' | translate }}</button>
+      </div>
+    </div>
+    <!-- <div class="panel panel-default col-sm-4">
+      <div class="panel-heading">Billing Weekly</div>
+      <div class="panel-body">
+        <span class="pack_price">15.00 AED/WEEK</span>
+        <span class="pack_desc"
+          >Best for students.<br />
+          Change your mind any day.</span
+        >
+        <button class="btn btn-primary font_lato">SUBSCRIBE</button>
+      </div>
+    </div>
+    <div class="panel panel-default col-sm-4 no_border">
+      <div class="panel-heading">Billing Monthly</div>
+      <div class="panel-body">
+        <span class="pack_price">60.00 AED/MONTH</span>
+        <span class="pack_desc"
+          >Best for students.<br />
+          Change your mind any day.</span
+        >
+        <button class="btn btn-primary font_lato">SUBSCRIBE</button>
+      </div>
+    </div> -->
+  </div>
+</div>

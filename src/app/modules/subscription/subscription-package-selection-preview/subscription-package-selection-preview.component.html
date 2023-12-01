@@ -1,0 +1,231 @@
+<section class="pricing_section">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="pricing_tab pricing_tab_type">
+          <!-- Nav tabs -->
+          <ul class="nav nav-tabs font_lato" role="tablist">
+            <li
+              role="presentation"
+              [class.active]="packageSelected.packType == daily"
+            >
+              <a
+                aria-controls="daily_package"
+                href="#daily_package"
+                aria-controls="daily_package"
+                role="tab"
+                data-toggle="tab"
+                (click)="SetupProductBasedOnTime(daily)"
+                >{{'subs.selectionpreviewDAILY' | translate}}</a
+              >
+            </li>
+            <li
+              role="presentation"
+              [class.active]="packageSelected.packType == weekly"
+            >
+              <a
+                aria-controls="weekly_package"
+                href="#weekly_package"
+                aria-controls="weekly_package"
+                role="tab"
+                data-toggle="tab"
+                (click)="SetupProductBasedOnTime(weekly)"
+                >{{'subs.selectionpreviewWEEKLY' | translate}}</a
+              >
+            </li>
+            <li
+              role="presentation"
+              [class.active]="packageSelected.packType == monthly"
+            >
+              <a
+                aria-controls="monthly_package"
+                href="#monthly_package"
+                aria-controls="monthly_package"
+                role="tab"
+                data-toggle="tab"
+                (click)="SetupProductBasedOnTime(monthly)"
+                >{{'subs.selectionpreviewMONTHLY' | translate}}</a
+              >
+            </li>
+          </ul>
+          <!-- Tab panes -->
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane active" id="daily_package">
+              <div class="package_for package_name_for">
+                <div class="billing_packs billing_packs_name">
+                  <div class="package_name_title">
+                    <h3>{{'subs.selectionpreviewSelect' | translate}}</h3>
+                    <span class="package_name_tag"
+                      >{{'subs.selectionpreviewdownloads' | translate}}
+                      {{'subs.selectionpreviewthrough' | translate}}</span
+                    >
+                  </div>
+                  <span class="pack_type">{{ 'subs.selectionpreviewPackageType'| translate}}</span>
+
+                  <div
+                    class="signle_type_access" *ngIf="packageSelected?.mappedItemtypeId == 1 ||
+                    packageSelected?.mappedItemtypeId == 2 ||
+                    packageSelected?.mappedItemtypeId == 3 ||
+                    packageSelected?.mappedItemtypeId == 4 || singleWasSelected"
+                    [class.active_pack]="
+                      packageSelected?.mappedItemtypeId == 1 ||
+                      packageSelected?.mappedItemtypeId == 2 ||
+                      packageSelected?.mappedItemtypeId == 3 ||
+                      packageSelected?.mappedItemtypeId == 4
+                    "
+                    (click)="SingleIsClickable()"
+                  >
+                    <span class="package_type_name">{{'subs.SingleAccess' | translate }}</span>
+                    <span
+                      class="package_type_price"
+                      *ngIf="packageSelected?.packType == daily"
+                      ><strong> {{singlePackageRate}}</strong> {{'user.AED' |  translate}}/{{'user.DAY' |  translate}} </span
+                    >
+                    <span
+                      class="package_type_price"
+                      *ngIf="packageSelected?.packType == weekly"
+                      ><strong>{{singlePackageRate}}</strong> {{'user.AED' |  translate}}/{{'user.WEEK' |  translate}} </span
+                    >
+                    <span
+                      class="package_type_price"
+                      *ngIf="packageSelected?.packType == monthly"
+                      ><strong>{{singlePackageRate}} </strong>{{'user.AED' |  translate}}/{{'user.MONTH' |  translate}} </span
+                    >
+                  </div>
+                  <!-- SINGLE ACCESS END -->
+
+                  <div
+                    class="all_type_access"
+                    [class.active_pack]="packageSelected?.mappedItemtypeId == 0"
+                    (click)="AllInOneClicked()"
+                  >
+                    <span class="package_type_name">{{'subs.AllAccess' | translate}}</span>
+                    <span
+                      class="package_type_price"
+                      *ngIf="packageSelected?.packType == daily"
+                      ><strong>{{allInOnePackageRate}}</strong> {{'user.AED' |  translate}}/{{'user.DAY' |  translate}} </span
+                    >
+                    <span
+                      class="package_type_price"
+                      *ngIf="packageSelected?.packType == weekly"
+                      ><strong>{{allInOnePackageRate}}</strong> {{'user.AED' |  translate}}/{{'user.WEEK' |  translate}}</span
+                    >
+                    <span
+                      class="package_type_price"
+                      *ngIf="packageSelected?.packType == monthly"
+                      ><strong>{{allInOnePackageRate}}</strong> {{'user.AED' |  translate}}/{{'user.MONTH' |  translate}} </span
+                    >
+                  </div>
+                  <!--/daily package type-->
+                  <div class="pack_access_cat">
+                    <!-- Here we have conditions for showing the selected package based on mapping provided] -->
+                    <h3>{{'subs.selectionpreviewContentAccess' | translate}}</h3>
+                    <span
+                      class="app_pack"
+                      [class.active_pack]="
+                        packageSelected?.mappedItemtypeId == 4 ||
+                        packageSelected?.mappedItemtypeId == 0
+                      "
+                      >{{'subs.Apps' | translate}}</span
+                    >
+                    <span
+                      class="game_pack"
+                      [class.active_pack]="
+                        packageSelected?.mappedItemtypeId == 3 ||
+                        packageSelected?.mappedItemtypeId == 0
+                      "
+                      >{{'subs.Games' | translate}}</span
+                    >
+                    <span
+                      class="music_pack"
+                      [class.active_pack]="
+                        packageSelected?.mappedItemtypeId == 1 ||
+                        packageSelected?.mappedItemtypeId == 0
+                      " 
+                      >{{'subs.Musics' | translate}}</span
+                    >
+                    <span
+                      class="video_pack"
+                      [class.active_pack]="
+                        packageSelected?.mappedItemtypeId == 2 ||
+                        packageSelected?.mappedItemtypeId == 0
+                      "
+                      >{{'subs.Video' | translate}}</span
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="subs_section">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="confirm_sel_package">
+          <span
+            class="sel_package_name"
+            *ngIf="
+              packageSelected?.mappedItemtypeId == 0;
+              else single_package_detials
+            "
+            ><img src="assets/images/icons/all_pack_icon.png" /> {{'subs.AllOnepackage'| translate}}
+          </span>
+          <ng-template #single_package_detials>
+            <span class="sel_package_name"
+              >{{ 'subs.SinglePackage' | translate}}
+              <span *ngIf="packageSelected?.mappedItemtypeId == 1">{{'subs.Musics' | translate}}</span>
+              <span *ngIf="packageSelected?.mappedItemtypeId == 2">{{'subs.Video' | translate}}</span>
+              <span *ngIf="packageSelected?.mappedItemtypeId == 3">{{'subs.Games' | translate}}</span>
+              <span *ngIf="packageSelected?.mappedItemtypeId == 4">{{'subs.Apps' | translate}}</span>
+            </span>
+          </ng-template>
+          <button
+            class="btn btn-primary font_lato pull-right"
+            (click)="NewSubscription(hasPackageSubscribed)"
+          >
+            {{'subs.selectionpreviewContentConfirm' |translate}}
+          </button>
+          <button
+            class="hidden"
+            data-toggle="modal"
+            data-target="#myModal"
+            id="OpenSubscriptionModal"
+            data-backdrop="static" data-keyboard="false"
+          >
+        </button>
+        <button
+          class="hidden"
+          data-toggle="modal"
+          data-target="#myModalSubUpgrade"
+          id="OpenUpgradeSubscriptionModal"
+          data-backdrop="static" data-keyboard="false"
+        ></button>
+          <span class="buy_pack_price pull-right"
+          >{{ packageSelected.pricePoint}}
+          <small  class="price_currency" *ngIf="packageSelected?.packType == daily"
+            > {{'user.AED' |  translate}} /  {{'user.DAY' |  translate}} <br />
+            {{'user.VAT' |  translate}}</small
+          >
+          <small  class="price_currency" *ngIf="packageSelected?.packType == weekly"
+            >{{'user.AED' |  translate}} /{{'user.WEEK' |  translate}}  <br />
+            {{'user.VAT' |  translate}}</small
+          >
+          <small  class="price_currency" *ngIf="packageSelected?.packType == monthly"
+            >{{'user.AED' |  translate}} /{{'user.MONTH' |  translate}}  <br />
+            {{'user.VAT' |  translate}}</small
+          >
+          </span
+        >
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<app-subscription-popup class="modal fade" id="myModal" role="dialog">
+</app-subscription-popup>
+<app-subscription-popup-upgrade class="modal fade" id="myModalSubUpgrade" role="dialog"></app-subscription-popup-upgrade>

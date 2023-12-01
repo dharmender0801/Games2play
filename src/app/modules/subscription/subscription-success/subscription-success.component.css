@@ -1,0 +1,167 @@
+.pricing_tab_type{
+  margin-top: -170px;
+}
+.package_name_title h3 {
+  color: #BEE70D;
+  font-size: 24px;
+  line-height: 32px;
+  margin: 0;
+}
+.billing_packs_name {
+  margin: 0;
+}
+.package_name_for {
+  padding: 60px;
+}
+.package_name_tag {
+  font-size: 16px;
+  line-height: 24px;
+  color: #D1D2D1;
+  display: block;
+  margin-top: 16px;
+}
+.pack_type {
+  font-size: 12px;
+  line-height: 12px;
+  color: #FFF;
+  text-transform: uppercase;
+  margin-top: 40px;
+  display: block;
+  letter-spacing: 2px;
+  margin-bottom: 16px;
+}
+.signle_type_access, .all_type_access {
+  background-color: #2d3040;
+  display: inline-block;
+  line-height: normal;
+  padding: 17px 64px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-right: 24px;
+}
+.package_type_name {
+  font-size: 20px;
+  line-height: 25px;
+  color: #D1D2D1;
+  display: block;
+}
+.package_type_price {
+  font-size: 12px;
+  display: block;
+  text-align: center;
+  line-height: 17px;
+  margin-top: 4px;
+}
+.active_pack {
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#0b8883+0,226888+50,5f1095+100 */
+background: #0b8883; /* Old browsers */
+background: -moz-linear-gradient(left, #0b8883 0%, #226888 50%, #5f1095 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(left, #0b8883 0%,#226888 50%,#5f1095 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to right, #0b8883 0%,#226888 50%,#5f1095 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0b8883', endColorstr='#5f1095',GradientType=1 ); /* IE6-9 */
+}
+.pack_access_cat h3 {
+  color: #FFF;
+  font-size: 12px;
+  line-height: 12px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin: 40px 0 13px 0;
+}
+.pack_access_cat span {
+  padding: 8px 17px;
+  margin-right: 16px;
+  border-radius: 4px;
+  display: inline-block;
+  line-height: normal;
+  background-color: #2d3040;
+}
+.subs_section {
+  min-height: 100px;
+  background-color: #4f505a;
+}
+.sel_package_name {
+  font-size: 24px;
+  line-height: 20px;
+  color: #FFFFFF;
+  padding: 40px 0;
+  display: inline-block;
+}
+.confirm_sel_package .btn.btn-primary {
+  font-size: 14px;
+  line-height: 17px;
+  letter-spacing: 2px;
+  margin: 30px 0;
+  text-transform: uppercase;
+}
+.buy_pack_price {
+  display: inline-block;
+  font-size: 30px;
+  line-height: 38px;
+  color: #fff;
+  position: relative;
+  margin-right: 90px;
+  padding: 31px 0;
+}
+.price_currency {
+  font-size: 12px;
+  line-height: 18px;
+  color: #fff;
+  position: absolute;
+  width: 100px;
+  padding: 0;
+  margin-left: 5px;
+}
+.sel_package_name img {
+  vertical-align: -12px;
+}
+.success_banner_section .sel_package_name {
+  display: block;
+  padding: 0;
+  margin: 44px 0 20px;
+}
+.billing_duration {
+  font-size: 12px;
+  line-height: 12px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-top: 40px;
+  display: block;
+}
+.billing_date {
+  font-size: 24px;
+  line-height: 32px;
+  color: #BEE70D;
+  margin: 16px 0 0;
+  font-family: 'neotechregular';
+}
+.success_banner_section {
+  min-height: 392px;
+  background-color: #232531;
+  padding-bottom: 64px;
+}
+.banner_success_btn {
+  display: inline-block;
+  width: 100%;
+}
+.banner_success_btn .btn {
+  display: inline;
+  margin: 0 10px 0 0;
+  font-size: 16px;
+  line-height: 12px;
+  letter-spacing: 2.67px;
+  text-transform: uppercase;
+}
+.banner_success_btn .btn.btn-primary {
+  padding: 22px 61px;
+}
+.banner_success_btn .btn.btn-default {
+  padding: 22px 55px;
+  color: #719E19;
+  background-color: transparent;
+  border: 1px solid #719E19;
+}
+.pricing_section_btn {
+  background-color: #232531;
+  padding: 42px 0 80px 0;
+}

@@ -1,0 +1,42 @@
+<!--promotional section-->
+<section class="promotional_section relative_position gradient_bg promotion_app_section">
+  <div class="promotional_banner" (click)="BannerClicked()" [class.cursorPointer]="!loggedIn">
+
+    <img [defaultImage]="defaultImage" [lazyLoad]="'assets/images/banners/promotional_banner/promotional_banner_desktop_1.png'"  
+    alt="promotional_banner_desktop_1" class="img-responsive" />
+
+    <div class="caption promotional_caption container">
+      <!-- <span class="font_lato promo_tag">{{'menu.promotionaluser' | translate }}</span> -->
+     
+     <span class="font_big" style="width: 60%;"  >{{bannerText?.text}}</span>
+      <!-- <button class="btn btn-default btn_icon"  *ngIf="IsAndroidPhone"><a target="_blank" href="https://play.google.com/store/apps/details?id=com.Etisalat.ETIDA&hl=en"><img src="/assets/images/g_play_btn.png" alt="g_play_btn" class="img-responsive" /></a></button> -->
+      <!-- <button class="btn btn-default btn_icon"><img src="/assets/images/a_store_btn.png" alt="a_store_btn" class="img-responsive" /></button> -->
+    </div>
+  </div>
+</section>
+<!--promotional section end-->
+
+<!--promotionalbanner eLifeOn section-->
+<!-- <section class="promotional_section promotional_banner_elifeon relative_position">
+  <div class="banner_elifeon">
+    <img src="assets/images/banners/home_page_banner/background_eLifeOn.png" alt="background_eLifeOn" class="img-responsive" />
+    <div class="caption promotional_caption container"><span class="elifeon_app"><img src="assets/images/elifeon_logo.png" alt="elifeon_logo"/>eLifeOn</span><span class="font_lato promo_tag">your favourite channels on-the-go</span>
+     <span class="font_big">watch tv on all your <br>connected devices</span>
+      <button class="btn btn-default btn_icon"><a target="_blank" href="https://play.google.com/store/apps/details?id=com.huawei.phone.elife"><img src="/assets/images/g_play_btn.png" alt="g_play_btn" class="img-responsive" /></a></button>
+      <button class="btn btn-default btn_icon"><img src="/assets/images/a_store_btn.png" alt="a_store_btn" class="img-responsive" /></button>
+    </div>
+  </div>
+</section> -->
+<!--promotional banner eLifeOn section end-->
+
+<!--promotional section eLife TV-->
+<!-- <section class="promotional_section relative_position">
+  <div class="promotional_banner">
+    <img src="assets/images/banners/home_page_banner/background_eLife_tv_gaming.png" alt="promotional_banner_desktop_1" class="img-responsive" />
+    <div class="caption promotional_caption container"><span class="elifeon_app">eLife TV Gaming</span><span class="font_lato promo_tag">THE UAE’S FIRST CLOUD GAMING PLATFORM</span>
+     <span class="font_big">Welcome to a new gaming  <br> experience with eLife TV</span>
+     <button class="btn btn-default font_lato">SUBSCRIBE TODAY</button>
+    </div>
+  </div>
+</section> -->
+<!--promotional section  eLife TV end-->

@@ -1,0 +1,35 @@
+<app-menu-header></app-menu-header>
+
+<!-- <h1> SingleSearchCategory() {{SingleSearchCategory()}}</h1>
+<h1> MoreThanOneSearchCategory() {{MoreThanOneSearchCategory()}}</h1> -->
+<!-- <h1>{{layoutDataForRenderingSearchResults | json}}</h1> -->
+
+<app-v2-search-bar
+  (searchValue)="SearchValue($event)"
+  [searchCategory]="searchCategory"
+  (searchCategoryEventEmmiter)="SearchValueWithItemType($event)"
+  (searchCategoryRemoveCurrentForAllSelectionEventEmmiter)="
+    SetCurrentCategorySoWeCanSearchAllData($event)">
+</app-v2-search-bar>
+
+
+<!-- <app-v2-search-result-all 
+  *ngIf="MoreThanOneSearchCategory()" 
+  [RenderingData]="layoutDataForRenderingSearchResults"
+  [searchCategory]="searchCategory"
+  [hasSearched]="hasSearched"
+  [SelectAll]="selectSearchAll"
+>
+
+</app-v2-search-result-all> -->
+<app-v2-search-result-single
+*ngIf="SingleSearchCategory()" 
+  [RenderingData]="layoutDataForRenderingSearchResults"
+  [searchCategory]="searchBarComponent.searchCategories"
+  [hasSearched]="hasSearched"
+  [SelectAll]="selectSearchAll"
+>
+</app-v2-search-result-single>
+<!-- <pre >
+  <h1 style="font-size: 10px;">{{layoutDataForRenderingSearchResults | json}}</h1>
+</pre> -->

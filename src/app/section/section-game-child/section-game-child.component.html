@@ -1,0 +1,78 @@
+ <!--Banner section-->
+ <section class="banner_section bg_dynamic banner_section_child">
+  <div class="banner">
+      <img [defaultImage]="defaultImageBig" 
+      [lazyLoad]="'assets/images/banners/music_app_details_page_banner/Games/Banner/game_details_page_banner_desktop.png'"
+      class="img-responsive" alt="movie_details_page_banner_desktop" />
+    <!-- <img src="assets/images/banners/music_app_details_page_banner/Games/Banner/game_details_page_banner_desktop.png"
+      class="img-responsive" alt="game_details_page_banner_desktop" /> -->
+    <div class="caption container">
+      <div class="row">
+        <div class="col-sm-10 col-sm-offset-1" *ngIf="(contentDetails | json) != '{}'">
+            <button type="button" id="modelOpenGames" class="hidden"  data-toggle="modal"
+            data-target="#modelShowValidityGames"></button>
+          <div class="poster_img_music" id="mainGame">
+              <img [defaultImage]="defaultImage" 
+              [lazyLoad]="contentDetails.thumbnails"
+              class="img-responsive image-profile" alt="video_detail_default_img_282x422" />
+            <!-- <img
+              src="{{contentDetails.thumbnails}}"
+              class="img-responsive image-profile"
+              (load)="ImageLoaded()" (error)="UpdateNotFoundImage()" />
+              <div class="lds-ripple image-num-placeholder"><div></div><div></div></div> -->
+            </div>
+          <div class="img_desc img_desc_poster img_desc_games">
+            <h2 class="creative_name">{{contentDetails.creativeTitle}}</h2>
+            <!-- <span class="rating font_lato">{{contentDetails.rating}}</span> -->
+            <!-- <div class="creative_type_year font_lato inline"> |
+              <span class="creative_type">Role Playing</span>
+            </div><br> -->
+            <!-- <a *ngIf="!IsIOSPhone" target="_blank" id="Playgame" href="http://pt7.etisalat.ae/appstorecms/resources/appstore_content/games/notr-solitairelegend/gamefiles/index.html"></a> -->
+            <!-- <a *ngIf="IsIOSPhone" id="Playgame" href="http://pt7.etisalat.ae/appstorecms/resources/appstore_content/games/notr-solitairelegend/gamefiles/index.html"></a> -->
+            <!-- <a *ngIf="!IsIOSPhone" target="_blank" id="Playgame" href="{{ gamehreflink }}"></a> -->
+            <!-- <a target="_blank" id="Playgame" href="{{ gamehreflink }}"></a> -->
+            <!-- <a *ngIf="IsIOSPhone" id="Playgame" href="{{ gamehreflink }}"></a> -->
+
+           <!-- <button *ngIf="VideoPlayButtonHide" class="btn btn-default font_lato"  (click)="playGame()">{{'video.PLAYGame' |translate}}</button> -->
+
+
+           <button *ngIf="VideoPlayButtonHide && !IsLoggedIn" class="btn btn-default font_lato" (click)="playGame()">{{'video.PLAYGame' | translate}}</button>
+
+           <a target="targetforlink" *ngIf="IsLoggedIn"   href="{{ gamehreflink }}"><button class="btn btn-default font_lato">{{'video.PLAYGame' | translate}}</button></a>
+         
+            <!-- <button class="btn btn-default font_lato" (click)="AddwishlistGame()">{{WishlistgamebtnName}}</button> -->
+            <!-- <button  *ngIf="showgamewishlistADD && VideoPlayButtonHide" class="btn btn-default font_lato" (click)="AddwishlistGame()">{{'wishlist.Add' |translate}}</button>
+            <button   *ngIf="showgamewishlistRemove && VideoPlayButtonHide" class="btn btn-default font_lato" (click)="AddwishlistGame()">{{'wishlist.Remove' |translate}}</button> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!--Banner section end-->
+<!-- modal for expiry-->
+<div class="modal fade" id="modelShowValidityGames" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true"><img src="assets/images/icons/login_overlays/login_overlays_close.svg"
+                alt="login_overlays_close" /></span>
+          </button>
+          <h4 class="modal-title color_green" id="myModalLabel">
+           Pack Expired
+          </h4>
+        </div>
+        <div class="modal-body font_lato">
+          <p>
+            Your validity of pack has been expired. Please recharge your account and try again
+          </p>
+        </div>
+        <div class="modal-footer">
+          <!-- <a href="#/Pricing"><button type="button" class="btn btn-primary full_width font_lato">
+             Subscribe again
+          </button></a> -->
+        </div>
+      </div>
+    </div>
+  </div>

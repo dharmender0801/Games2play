@@ -1,0 +1,102 @@
+<!-- <app-menu-header (loginbanner)="loginbanner($event)" (languageChanged)="languageChanged()"></app-menu-header> -->
+<app-menu-header></app-menu-header>
+<app-login (loginbanner)="loginbanner($event)" (languageChanged)="languageChanged()"></app-login>
+<app-games-details-temp></app-games-details-temp>
+<app-game-details></app-game-details>
+<!-- <section class="carousel_slider">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <owl-carousel-o [options]="customOptions">
+ 
+          <ng-container *ngFor="let slide of bannerArray | slice:0:6">
+            <ng-template carouselSlide [id]="slide.id">
+              <img (click)="openGamePortals(slide)" [src]="slide.banner">
+            </ng-template>
+          </ng-container>
+        
+        </owl-carousel-o>
+      </div>
+     </div>
+     </div> 
+</section> -->
+
+
+<div class="sub_header_menubar">
+<div class="container">
+  <div class="row">
+    <!-- <div class="scrollmenu "> -->
+      <ul class="font_lato col-sm-12">
+        <!-- <li class="list_title">{{'submenu.gen' | translate}}</li> -->
+        <li>
+          <a [ngClass]="{'active': hasGenreName=='All'}" class="pointer" (click)="genreClick('All')">{{'category.all' | translate}}</a>
+          <!-- <a (click)="play()">All</a> -->
+        </li>
+        <li *ngFor="let data of genresItems">
+           <a (click)="genreClick(data.pageName)" [ngClass]="{'active': hasGenreName==data.pageName && hasGenre==data.parentPageName }" class="pointer">{{data.name}} </a>
+        </li>
+      </ul>
+      <div class="col-sm-4 filter_dropdown font_lato margin_bottom0 text-right" style="display: none;">
+        <ul class="nav navbar-nav pull-right">
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                aria-expanded="false">{{ filterText | uppercase }}
+                <!-- <span class="caret_down"><img src="/assets/images/icons/arrows/arrows_sort_by_button_down_all.svg"
+                  class="img_valign_sort" /></span> -->
+                  <img src="../../assets/images/sort_ico.svg" alt=""> 
+						<span class="caret"></span>
+                </a>
+                 
+              <ul class="dropdown-menu filter_options">
+  
+                <li><a style="cursor: pointer"  (click)="NewestClicked()" [class.active]="filterSelected === 'Sort'" class="">{{'rightsection.newest' | translate}}</a></li>
+                <li><a style="cursor: pointer" [class.active]="filterSelected === 'AtoZ'" (click)="sortA_Z()">{{'rightsection.AtoZ' | translate}}</a></li>
+                <li><a style="cursor: pointer" [class.active]="filterSelected === 'ZtoA'" (click)="sortZ_A()">{{'rightsection.ZtoA' | translate}}</a></li>
+              </ul>
+            </li>
+          </ul>
+    </div>
+    </div>
+  </div>
+</div>
+<!-- </div> -->
+<app-banner style="display: none"></app-banner>
+ <section id="leftRightBodyContainer" class="browse_section" >
+  <div class="container" (scroll)="scrollHandler($event)">
+    <div class="row">
+      <aside class="sidebar_category col-sm-4" style="display: none">
+        <ul class="main_categories font_lato">
+          <!-- <li *ngFor="let data of itemTypeCounts">
+                       <a style="cursor: pointer" [ngClass]="{'active': pageUrl==data.pageName}" (click)="redirect(data.pageId,data.pageName)">
+                          <img _ngcontent-c15="" *ngIf="data.pageId=='9'" class="img-responsive" src="assets/images/icons/filters/filters_video_default.png">
+                          <img _ngcontent-c6="" *ngIf="data.pageId=='10'" class="img-responsive" src="assets/images/icons/filters/filters_music_default.png">
+                          <img _ngcontent-c6="" *ngIf="data.pageId=='11'"  class="img-responsive" src="assets/images/icons/filters/filters_games_default.png">
+                          <img _ngcontent-c6="" *ngIf="data.pageId=='12'"  class="" src="assets/images/icons/filters/filters_apps_default.png">
+              
+                        {{data.name}}
+            <span>({{data.count}})</span>
+            <span class="bandage" *ngIf="data.name=='Apps'">MOBILE EXCLUSIVE</span>
+          </a></li> -->
+    </ul>
+        <ul class="genres_categories font_lato">
+          <!-- <li class="list_title">{{'submenu.gen' | translate}}</li> -->
+          <li *ngFor="let data of genresItems">
+            <!-- <label style="color:white">{{hasGenreName}}</label>  
+              <label style="color:white">{{data.name}}</label>   -->
+            <!-- <a style="cursor: pointer;" (click)="genreClick(data.name)" [ngClass]="{'active': hasGenreName==data.name && hasGenre ==data.parentPageName}">{{data.name}} <span>({{data.count}})</span></a>
+             -->
+             <a style="cursor: pointer;" (click)="genreClick(data.pageName)" [ngClass]="{'active': hasGenreName==data.pageName && hasGenre ==data.parentPageName }">{{data.name}} <span>({{data.count}})</span></a>
+          </li>
+        </ul>
+      </aside>
+      <div class="search-results"
+      infiniteScroll
+      [infiniteScrollDistance]="2"
+      [infiniteScrollThrottle]="1"
+      [infiniteScrollDisabled]="isFullListDisplayed">
+      <app-right-section [pageGenreData]="itemsToShow"></app-right-section>
+    </div>
+    </div>
+  </div>
+</section>
+<app-footer></app-footer>

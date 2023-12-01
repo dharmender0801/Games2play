@@ -1,0 +1,24 @@
+
+
+<div class="col-sm-3 col-xs-6" *ngFor="let section of pageData;let i = index">
+  <div class="subs_plans featured_images">
+
+    <!-- <img (click)="rediretMusicChildPage(section.id,section.itemtype)" style="height: 180px;width: 180px;cursor: pointer;" src="{{section.imagepage}}" class="img-responsive hidden inline image-num-{{i}}" alt="listing_desktop_tablet_1" (load)="ImageLoaded(i)"  (error)="UpdateNotFoundImage(i)"/>
+     -->
+     <!-- <img (click)="rediretMusicChildPage(section.id,section.itemtype)" src="{{section.imagepage}}" style="height: 180px;width: 180px;cursor: pointer;" class="img-responsive inline" alt="listing_desktop_tablet_1" /> -->
+     <a href="#/section/music-details?id={{section.id}}" (click)="rediretMusicChildPage(section.id,section.itemtype)">
+     <img [defaultImage]="defaultImage"  
+          [lazyLoad]="section.imagepage"
+       class="img-responsive inline custom-img-size" alt="listing_desktop_tablet_1" />
+      </a>
+    <!-- <img src="assets/images/rectangle.png" class="img-responsive inline image-num-placeholder-{{i}}"/> -->
+    <!-- <div class="lds-ripple image-num-placeholder-{{i}}"><div></div><div></div></div> -->
+    <div class="img_desc_horizontal">
+      <h2  class="creative_name font_lato margin_top0">{{section.info}}</h2>
+      <div class="creative_type_year font_lato margin_top0">
+        <span class="creative_type">{{section.text}}</span> | <span class="creative_year">{{section.usercomment}}</span>
+        <!-- <span class="count">16 Songs</span> -->
+      </div>
+    </div>
+  </div>
+</div>

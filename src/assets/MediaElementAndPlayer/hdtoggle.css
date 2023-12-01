@@ -1,0 +1,12 @@
+.mejs__video .mejs__controls .mejs__hdtoggle-button button {
+    color: #606060;
+    font-size: 11px;
+    padding: 0;
+    background: none;
+    text-decoration: line-through;
+}
+
+.mejs__video .mejs__controls .mejs__hdtoggle-button.mejs__hdtoggle-on button {
+    color: #dedede;
+    text-decoration: none;
+}

@@ -1,0 +1,44 @@
+<div class="modal-dialog" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <button
+        type="button"
+        class="close"
+        data-dismiss="modal"
+        aria-label="Close"
+      >
+        <span aria-hidden="true"
+          ><img
+            src="assets/images/icons/login_overlays/login_overlays_close.svg"
+            alt="login_overlays_close"
+        /></span>
+      </button>
+      <h4 class="modal-title color_green" id="myModalLabel">
+        Verify your subscription
+      </h4>
+    </div>
+    <div class="modal-body font_lato">
+      <!-- <p class="text-center">We have sent you a text message to</p>
+      <p class="text-center">+{{ currentNumber }}</p>
+      <p class="text-center">with a code for you to enter here</p>
+      <div class="form-group custom_input">
+        <input (keypress)="restrictNumeric($event)"
+          type="text" maxlength="4"
+          class="form-control"
+          [(ngModel)]="otpEntered"
+          required
+          placeholder="Enter verification code"
+        />
+      </div> -->
+    </div>
+    <div class="modal-footer">
+      <button
+        type="button"
+        class="btn btn-primary full_width font_lato"
+        (click)="FreeTrialOkClicked()"
+      >
+        Confirm
+      </button>
+    </div>
+  </div>
+</div>

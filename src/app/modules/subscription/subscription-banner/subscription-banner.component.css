@@ -1,0 +1,36 @@
+.banner {
+  position: relative;
+}
+.caption {
+  position: absolute;
+  bottom: 50px;
+  color: #fff;
+  font-size: 24px;
+  left: 0;
+  right: 0;
+}
+.caption span {
+  color: #fff;
+}
+.font_big {
+  font-size: 40px;
+  display: block;
+}
+.banner .btn.btn-default {
+  text-transform: uppercase;
+}
+span.caption_tag {
+  display: block;
+  margin-top: 8px;
+  font-size: 16px;
+  line-height: 24px;
+  color: #fff;
+}
+span.font_big_green {
+  font-size: 32px;
+  color: #BEE70D !important;
+  line-height: 40px;
+}
+.banner_section .banner .caption {
+  top: 120px;
+}

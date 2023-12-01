@@ -1,0 +1,31 @@
+<section id="AllInOnePackages" class="pricing_section" >
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="pricing_tab pricing_top">
+          <!-- Nav tabs -->
+          <ul class="nav nav-tabs font_lato" role="tablist">
+            <li role="presentation" [ngClass]="{ active: mappedItemtypeId == '0' || isUserNavigatedFromContent === 'true' }">
+              <a href="#all_package" aria-controls="all_package" role="tab" data-toggle="tab">{{'subs.AllInOne' | translate }}</a>
+            </li>
+            <li *ngIf="isUserNavigatedFromContent !== 'true'" role="presentation" [ngClass]="{ active: (mappedItemtypeId == '1' || mappedItemtypeId == '2' || mappedItemtypeId == '3' || mappedItemtypeId == '4') && isUserNavigatedFromContent === 'false'}">
+              <a href="#single_package" aria-controls="single_package" role="tab" data-toggle="tab">{{'subs.SINGLE' | translate }}</a>
+            </li>
+          </ul>
+          <!-- Tab panes -->
+          
+          <div class="tab-content">
+            <app-subscription-main-package-all-in-one  
+             role="tabpanel" class="tab-pane" id="all_package" [ngClass]="{ active: mappedItemtypeId == '0' || isUserNavigatedFromContent === 'true' }"></app-subscription-main-package-all-in-one>
+            <app-subscription-main-package-single 
+          *ngIf="isUserNavigatedFromContent !== 'true'" role="tabpanel" class="tab-pane"
+              id="single_package" [ngClass]="{ active: (mappedItemtypeId == '1' || mappedItemtypeId == '2' || mappedItemtypeId == '3' || mappedItemtypeId == '4') && isUserNavigatedFromContent === 'false' }"
+              [mappedItemtypeId]="mappedItemtypeId" [videoItemMappedId]="videoItemMappedId"></app-subscription-main-package-single>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<app-subscriptionpackage-selection-preview-pricing-promotional-section></app-subscriptionpackage-selection-preview-pricing-promotional-section>
+<app-subscription-package-what-you-get-section></app-subscription-package-what-you-get-section>

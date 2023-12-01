@@ -1,0 +1,76 @@
+<div class="modal-dialog" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="CloseSubModal()">
+        <span aria-hidden="true"><img src="assets/images/icons/login_overlays/login_overlays_close.svg"
+            alt="login_overlays_close" /></span>
+      </button>
+      <button type="button" id="modelOpenerror" class="hidden"  data-toggle="modal"
+      data-target="#modelShowValidityError"></button>
+      <h4 class="modal-title color_green" id="myModalLabel">
+       {{'subs.verify' | translate}}
+      </h4>
+    </div>
+    <div class="modal-body font_lato">
+     
+      <p class="text-center">{{'subs.text' | translate}}</p>
+      <p class="text-center"  dir="ltr">+{{ currentNumber }}</p>
+      <p class="text-center">{{'subs.enter' | translate}}</p>
+      <div class="form-group custom_input">
+
+        <input (keypress)="restrictNumeric($event)" type="{{OTPType}}" maxlength="4" class="form-control"
+          [(ngModel)]="otpEntered" [ngClass]="{ 'required': otpsubvalidation == true || otpsubinvalid == true }"
+          required placeholder="{{'Login.OTPPlaceholder' | translate }}" />
+          <span class="form-control-feedback see_pass" (click)="ShowOTPField()">
+              <img *ngIf="ShowOTP" src="/assets/images/icons/login_overlays/login_overlays_show_default.svg" />
+              <img *ngIf="!ShowOTP" src="/assets/images/icons/login_overlays/login_overlays_hide_default.svg" />
+            </span>
+          <label *ngIf="otpsubvalidation" style="color:red"  for="otpnumber" class="error label_error">{{'Login.OtpNO' | translate}} </label>
+          <label *ngIf="otpsubinvalid" style="color:red"  for="otpnumber" class="error label_error"> {{'Login.OtpNOInvalid' | translate}}</label>
+        <p *ngIf="IsSignupFormResendCode" class="text-right"><a class="color_green_dark resend_code"
+            (click)="signUpformResendCode()">{{'Login.ResendCode' |translate}}
+            <img src="/assets/images/icons/arrows/arrows_third_action_button.svg" /></a></p>
+        <p class="text-right" *ngIf="IsSignupFormCountdown">
+          <a class="color_green_dark resend_code">
+            {{'Login.Resend' |translate}}<countdown id="verificationSubscriptionCount" #countdown [config]="{ leftTime: 45 }" (finished)="finishsignUpformTimer()">: $!m!:$!s!
+            </countdown>
+          </a>
+        </p>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button [disabled]="otpEntered.length<4" type="button" class="btn btn-primary full_width font_lato"
+        (click)="ConfirmClicked()">
+        {{'subs.selectionpreviewContentConfirm' |translate}}
+      </button>
+    </div>
+  </div>
+</div>
+
+ <!-- modal for expiry-->
+ <div class="modal fade" id="modelShowValidityError" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true"><img src="assets/images/icons/login_overlays/login_overlays_close.svg"
+              alt="login_overlays_close" /></span>
+        </button>
+        <h4 class="modal-title color_green" id="myModalLabel">
+         Error Message
+        </h4>
+      </div>
+      <div class="modal-body font_lato">
+          <p>
+              {{errormessage}}
+            </p>
+        
+      </div>
+      <div class="modal-footer">
+        <!-- <a href="#/Pricing"><button type="button" class="btn btn-primary full_width font_lato">
+           Subscribe again
+        </button></a> -->
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,66 @@
+<!-- <app-menu-header (SubscriptionlanguageChanged)="SubscriptionlanguageChanged()"></app-menu-header> -->
+<app-login (SubscriptionlanguageChanged)="SubscriptionlanguageChanged()"></app-login>
+<app-user-account-detail-banner style="display: none;"></app-user-account-detail-banner>
+<section class="pricing_section">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="pricing_tab">
+          <ul class="nav nav-tabs font_lato" role="tablist">
+            <!-- <li role="presentation" class="active">
+              <a
+                href="#subscription_pack"
+                aria-controls="subscription_pack"
+                role="tab"
+                data-toggle="tab"
+                >{{'user.SUBSCRIPTIONS' | translate }}</a
+              >
+            </li>
+            <li role="presentation">
+              <a
+                href="#my_preference"
+                aria-controls="my_preference"
+                role="tab"
+                data-toggle="tab"
+                >{{'user.MYPREFERENCES' | translate }}</a
+              >
+            </li> -->
+            <li role="presentation">
+              <a
+                href="#billing_history"
+                aria-controls="billing_history"
+                role="tab"
+                data-toggle="tab"
+                >{{'user.BILLINGHISTORY' | translate }}</a
+              >
+            </li>
+          </ul>
+          <div class="tab-content">
+            <app-user-account-detail-billing-history
+              role="tabpanel"
+              class="tab-pane billing_data"
+              id="billing_history"
+            ></app-user-account-detail-billing-history>
+            <!-- <app-user-account-detail-preferences
+            (myPreferencesClicked)="UpdatePreference($event)"
+              role="tabpanel"
+              class="tab-pane user_preference"
+              id="my_preference"
+            ></app-user-account-detail-preferences>
+            <app-user-account-detail-subscriptions
+              role="tabpanel"
+              class="tab-pane active"
+              id="subscription_pack"
+              (resetResendOTP)="ResetResendOTPCounter()" 
+              (resetmenuheader)="ResetMenuHeader()" 
+            ></app-user-account-detail-subscriptions> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<app-footer></app-footer>
+
+<app-upgrde-subscription-pack-popup (resendUpgradeOTP)="ResendUpgradeOTP()" (upgradePinSubscriptionConfirmed)="upgradePinSubscriptionConfirmed($event)"  class="modal fade" id="upgradeSubscriptionPackModal" role="dialog" ></app-upgrde-subscription-pack-popup>
+

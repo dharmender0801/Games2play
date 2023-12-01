@@ -1,0 +1,201 @@
+<app-login (HomePageLoginClicked)="HomePageLoginClicked($event)"></app-login>
+<app-subscritpion (HomePageLoginClicked)="HomePageLoginClicked($event)"></app-subscritpion>
+  <!-- <div class="download_app" *ngIf="IsAndroidPhone && !IsIOSPhone" >
+    <a  href="https://play.google.com/store/apps/details?id=ae.etisalat.arena&hl=en">
+      <img src="/assets/images/logo.png" alt="downloadapp" class="img-responsive" /> 
+      <div class="app_body_header">
+        <h4 class="img_header">Ooredoo One</h4>
+        <span class="img_body">Open in the Ooredoo One APP</span>
+      </div>
+       <span class="open_app">Open</span></a>
+  </div> -->
+
+<!-- <div class="header_bottom" *ngIf="!IsAndroidPhone"> -->
+<div class="header_bottom">
+  <div class="container">
+    <nav class="navbar navbar-default">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button"  class="navbar-toggle collapsed" data-toggle="collapse"
+          data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <img src="/assets/images/icons/music/music_music_player_widget_close_desktop.svg" class="img-responsive" />
+        </button>
+        <!-- <a class="navbar-brand" href="#">Etisalat Arena</a> -->
+        <!-- <a class="navbar-brand logo" href="#"><img src="/assets/images/logo.png"  alt="logo"/></a> -->
+        
+        <a class="navbar-brand" href=""><img src="/assets/images/logo.png" class="game_logo"></a>
+      </div>
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav main_nav" style="display: none;">
+          <li *ngFor="let data of menuData">
+            <ng-container *ngIf="showlogoutdrp; then LoggedInLink; else WithoutLoggedInLink"></ng-container>
+
+            <ng-template #WithoutLoggedInLink>
+              <a *ngIf="
+                  data.page != 'Pricing' && data.page != 'Wishlist'"
+                  class="{{ data.pageName }} uppercase pointer" (click)="redirect(data.id,data.pageName)"
+                [ngClass]="{'activeLink':menuPageName==data.pageName}"> 
+                {{getPageName(data.page)}}
+              </a>
+            </ng-template>
+
+            <ng-template #LoggedInLink>
+              <a class="{{ data.pageName }} uppercase pointer" (click)="redirect(data.id,data.pageName)"
+                [ngClass]="{'activeLink':menuPageName==data.pageName}">{{getPageName(data.page)}}
+              </a>
+            </ng-template>
+          </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+         
+          <li class="li_padding" *ngIf="!loginStatus"><a (click)="openModalSubscription(template,false,false,true)"
+              class="btn btn-primary nav_btn btn-danger">{{'menu.SUBSCRIPTION' | translate}}</a></li>
+          <li><a *ngIf="!loginStatus" (click)="openModal(template,false,false,true)" class="right_nav">{{'menu.Login' | translate }}</a></li>
+          <li *ngIf="loginStatus" class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+            aria-expanded="false">
+            <!-- <img id="userProfileImage" class="image-profile" src="/assets/images/avatars_avatar_5_default.svg"/> -->
+            <span class="caret_down">{{'sub.myaccount'| translate}}</span>
+          </a>
+            <ul class="dropdown-menu user_options">
+              
+              <li style="display: none;">
+                <a [routerLink]="['/Account/detail']" [queryParams]="{ tab: 'billing_history'}">
+                    {{'menu.History' | translate }}</a>
+              </li>
+              <li>
+                  <a (click)="openUnsubPackConfirmation()">{{'user.Unsubscribe' | translate}}</a>
+                </li>
+                
+              <li>
+                <a href="#" (click)="logoutConfirmation()">
+                    {{'menu.LogOut' | translate }}</a>
+              </li>
+            </ul>
+          </li>
+          <li><a class="pad-l-8 pad-r-8">|</a></li>
+          <li class="dropdown lang_option">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+              aria-expanded="false">{{ filterText }}
+              <span class="caret_down"><img src="/assets/images/icons/top_nav/top_nav_language_arrow_default.svg"
+                  alt="top_nav_language_arrow_default" /></span></a>
+            <ul class="dropdown-menu">
+                <li><a  (click)="refresh('en')">English</a></li>
+                <li style="display: none;"><a (click)="refresh('ar')">عربى</a></li>
+            </ul>
+          </li>
+          <li class="search_right">
+            <a (click)="NavigateToSearch()"><img src="/assets/images/search_ico.png" alt="top_nav_search_default" /></a>
+            <!-- <a><img src="/assets/images/search_ico.png" alt="top_nav_search_default" /></a> -->
+          </li>
+        </ul>
+        
+        <ul class="nav navbar-nav navbar-right"></ul>
+      </div>
+    </nav>
+  </div>
+</div>
+ <!--get app popup-->
+ <div  class="modal fade" id="find_app" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><img src="/assets/images/icons/login_overlays/login_overlays_close.svg" alt="login_overlays_close" /></span></button>
+        <h4 class="modal-title color_green" id="myModalLabel">Get Etisalat Arena App</h4>
+      </div>
+      <div class="modal-body">
+          <a *ngIf="!IsIOSPhone && !IsAndroidPhone" href="https://play.google.com/store/apps/details?id=ae.etisalat.arena&hl=en"><img src="/assets/images/g_play_btn.png" alt="g_play_btn" class="img-responsive" /></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="apps_popup"   id="etisalat_apps" tabindex="" role="dialo" aria-labelledby="myModalLabel">
+<div class="modal-dialog" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <button type="button" id="close_etisalatapp"   (click)="close_etisalatapp()" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><img src="/assets/images/icons/login_overlays/login_overlays_close.svg" alt="login_overlays_close" /></span></button>
+      <h4 class="modal-title" id="myModalLabel">{{'subs.Apps' |translate}}</h4>
+    </div>
+    <div class="modal-body font_lato">
+        <li *ngFor="let data of LinksItems">
+            <div class="col-sm-6 col-xs-12 hostedapp">
+
+                <div class="media-left">
+                    <!-- <a><img class="media-object img-responsive" src="{{data.image}}" alt="g_play_btn"  /></a>  -->
+                    <a><img src="{{data.image}}" alt="g_play_btn" class="media-object" /></a>
+                  </div>
+
+
+
+            <div class="media-body">
+               
+                <!-- <a  class="btn btn-default btn_icon"><img src="{{data.image}}" alt="g_play_btn" class="img-responsive" /></a> -->
+                <h4 class="media-heading">{{data.appName}}</h4>
+ <a href="{{data.url}}" *ngIf="!IsIOSPhone && !IsAndroidPhone"  target="_blank" class="btn btn-default btn_icon"><img src="/assets/images/etisalat_apps/g_play_btn.png" alt="g_play_btn" class="img-responsive" /></a>
+ <a href="{{data.url}}" *ngIf="IsAndroidPhone"  target="_blank" class="btn btn-default btn_icon"><img src="/assets/images/etisalat_apps/g_play_btn.png" alt="g_play_btn" class="img-responsive" /></a>
+ <a href="{{data.toAppStore}}" target="_blank" *ngIf="IsIOSPhone && !IsAndroidPhone"  class="btn btn-default btn_icon"><img src="/assets/images/etisalat_apps/a_store_btn.png" alt="a_store_btn" class="img-responsive" /></a>
+ <a href="{{data.toAppStore}}" target="_blank" *ngIf="!IsIOSPhone && !IsAndroidPhone"  class="btn btn-default btn_icon"><img src="/assets/images/etisalat_apps/a_store_btn.png" alt="a_store_btn" class="img-responsive" /></a>
+               <a class="btn btn-transparent font_lato">{{data.categoryName}}<img src="/assets/images/icons/arrows/arrows_third_action_button.svg"  class="img_valign"/></a>
+              
+              </div>
+ 
+            </div>
+        </li>
+    </div>
+  </div>
+</div>
+</div>
+
+<!--/UnSub Popup-->
+<div class="modal fade" id="unsubModal" tabindex="-1" role="dialog" aria-labelledby="unsubModalLbl">	
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" style="margin: 0px !important;">&times;</span></button>
+        <h4 class="modal-title" id="unsubModalLbl"><img src="../../../../assets/images/logo.png" width="230px" alt=""></h4>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <h4 class="t2">{{'user.unsubscribe.msg' | translate}}</h4>
+          </div>	
+          <div class="form-group">
+            <button type="button" class="btn btn-danger round_btn" (click)="unsubGhanaConfirm()"> {{'user.yes' | translate}} </button>
+            <button type="button" class="btn btn-danger round_btn margin_left10" (click)="closeUnsubPackConfirmation()"> {{'user.no' |  translate}} </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <div class="modal fade" id="logoutConfirmationModal" tabindex="-1" role="dialog" aria-labelledby="logoutConfirmationModalLbl">
+				
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="logoutConfirmationModalLbl"><img src="../../../../assets/images/logo.png" width="230px" alt=""></h4>
+          </div>
+  
+          <div class="modal-body">
+            <form>
+              <div class="form-group">
+                <h4 class="t2">{{'user.logoutPopUp' | translate}} </h4>
+              </div>
+              <div class="form-group">
+                  <button type="button" class="btn btn-danger round_btn" (click)="logout(false)"> {{'user.yes' | translate}} </button>
+                  <button type="button" class="btn btn-danger round_btn margin_left10" (click)="closeLogoutConfirmation()"> {{'user.no' |  translate}} </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>

@@ -1,0 +1,30 @@
+/* .nav-tabs {
+  border-bottom: 0;
+}
+.nav-tabs > li > a, .nav-tabs > li > a:hover, .nav-tabs > li > a:focus {
+  margin-right: 0;
+  line-height: 12px;
+  border: 0;
+  border-radius: 0;
+  border-bottom: 2px solid transparent;
+  letter-spacing: 5.33px;
+  padding-left: 0;
+  padding-right: 0;
+  background-color: transparent;
+  font-size: 16px;
+}
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
+  color: #fff;
+  cursor: pointer;
+  background-color: transparent;
+  border: 0;
+  font-size: 16px;
+  line-height: 12px;
+  letter-spacing: 5.33px;
+  border-bottom: 2px solid #fff;
+}
+.nav-tabs > li {
+  float: left;
+  margin-bottom: 0;
+  margin-right: 48px;
+} */

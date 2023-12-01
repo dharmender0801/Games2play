@@ -1,0 +1,55 @@
+
+<section class="new_this_week_section">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <span class="block_heading">{{sectionContent.title}}</span>
+          <a class="btn btn-transparent font_lato pull-right">view all <img src="/assets/images/icons/arrows/arrows_third_action_button.svg"
+              class="img_valign" /></a>
+        </div>
+        <div class="col-sm-4  mobile_hide">
+          <div class="subs_plans featured_images subs_plans_a">
+            <img src="/assets/images/featured/game/featured_apps_desktop_tablet_landscape_1.png" class="img-responsive fix_W_H_horizantal_rectangle" alt="featured_apps_desktop_tablet_landscape_1" />
+            <div class="img_desc ab_img absolute_position">
+              <h2 class="creative_name font_lato">Monument Valley 2</h2>
+              <ul class="star_rating inline">
+                <li><img src="/assets/images/icons/stars/stars_full.svg" alt="fullstar" /></li>
+                <li><img src="/assets/images/icons/stars/stars_full.svg" alt="fullstar" /></li>
+                <li><img src="/assets/images/icons/stars/stars_full.svg" alt="fullstar" /></li>
+                <li><img src="/assets/images/icons/stars/stars_full.svg" alt="fullstar" /></li>
+                <li><img src="/assets/images/icons/stars/stars_partial.svg" alt="halfstar" /></li>
+              </ul>
+              <span class="rating font_lato color_white">4.5</span>
+              <div class="creative_type_year font_lato color_white">
+                <span class="creative_type color_white">Puzzle</span> <span class="play_click"><a href="">Play <img src="/assets/images/icons/arrows/arrows_third_action_button.svg"
+                      class="img_valign" /></a></span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-8 no_padding">
+          <div class="col-sm-6 col-xs-6 margin_bottom24" *ngFor="let data of sectionContent.data">
+            <div class="subs_plans featured_images subs_plans_a">
+              <img style="height: 104px; width: 104px;" src="{{data.previewImage}}" class="img-responsive inline"
+                alt="listing_games_desktop_tablet_landscape_1" />
+              <div class="img_desc_horizontal">
+                <h2 class="creative_name font_lato margin_top0">{{data.text}}</h2>
+                <ul class="star_rating star_rating_custom inline">
+                  <li><img src="/assets/images/icons/stars/stars_full.svg" alt="fullstar" /></li>
+                  <li><img src="/assets/images/icons/stars/stars_full.svg" alt="fullstar" /></li>
+                  <li><img src="/assets/images/icons/stars/stars_full.svg" alt="fullstar" /></li>
+                  <li><img src="/assets/images/icons/stars/stars_full.svg" alt="fullstar" /></li>
+                  <li><img src="/assets/images/icons/stars/stars_partial.svg" alt="halfstar" /></li>
+                </ul>
+                <div class="creative_type_year font_lato margin_top0 inline">
+                  <span class="rating font_lato v_align_normal">{{data.rating}}</span> | <span class="creative_type margin_top0">Action</span>
+                  <span class="play_click"><a class="margin_left0" href="">Play <img src="/assets/images/icons/arrows/arrows_third_action_button.svg"
+                        class="img_valign"></a></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>

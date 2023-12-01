@@ -1,0 +1,42 @@
+<div class="col-sm-12 category_content" >
+  <div class="col-sm-12 filter_dropdown font_lato" style="display: none;">
+      <ul class="nav navbar-nav">
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+              aria-expanded="false">{{ filterText | uppercase }}
+              <span class="caret_down"><img src="/assets/images/icons/arrows/arrows_sort_by_button_down_all.svg"
+                class="img_valign_sort" /></span></a>
+               
+            <ul class="dropdown-menu filter_options">
+
+              <li><a style="cursor: pointer"  (click)="NewestClicked()" [class.active]="filterSelected === 'newest'" class="">{{'rightsection.newest' | translate}}</a></li>
+              <li><a id="AToZLink" style="cursor: pointer" [class.active]="filterSelected === 'AtoZ'" (click)="sortA_Z()">{{'rightsection.AtoZ' | translate}}</a></li>
+              <li><a id="ZToALink" style="cursor: pointer" [class.active]="filterSelected === 'ZtoA'" (click)="sortZ_A()">{{'rightsection.ZtoA' | translate}}</a></li>
+            </ul>
+          </li>
+        </ul>
+  </div>
+  <div *ngIf="pageUrl=='Videos'">
+      <app-first-text-other-vertical-images4-in-row-style17 [pageData]="pageGenreData"></app-first-text-other-vertical-images4-in-row-style17>
+</div>
+<div *ngIf="pageUrl=='Music'">
+  <app-first-text-other-square-images2-in-row-style20 [pageData]="pageGenreData"></app-first-text-other-square-images2-in-row-style20>
+</div>
+<div *ngIf="pageUrl=='Games'">
+      <app-first-text-other-square-images2-in-row-style18 [pageData]="pageGenreData"></app-first-text-other-square-images2-in-row-style18>
+</div>
+<div *ngIf="pageUrl=='Apps'">
+</div>
+  <!-- <div *ngIf="pageUrl=='Videos'">
+        <app-first-text-other-vertical-images4-in-row-style17 [pageData]="pageGenreData"></app-first-text-other-vertical-images4-in-row-style17>
+  </div>
+  <div *ngIf="pageUrl=='Music'">
+    <app-first-text-other-square-images2-in-row-style20 [pageData]="pageGenreData"></app-first-text-other-square-images2-in-row-style20>
+  </div>
+  <div *ngIf="pageUrl=='Games'">
+        <app-first-text-other-square-images2-in-row-style18 [pageData]="pageGenreData"></app-first-text-other-square-images2-in-row-style18>
+  </div>
+  <div *ngIf="pageUrl=='Apps'">
+
+  </div> -->
+</div>

@@ -1,0 +1,35 @@
+<div class="user_preference" style="position: relative;">
+  <aside class="sidebar_category col-sm-3">
+    <ul class="main_categories font_lato">
+      <li class="cursor-pointer">
+        <a (click)="GetMyPreferencesTabData(2)" [class.active]="currentMappedItemTypeSelected === 2"><img src="assets/images/icons/filters/filters_video_default.png"
+            class="img-responsive" />{{'user.Videos' | translate}}
+          <span>({{(preferenceCountVideo?.count) || 0}})</span></a>
+      </li>
+      <li class="cursor-pointer">
+        <a (click)="GetMyPreferencesTabData(1)" [class.active]="currentMappedItemTypeSelected === 1"><img src="assets/images/icons/filters/filters_music_default.png"
+            class="img-responsive" />{{'user.Musics' | translate}}
+          <span>({{(preferenceCountMusic?.count) || 0}})</span></a>
+      </li>
+      <li class="cursor-pointer">
+        <a (click)="GetMyPreferencesTabData(3)" [class.active]="currentMappedItemTypeSelected === 3"><img src="assets/images/icons/filters/filters_games_default.png"
+            class="img-responsive" />{{'user.Games' | translate}}
+          <span>({{(preferenceCountGames?.count) || 0}})</span></a>
+      </li>
+      <!-- <li class="cursor-pointer">
+        <a (click)="GetMyPreferencesTabData(4)" [class.active]="currentMappedItemTypeSelected === 4"><img src="assets/images/icons/filters/filters_apps_default.png"
+            class="img-responsive" [class.img-responsive]="currentMappedItemTypeSelected === 4" />{{'user.Apps' | translate}} <span>({{(preferenceCountApps?.count) || 0}})</span></a>
+        </li> -->
+    </ul>
+  </aside>
+  <div class="col-sm-9 select_preference font_lato">
+    <h4 class="preference_heading">{{'user.MyPREFERENCESGenre' | translate}}</h4>
+    <div class="checkbox check_tag" *ngFor="let item of preferenceData?.subItemTypeList; let i = index">
+      <label>
+        <input type="checkbox" [checked]="item.isAdded" name="optionsRadios" (change)="GetCurrentPreferenceData(item)" />
+        <span class="tag_name">{{item.subItemDescription}}</span>
+      </label>
+    </div>
+  </div>
+  <app-loader id="user-preferences-loader"></app-loader>
+</div>

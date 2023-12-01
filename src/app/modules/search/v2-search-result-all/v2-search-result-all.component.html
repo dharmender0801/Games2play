@@ -1,0 +1,106 @@
+<div *ngIf="RenderingData"> 
+    <section class="coming_soon_section" *ngIf="RenderingData[0]?.data.length>0" >
+  
+        <div class="container desktop_block">
+          <div class="row">
+              <div class="col-sm-12">
+                 
+                <a href="#/Content?page=Music" class="btn btn-transparent font_lato pull-right" >view all <img
+                    src="assets/images/icons/arrows/arrows_third_action_button.svg" class="img_valign" /></a>
+              </div>
+            <div class="col-sm-12 filter_dropdown font_lato">
+                <span class="block_heading margin_bottom0"  >Music</span> 
+            </div>
+            <div *ngIf="RenderingData">
+            <div *ngIf="RenderingData?.length > 0" > 
+              
+            <div class="col-sm-4" *ngFor="let itemtype of RenderingData[0]?.data;let i = index">
+                <div *ngIf="i <= 4">
+                <div class="subs_plans featured_images"  >                
+                 <a> <img [defaultImage]="defaultImage"
+                  [lazyLoad]="itemtype.previewImage"
+                  class="img-responsive inline" style="height: 237px" />
+                </a>
+                  <div class="img_desc">                   
+                      <h2 class="creative_name font_lato">{{  itemtype.text}}</h2>
+                      <div class="creative_type_year font_lato margin_top0">
+                        <span class="rating font_lato">{{itemtype.rating}}</span> | <span class="creative_year">{{itemtype.genere}}</span>
+                      </div>
+                    </div>
+                 
+                </div>
+              </div>
+              </div>
+            </div>
+          </div>
+       </div>
+          </div>
+       
+      </section>
+    <section class="new_this_week_music_section" *ngIf="RenderingData[1]?.data.length>0">
+
+      
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-12">
+                <span class="block_heading"  >Games</span>
+          
+              <a class="btn btn-transparent font_lato pull-right"  href="#/Content?page=Games">view all <img
+                  src="assets/images/icons/arrows/arrows_third_action_button.svg" class="img_valign" /></a>
+            </div>
+            <div *ngIf="RenderingData">
+            <div class="col-sm-4"  *ngFor="let data of RenderingData[1]?.data;let i = index">
+                <div *ngIf="i <= 4">
+                 
+              <div class="subs_plans featured_images"  > 
+               
+                <!-- <a href="/#/section/game-details?id={{data.contentId}}"> <img [defaultImage]="defaultImage" -->
+                  <a (click)="userLoginCheckImg(data)"> <img [defaultImage]="defaultImage"
+                [lazyLoad]="data.previewImage"
+                class="img-responsive inline" style="height: 237px" />
+              </a>
+                <div class="img_desc">
+                    <h2 class="creative_name font_lato margin_top0">{{  data.text}}</h2>
+                    <div class="creative_type_year font_lato margin_top0" style="display: none;">
+                      <span class="creative_type">{{data.rating}}</span> | <span class="creative_year">{{data.genere}}</span>
+                    </div>
+                  </div>
+               
+              </div>
+            </div>
+            </div>
+          </div>
+      </div> 
+        </div> 
+      </section>
+      <section class="top_rated_games_section" *ngIf="RenderingData[2]?.data.length>0">
+       
+          <div class="container">
+            <div class="row">
+              <div class="col-sm-12">
+                  <span class="block_heading margin_bottom0"  >Videos</span> 
+                <a class="btn btn-transparent font_lato pull-right" href="#/Content?page=Videos">view all <img
+                    src="assets/images/icons/arrows/arrows_third_action_button.svg" class="img_valign" /></a>
+              </div>
+              <div *ngIf="RenderingData">
+              <div class="col-sm-4" *ngFor="let dataitem of RenderingData[2]?.data;let i = index">
+                  <div *ngIf="i <= 4">
+                  <div class="subs_plans featured_images"  > 
+                  
+                    <a>   <img [defaultImage]="defaultImage"
+                    [lazyLoad]="dataitem.previewImage"
+                    class="img-responsive inline" style="height: 237px" /></a>
+                    <div class="img_desc">
+                        <h2 class="creative_name font_lato margin_top0">{{  dataitem.text}}</h2>
+                        <div class="creative_type_year font_lato margin_top0">
+                          <span class="creative_type">{{dataitem.rating}}</span> | <span class="creative_year">{{dataitem.genere}}</span>
+                        </div>
+                      </div>
+                  </div>
+                </div>
+                </div>
+              </div>
+         </div>
+            </div>
+        </section>      
+</div>

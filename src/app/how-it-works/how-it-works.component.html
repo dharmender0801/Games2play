@@ -1,0 +1,44 @@
+
+<!--How it works section-->
+
+<section class="how_it_work_section" *ngIf="!subscribed">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <span class="block_heading_custom">{{ 'menu.work' | translate }}</span>      
+        <a [routerLink]="['/Pricing']" class="btn btn-primary font_lato pull-right btn_margin">{{ 'menu.Button' | translate }}</a>
+      </div>
+      <div class="col-sm-4">
+        <div class="subs_plans">
+          <img src="assets/images/home_logged_out/home_logged_out_explore_weyak_desktop.svg" class="img-responsive pull-right"  alt="home_logged_out_explore_weyak_desktop"/>
+          <div class="img_desc_1">
+            <h2 class="section_heading">{{ 'menu.Heading' | translate }}</h2>
+            <p  class="img_desc_text">{{ 'menu.Description' | translate }}</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="subs_plans">
+          <img src="assets/images/home_logged_out/home_logged_out_try_for_free_desktop.svg" class="img-responsive margin_auto"  alt="home_logged_out_try_for_free_desktop"/>
+          <div class="img_desc_2">
+              <h2 class="section_heading">{{ 'menu.HeadingFree' | translate }}</h2>
+              <p  class="img_desc_text">{{ 'menu.FreeDescription' | translate }}</p>
+            </div>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="subs_plans">
+          <img src="assets/images/home_logged_out/home_logged_out_access_premium_content_desktop.svg" class="img-responsive"  alt="home_logged_out_access_premium_content_desktop"/>
+          <div class="img_desc_3">
+              <h2 class="section_heading">{{ 'menu.HeadingPremium' | translate }}</h2>
+              <p  class="img_desc_text">{{ 'menu.PremiumDescription' | translate }}</p>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!--How it works section end-->
+
+

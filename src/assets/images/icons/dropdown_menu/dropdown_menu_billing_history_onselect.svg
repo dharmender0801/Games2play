@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="12px" height="16px" viewBox="0 0 12 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: sketchtool 52.4 (67378) - http://www.bohemiancoding.com/sketch -->
+    <title>18949C3D-805D-4DD3-8723-15389AF5DD54</title>
+    <desc>Created with sketchtool.</desc>
+    <g id="Assets" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+        <g id="02.-Icons" transform="translate(-226.000000, -1054.000000)" stroke="#FFFFFF">
+            <g id="02.3-Dropdown-Menu" transform="translate(120.000000, 912.000000)">
+                <g id="Icon/Outline-1pt/bill/bill_white" transform="translate(104.000000, 142.000000)">
+                    <path d="M4.75,5 L8.25,5" id="Line"></path>
+                    <path d="M4.75,7 L7.25,7" id="Line" transform="translate(6.000000, 7.000000) scale(-1, 1) translate(-6.000000, -7.000000) "></path>
+                    <path d="M4.75,9 L7.75,9" id="Line"></path>
+                    <path d="M4.75,11 L6.75,11" id="Line"></path>
+                    <path d="M10.5,5 L11.25,5" id="Line"></path>
+                    <path d="M10.5,7 L11.25,7" id="Line"></path>
+                    <path d="M10.5,9 L11.25,9" id="Line"></path>
+                    <path d="M10.5,11 L11.25,11" id="Line"></path>
+                    <polygon id="Line" points="3 15 4.26105421 13.7843272 5.50012491 14.9787908 6.78216338 13.7843272 7.99975019 14.9787908 9.24981264 13.7737226 10.4998751 14.9787908 11.7499375 13.7737226 13 15 13 1.0212092 11.7499375 2.20506817 10.4998751 1 9.24981264 2.20506817 7.99975019 1 6.74968773 2.20506817 5.50012491 1 4.25006245 2.20506817 3 1.0212092"></polygon>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

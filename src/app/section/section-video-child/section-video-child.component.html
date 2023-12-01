@@ -1,0 +1,215 @@
+<!--Banner section-->
+<section class="banner_section bg_dynamic banner_section_child">
+  <div class="banner">
+      <img [defaultImage]="defaultImageBig" 
+      [lazyLoad]="'/assets/images/banners/movie_details_page_banner/Banner/movie_details_page_banner_desktop.png'"
+      class="img-responsive" alt="movie_details_page_banner_desktop" />
+    <!-- <img src="/assets/images/banners/movie_details_page_banner/Banner/movie_details_page_banner_desktop.png"
+      class="img-responsive" alt="movie_details_page_banner_desktop" /> -->
+    <div class="caption container" *ngIf="(contentDetails | json) != '{}'">
+      <div class="row">
+        <div class="col-sm-10 col-sm-offset-1">
+          <div class="poster_img" id="mainVideo">
+              <!-- <img [defaultImage]="defaultImage" 
+              [lazyLoad]="contentDetails.thumbnails"
+              class="image-profile" alt="" /> -->
+              <img [defaultImage]="defaultImage" 
+              [lazyLoad]="contentDetails.thumbnails"
+              class="img-responsive image-profile" alt="video_detail_default_img_282x422" />
+            <!-- <img src="{{contentDetails.thumbnails}}" class="image-profile" 
+              class="img-responsive image-profile" (load)="ImageLoaded()" (error)="UpdateNotFoundImage()"/>
+              <div class="lds-ripple image-num-placeholder"><div></div><div></div></div> -->
+            </div>
+          <div class="img_desc img_desc_poster">
+            <h2 class="creative_name">{{contentDetails.creativeTitle}}</h2>
+            <ul class="star_rating inline">
+              <app-star-rating [starRating]="contentDetails.rating"></app-star-rating>
+            </ul>
+            <span class="rating font_lato">{{contentDetails.rating}}</span>
+            <div class="creative_type_year font_lato">
+              <span class="creative_type">{{contentDetails.genre}}</span> | <span
+                class="creative_year">{{contentDetails.yearOfRelease | splitAndGet:"-":0}}</span>
+            </div>
+
+           
+            <button *ngIf="VideoPlayButtonHide && !IsLoggedIn" class="btn btn-default font_lato" (click)="playMovie()">{{'video.PLAY' | translate}}</button>
+
+            <a target="targetforlink" *ngIf="IsLoggedIn"   href="{{ Videohreflink }}"><button class="btn btn-default font_lato">{{'video.PLAY' | translate}}</button></a>
+            <!-- <button class="btn btn-default font_lato" [disabled]="!showpromovideoURL">WATCH TRAILER</button> -->
+            <!-- <button class="btn btn-default font_lato"  (click)="CheckWishlistbtnname()">{{ WishlistbtnName }}</button> -->
+            <!-- <button *ngIf="showVideowishlistADD && VideoPlayButtonHide" class="btn btn-default font_lato"  (click)="CheckWishlistbtnname()">{{'wishlist.Add' |translate}}</button>
+            <button  *ngIf="showVideowishlistRemove && VideoPlayButtonHide" class="btn btn-default font_lato"  (click)="CheckWishlistbtnname()">{{'wishlist.Remove' |translate}}</button> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!--Banner section end-->
+
+<a *ngIf="IsIOSPhone" id="PlayVideo" target="_blank" href="{{ Videohreflink }}"></a>
+
+
+<!--coming soon section-->
+<section class="browse_section">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-10 col-sm-offset-1 category_content">
+        <div class="cat_description font_lato" *ngIf="(contentDetails | json) != '{}'">
+          <p>{{contentDetails.description}}</p>
+        </div>
+        <button type="button" id="modelOpenVideo" class="hidden"  data-toggle="modal"
+        data-target="#modelShowValidityVideo"></button>
+        <div class="description_cast font_lato" *ngIf="(contentDetails | json) != '{}'">
+          <p><span>{{'video.STARS' | translate}}</span>: {{contentDetails.singerActor}}</p>
+          <p><span>{{'video.DIRECTOR' | translate}}</span>: {{contentDetails.director}}</p>
+          <p><span>{{'video.LANGUAGES' | translate}}</span>: {{contentDetails.language}}</p>
+          <p><span>{{'video.SUBTITLES' | translate}}</span>: {{contentDetails.subCategories}}</p>
+          <p *ngIf="(appInfo | json) != '{}'"><span>{{'video.AVAILABLE' | translate}}</span>: {{appInfo.appName}}</p>
+        </div>
+        <!-- <div class="col-sm-12 no_padding">
+            <span class="block_heading">Similar movies</span>
+          </div> -->
+      </div>
+      <!-- <div class="row">
+            <div class="col-sm-2 col-xs-6 col-sm-offset-1">
+              <div class="subs_plans featured_images">
+                <img src="/assets/images/featured/videos/listing_desktop_tablet_1.png" class="img-responsive"
+                  alt="listing_desktop_tablet_1" />
+                <img src="/assets/images/icons/dropdown_menu/dropdown_menu_preferences_onselect.svg" class="img-responsive fav_preference"
+                  alt="dropdown_menu_preferences_onselect" />
+                <div class="img_desc">
+                  <h2 class="creative_name font_lato">Creed II</h2>
+                  <ul class="star_rating inline">
+                    <li><img src="/assets/images/icons/stars/stars_full.svg" alt="fullstar" /></li>
+                    <li><img src="/assets/images/icons/stars/stars_full.svg" alt="fullstar" /></li>
+                    <li><img src="/assets/images/icons/stars/stars_full.svg" alt="fullstar" /></li>
+                    <li><img src="/assets/images/icons/stars/stars_full.svg" alt="fullstar" /></li>
+                    <li><img src="/assets/images/icons/stars/stars_partial.svg" alt="halfstar" /></li>
+                  </ul>
+                  <span class="rating font_lato">4.5</span>
+                  <div class="creative_type_year font_lato">
+                    <span class="creative_type">Drama</span> | <span class="creative_year">2018</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-2 col-xs-6">
+              <div class="subs_plans featured_images">
+                <img src="/assets/images/featured/videos/listing_desktop_tablet_2.png" class="img-responsive"
+                  alt="listing_desktop_tablet_1" />
+                  <img src="/assets/images/icons/dropdown_menu/dropdown_menu_preferences_onselect.svg" class="img-responsive fav_preference" alt="dropdown_menu_preferences_onselect" />
+                <div class="img_desc">
+                  <h2 class="creative_name font_lato">Mary Poppins Returns</h2>
+                  <ul class="star_rating inline">
+                    <li><img src="/assets/images/icons/stars/stars_full.svg" alt="fullstar" /></li>
+                    <li><img src="/assets/images/icons/stars/stars_full.svg" alt="fullstar" /></li>
+                    <li><img src="/assets/images/icons/stars/stars_full.svg" alt="fullstar" /></li>
+                    <li><img src="/assets/images/icons/stars/stars_full.svg" alt="fullstar" /></li>
+                    <li><img src="/assets/images/icons/stars/stars_partial.svg" alt="halfstar" /></li>
+                  </ul>
+                  <span class="rating font_lato">4.5</span>
+                  <div class="creative_type_year font_lato">
+                    <span class="creative_type">Musical</span> | <span class="creative_year">2018</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-2 col-xs-6">
+              <div class="subs_plans featured_images">
+                <img src="/assets/images/featured/videos/listing_desktop_tablet_3.png" class="img-responsive"
+                  alt="listing_desktop_tablet_1" />
+                  <img src="/assets/images/icons/dropdown_menu/dropdown_menu_preferences_onselect.svg" class="img-responsive fav_preference" alt="dropdown_menu_preferences_onselect" />
+                <div class="img_desc">
+                  <h2 class="creative_name font_lato">Ralph Breaks the Inter…</h2>
+                  <ul class="star_rating inline">
+                    <li><img src="/assets/images/icons/stars/stars_full.svg" alt="fullstar" /></li>
+                    <li><img src="/assets/images/icons/stars/stars_full.svg" alt="fullstar" /></li>
+                    <li><img src="/assets/images/icons/stars/stars_full.svg" alt="fullstar" /></li>
+                    <li><img src="/assets/images/icons/stars/stars_full.svg" alt="fullstar" /></li>
+                    <li><img src="/assets/images/icons/stars/stars_partial.svg" alt="halfstar" /></li>
+                  </ul>
+                  <span class="rating font_lato">4.5</span>
+                  <div class="creative_type_year font_lato">
+                    <span class="creative_type">Animation</span> | <span class="creative_year">2018</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-2 col-xs-6">
+              <div class="subs_plans featured_images">
+                <img src="/assets/images/featured/videos/listing_desktop_tablet_4.png" class="img-responsive"
+                  alt="listing_desktop_tablet_1" />
+                  <img src="/assets/images/icons/dropdown_menu/dropdown_menu_preferences_onselect.svg" class="img-responsive fav_preference" alt="dropdown_menu_preferences_onselect" />
+                <div class="img_desc">
+                  <h2 class="creative_name font_lato">Robin Hood</h2>
+                  <ul class="star_rating inline">
+                    <li><img src="/assets/images/icons/stars/stars_full.svg" alt="fullstar" /></li>
+                    <li><img src="/assets/images/icons/stars/stars_full.svg" alt="fullstar" /></li>
+                    <li><img src="/assets/images/icons/stars/stars_full.svg" alt="fullstar" /></li>
+                    <li><img src="/assets/images/icons/stars/stars_full.svg" alt="fullstar" /></li>
+                    <li><img src="/assets/images/icons/stars/stars_partial.svg" alt="halfstar" /></li>
+                  </ul>
+                  <span class="rating font_lato">4.5</span>
+                  <div class="creative_type_year font_lato">
+                    <span class="creative_type">Action</span> | <span class="creative_year">2018</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-2 col-xs-6">
+              <div class="subs_plans featured_images">
+                <img src="/assets/images/featured/videos/listing_desktop_tablet_1.png" class="img-responsive"
+                  alt="listing_desktop_tablet_1" />
+                  <img src="/assets/images/icons/dropdown_menu/dropdown_menu_preferences_onselect.svg" class="img-responsive fav_preference" alt="dropdown_menu_preferences_onselect" />
+                <div class="img_desc">
+                  <h2 class="creative_name font_lato">Creed II</h2>
+                  <ul class="star_rating inline">
+                    <li><img src="/assets/images/icons/stars/stars_full.svg" alt="fullstar" /></li>
+                    <li><img src="/assets/images/icons/stars/stars_full.svg" alt="fullstar" /></li>
+                    <li><img src="/assets/images/icons/stars/stars_full.svg" alt="fullstar" /></li>
+                    <li><img src="/assets/images/icons/stars/stars_full.svg" alt="fullstar" /></li>
+                    <li><img src="/assets/images/icons/stars/stars_partial.svg" alt="halfstar" /></li>
+                  </ul>
+                  <span class="rating font_lato">4.5</span>
+                  <div class="creative_type_year font_lato">
+                    <span class="creative_type">Drama</span> | <span class="creative_year">2018</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div> -->
+
+    </div>
+  </div>
+</section>
+<!--coming soon section end-->
+
+
+
+<!-- modal for expiry-->
+<div class="modal fade" id="modelShowValidityVideo" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true"><img src="assets/images/icons/login_overlays/login_overlays_close.svg"
+              alt="login_overlays_close" /></span>
+        </button>
+        <h4 class="modal-title color_green" id="myModalLabel">
+         Pack Expired
+        </h4>
+      </div>
+      <div class="modal-body font_lato">
+        <p>
+          Your validity of pack has been expired. Please recharge your account and try again
+        </p>
+      </div>
+      <div class="modal-footer">
+        <!-- <a href="#/Pricing"><button type="button" class="btn btn-primary full_width font_lato">
+           Subscribe again
+        </button></a> -->
+      </div>
+    </div>
+  </div>
+</div>

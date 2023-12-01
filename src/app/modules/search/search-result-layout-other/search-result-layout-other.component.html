@@ -1,0 +1,192 @@
+<!-- <section class="new_this_week_music_section">
+  <div class="container">
+    <div class="row">
+      
+      <div *ngIf="RenderingData?.length > 0;else  NoSearchData" >
+        <div class="col-sm-4 col-xs-6 margin_bottom24" *ngFor="let item of RenderingData;let i = index">
+      
+          <div class="subs_plans featured_images">
+            <a *ngIf="item.itemtype === 1"  [routerLink]="['/section','music-details']" [queryParams]="{ id : item.contentId }">
+              <img src="{{item.previewImage}}" class="img-responsive inline img-responsive hidden image-num-{{i}}" alt="listing_desktop_tablet_1" (load)="ImageLoaded(i)" (error)="UpdateNotFoundImage(i)" />
+            </a>
+            <a *ngIf="item.itemtype === 2" [routerLink]="['/section','video-details']" [queryParams]="{ id : item.contentId }">
+              <img src="{{item.previewImage}}" class="img-responsive inline img-responsive hidden image-num-{{i}}" alt="listing_desktop_tablet_1" (load)="ImageLoaded(i)" (error)="UpdateNotFoundImage(i)" />
+            </a>
+            <a *ngIf="item.itemtype === 3" [routerLink]="['/section','game-details']" [queryParams]="{ id : item.contentId }">
+              <img src="{{item.previewImage}}" class="img-responsive inline img-responsive hidden image-num-{{i}}" alt="listing_desktop_tablet_1" (load)="ImageLoaded(i)" (error)="UpdateNotFoundImage(i)" />
+            </a>
+            <a *ngIf="item.itemtype === 4" [routerLink]="['/section','app-details']" [queryParams]="{ id : item.contentId }">
+              <img src="{{item.previewImage}}" class="img-responsive inline img-responsive hidden image-num-{{i}}" alt="listing_desktop_tablet_1" (load)="ImageLoaded(i)" (error)="UpdateNotFoundImage(i)" />
+            </a>
+            <div class="img_desc_horizontal">
+              <h2 class="creative_name font_lato margin_top0">{{
+              item.text}}</h2>
+              <div class="creative_type_year font_lato margin_top0">
+                <span class="creative_type">{{item.rating}}</span> | <span class="creative_year">{{item.genere}}</span>
+              </div>
+            </div>
+            <div class="lds-ripple image-num-placeholder-{{i}}"><div></div><div></div></div>
+          </div>
+        </div>
+      </div>
+      <ng-template #NoSearchData>
+        <div *ngIf="hasSearched; else SearchForResults"  style="color: white;">
+            No Record found.
+        </div>
+      </ng-template>
+      <ng-template #SearchForResults>
+        <div style="color: white;">
+          {{'search.results' | translate}}
+        </div>
+      </ng-template>
+
+    </div>
+  </div>
+</section> -->
+<!--New this week in music section end-->
+
+<div *ngIf="RenderingData !=null && RenderingData[0]?.data?.length == 0 && RenderingData[1]?.data?.length == 0 && RenderingData[2]?.data?.length == 0">
+    <section class="new_this_week_music_section" >
+      <div class="container">
+        <div class="row">
+          <div>
+         <h1>No Record Found</h1>
+        </div>      
+        </div>
+      </div>
+    </section>
+</div>
+
+
+
+<div *ngIf="RenderingData !=null  && SelectAll == selectallval && RenderingData[0]?.data?.length > 0" >
+<section class="new_this_week_music_section" >
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 filter_dropdown font_lato">
+        
+        <span class="block_heading margin_bottom0" *ngIf="RenderingData[0].data?.length > 0 && RenderingData[0].type === 'Music'" >Music</span>
+        <span class="block_heading margin_bottom0" *ngIf="RenderingData[0].data?.length > 0 && RenderingData[0].type === 'Videos'" >Videos</span>
+        <span class="block_heading margin_bottom0" *ngIf="RenderingData[0].data?.length > 0 && RenderingData[0].type === 'Games'" >Games</span>
+        <span class="block_heading margin_bottom0" *ngIf="RenderingData[0].data?.length > 0 && RenderingData[0].type === 'Apps'" >Apps</span>
+      </div>
+      <div *ngIf="RenderingData[0].data?.length > 0;else  NoSearchData">
+      <div class="col-sm-4 col-xs-6 margin_bottom24" *ngFor="let item of RenderingData[0].data;let i = index">
+        <div class="subs_plans featured_images">
+          <!-- <img src="{{item.previewImage}}" style="height: 237px" class="img-responsive inline" alt="listing_desktop_tablet_1">
+          -->
+        
+          <img [defaultImage]="defaultImage" 
+          [lazyLoad]="item.previewImage"
+          class="img-responsive inline" style="height: 237px" />
+
+          <div class="img_desc_horizontal">
+            <h2 class="creative_name font_lato margin_top0">{{  item.text}}</h2>
+            <div class="creative_type_year font_lato margin_top0">
+              <span class="creative_type">{{item.rating}}</span> | <span class="creative_year">{{item.genere}}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    </div>
+  </div>
+</section>
+</div>
+<div *ngIf="RenderingData !=null && SelectAll == 'selected' && RenderingData[0]?.data?.length > 0 || RenderingData[1]?.data?.length >0 || RenderingData[2]?.data?.length > 0" > 
+        <section class="coming_soon_section" *ngIf="RenderingData[0]?.data?.length">
+      
+            <div class="container desktop_block">
+              <div class="row">
+                  <div class="col-sm-12">
+                     
+                    <a class="btn btn-transparent font_lato pull-right" href="#/Content?page=Videos">view all <img
+                        src="assets/images/icons/arrows/arrows_third_action_button.svg" class="img_valign" /></a>
+                  </div>
+                <div class="col-sm-12 filter_dropdown font_lato">
+                    <span class="block_heading margin_bottom0" *ngIf="RenderingData[0].data?.length > 0" >Videos</span> 
+                </div>
+                <div class="col-sm-4" *ngFor="let itemtype of RenderingData[0].data;let i = index">
+                    <div *ngIf="i <= 4">
+                    <div class="subs_plans featured_images"  >                
+                      <img [defaultImage]="defaultImage"
+                      [lazyLoad]="itemtype.previewImage"
+                      class="img-responsive inline" style="height: 237px" />
+                      <div class="img_desc">                   
+                          <h2 class="creative_name font_lato">{{  itemtype.text}}</h2>
+                          <div class="creative_type_year font_lato margin_top0">
+                            <span class="rating font_lato">{{itemtype.rating}}</span> | <span class="creative_year">{{itemtype.genere}}</span>
+                          </div>
+                        </div>
+                     
+                    </div>
+                  </div>
+                  </div>
+           </div>
+              </div>
+           
+          </section>
+        <section class="new_this_week_music_section" *ngIf="RenderingData[1]?.data?.length">
+
+          
+            <div class="container">
+              <div class="row">
+                <div class="col-sm-12">
+                    <span class="block_heading" *ngIf="RenderingData[1].data?.length > 0" >Music</span>
+              
+                  <a class="btn btn-transparent font_lato pull-right"  href="#/Content?page=Music">view all <img
+                      src="assets/images/icons/arrows/arrows_third_action_button.svg" class="img_valign" /></a>
+                </div>
+                
+                <div class="col-sm-4" *ngFor="let data of RenderingData[1].data;let i = index">
+                    <div *ngIf="i <= 4">
+                     
+                  <div class="subs_plans featured_images"  > 
+                   
+                    <img [defaultImage]="defaultImage"
+                    [lazyLoad]="data.previewImage"
+                    class="img-responsive inline" style="height: 237px" />
+                    <div class="img_desc">
+                        <h2 class="creative_name font_lato margin_top0">{{  data.text}}</h2>
+                        <div class="creative_type_year font_lato margin_top0">
+                          <span class="creative_type">{{data.rating}}</span> | <span class="creative_year">{{data.genere}}</span>
+                        </div>
+                      </div>
+                   
+                  </div>
+                </div>
+                </div>
+          </div> 
+            </div> 
+          </section>
+          <section class="top_rated_games_section" *ngIf="RenderingData[2]?.data?.length">
+           
+              <div class="container">
+                <div class="row">
+                  <div class="col-sm-12">
+                      <span class="block_heading margin_bottom0" *ngIf="RenderingData[2].data?.length > 0" >Games</span> 
+                    <a class="btn btn-transparent font_lato pull-right" href="#/Content?page=Games">view all <img
+                        src="assets/images/icons/arrows/arrows_third_action_button.svg" class="img_valign" /></a>
+                  </div>
+                  <div class="col-sm-4" *ngFor="let dataitem of RenderingData[2].data;let i = index">
+                      <div *ngIf="i <= 4">
+                      <div class="subs_plans featured_images"  > 
+                      
+                        <img [defaultImage]="defaultImage"
+                        [lazyLoad]="dataitem.previewImage"
+                        class="img-responsive inline" style="height: 237px" />
+                        <div class="img_desc">
+                            <h2 class="creative_name font_lato margin_top0">{{  dataitem.text}}</h2>
+                            <div class="creative_type_year font_lato margin_top0">
+                              <span class="creative_type">{{dataitem.rating}}</span> | <span class="creative_year">{{dataitem.genere}}</span>
+                            </div>
+                          </div>
+                      </div>
+                    </div>
+                    </div>
+             </div>
+                </div>
+            </section>      
+</div>
+

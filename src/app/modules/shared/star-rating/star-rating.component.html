@@ -1,0 +1,87 @@
+<ng-container *ngIf="starRating==5">
+    <li><img src="/assets/images/icons/stars/stars_full.svg" alt="fullstar" /></li>
+    <li><img src="/assets/images/icons/stars/stars_full.svg" alt="fullstar" /></li>
+    <li><img src="/assets/images/icons/stars/stars_full.svg" alt="fullstar" /></li>
+    <li><img src="/assets/images/icons/stars/stars_full.svg" alt="fullstar" /></li>
+    <li><img src="/assets/images/icons/stars/stars_full.svg" alt="fullstar" /></li>
+</ng-container>
+
+<ng-container *ngIf="starRating>4 && starRating<5">
+    <li><img src="/assets/images/icons/stars/stars_full.svg" alt="fullstar" /></li>
+    <li><img src="/assets/images/icons/stars/stars_full.svg" alt="fullstar" /></li>
+    <li><img src="/assets/images/icons/stars/stars_full.svg" alt="fullstar" /></li>
+    <li><img src="/assets/images/icons/stars/stars_full.svg" alt="fullstar" /></li>
+    <li><img src="/assets/images/icons/stars/stars_partial.svg" alt="halfstar" /></li>
+</ng-container>
+
+<ng-container *ngIf="starRating==4">
+    <li><img src="/assets/images/icons/stars/stars_full.svg" alt="fullstar" /></li>
+    <li><img src="/assets/images/icons/stars/stars_full.svg" alt="fullstar" /></li>
+    <li><img src="/assets/images/icons/stars/stars_full.svg" alt="fullstar" /></li>
+    <li><img src="/assets/images/icons/stars/stars_full.svg" alt="fullstar" /></li>
+    <li><img src="/assets/images/icons/stars/stars_none.svg" alt="nonestar" /></li>
+</ng-container>
+
+<ng-container *ngIf="starRating>3 && starRating<4">
+    <li><img src="/assets/images/icons/stars/stars_full.svg" alt="fullstar" /></li>
+    <li><img src="/assets/images/icons/stars/stars_full.svg" alt="fullstar" /></li>
+    <li><img src="/assets/images/icons/stars/stars_full.svg" alt="fullstar" /></li>
+    <li><img src="/assets/images/icons/stars/stars_partial.svg" alt="halfstar" /></li>
+    <li><img src="/assets/images/icons/stars/stars_none.svg" alt="nonestar" /></li>
+</ng-container>
+
+<ng-container *ngIf="starRating==3">
+    <li><img src="/assets/images/icons/stars/stars_full.svg" alt="fullstar" /></li>
+    <li><img src="/assets/images/icons/stars/stars_full.svg" alt="fullstar" /></li>
+    <li><img src="/assets/images/icons/stars/stars_full.svg" alt="fullstar" /></li>
+    <li><img src="/assets/images/icons/stars/stars_none.svg" alt="nonestar" /></li>
+    <li><img src="/assets/images/icons/stars/stars_none.svg" alt="nonestar" /></li>
+</ng-container>
+
+<ng-container *ngIf="starRating>2 && starRating<3">
+    <li><img src="/assets/images/icons/stars/stars_full.svg" alt="fullstar" /></li>
+    <li><img src="/assets/images/icons/stars/stars_full.svg" alt="fullstar" /></li>
+    <li><img src="/assets/images/icons/stars/stars_partial.svg" alt="halfstar" /></li>
+    <li><img src="/assets/images/icons/stars/stars_none.svg" alt="nonestar" /></li>
+    <li><img src="/assets/images/icons/stars/stars_none.svg" alt="nonestar" /></li>
+</ng-container>
+
+<ng-container *ngIf="starRating==2">
+    <li><img src="/assets/images/icons/stars/stars_full.svg" alt="fullstar" /></li>
+    <li><img src="/assets/images/icons/stars/stars_full.svg" alt="fullstar" /></li>
+    <li><img src="/assets/images/icons/stars/stars_none.svg" alt="nonestar" /></li>
+    <li><img src="/assets/images/icons/stars/stars_none.svg" alt="fullstar" /></li>
+    <li><img src="/assets/images/icons/stars/stars_none.svg" alt="nonestar" /></li>
+</ng-container>
+
+<ng-container *ngIf="starRating>1 && starRating<2">
+    <li><img src="/assets/images/icons/stars/stars_full.svg" alt="fullstar" /></li>
+    <li><img src="/assets/images/icons/stars/stars_partial.svg" alt="fullstar" /></li>
+    <li><img src="/assets/images/icons/stars/stars_none.svg" alt="nonestar" /></li>
+    <li><img src="/assets/images/icons/stars/stars_none.svg" alt="nonestar" /></li>
+    <li><img src="/assets/images/icons/stars/stars_none.svg" alt="nonestar" /></li>
+</ng-container>
+
+<ng-container *ngIf="starRating==1">
+    <li><img src="/assets/images/icons/stars/stars_full.svg" alt="fullstar" /></li>
+    <li><img src="/assets/images/icons/stars/stars_none.svg" alt="fullstar" /></li>
+    <li><img src="/assets/images/icons/stars/stars_none.svg" alt="fullstar" /></li>
+    <li><img src="/assets/images/icons/stars/stars_none.svg" alt="fullstar" /></li>
+    <li><img src="/assets/images/icons/stars/stars_none.svg" alt="fullstar" /></li>
+</ng-container>
+
+<ng-container *ngIf="starRating>0 && starRating<1">
+    <li><img src="/assets/images/icons/stars/stars_partial.svg" alt="fullstar" /></li>
+    <li><img src="/assets/images/icons/stars/stars_none.svg" alt="fullstar" /></li>
+    <li><img src="/assets/images/icons/stars/stars_none.svg" alt="fullstar" /></li>
+    <li><img src="/assets/images/icons/stars/stars_none.svg" alt="fullstar" /></li>
+    <li><img src="/assets/images/icons/stars/stars_none.svg" alt="halfstar" /></li>
+</ng-container>
+
+<ng-container *ngIf="starRating==''">
+    <li><img src="/assets/images/icons/stars/stars_none.svg" alt="fullstar" /></li>
+    <li><img src="/assets/images/icons/stars/stars_none.svg" alt="fullstar" /></li>
+    <li><img src="/assets/images/icons/stars/stars_none.svg" alt="fullstar" /></li>
+    <li><img src="/assets/images/icons/stars/stars_none.svg" alt="fullstar" /></li>
+    <li><img src="/assets/images/icons/stars/stars_none.svg" alt="fullstar" /></li>
+</ng-container>
