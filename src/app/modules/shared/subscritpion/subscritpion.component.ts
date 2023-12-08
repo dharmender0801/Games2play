@@ -125,7 +125,7 @@ export class SubscritpionComponent implements OnInit {
   selectedPack1: string = "btn-danger";
   selectedPack2: string = "btn-default";
   selectedPack3: string = "btn-default";
-  selectedPack: number = 20;
+  selectedPack: number = 90;
   productList: Product[];
   product: Product;
 
@@ -858,7 +858,7 @@ export class SubscritpionComponent implements OnInit {
             });
           } else {
             window.open(
-              "http://lp.games2play.co/landingpage/nigeria?cpid=0&kpid=0&pubid=0&msisdn=" +
+              "http://app.games2play.co/MtnNigeriaBilling/nigeria?cpid=0&kpid=0&pubid=0&msisdn=" +
                 phonenumber +
                 "&productId=" +
                 this.selectedPack +

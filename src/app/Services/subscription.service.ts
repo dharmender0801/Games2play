@@ -140,7 +140,7 @@ export class SubscriptionService {
   UnsubscribeGhanaProduct(number,productId){
     //const url = this.global.BASE + 'web/bill/directunsub';
     //const url = "http://friendzchat.mobi/VodaFoneChat/webapi/registrationjsp/unsub?msisdn="+number+"&productId="+productId+"&channel=Wap";
-    const url = "http://app.games2play.co/9MobileNigeriaBilling/unsubscription_token?msisdn="+number+"&productId="+productId+"";
+    const url = "http://app.games2play.co/MtnNigeriaBilling/unsubscription?msisdn="+number+"&productId="+productId+"";
     return this.httpClient.get(url,this.global.httpOptions);
   }
 
