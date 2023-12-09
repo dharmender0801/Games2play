@@ -114,7 +114,7 @@ export class SubscritpionComponent implements OnInit {
   selectedPack1: string = 'btn-danger';
   selectedPack2: string = 'btn-default';
   selectedPack3: string = 'btn-default';
-  selectedPack: number = 20;
+  selectedPack: number = 80;
   productList: Product[];
   product: Product;
 
@@ -758,7 +758,7 @@ console.log(this.selectedPack);
             });
           }else{
             
-            window.open("http://lp.games2play.co/landingpage/nigeria?cpid=0&kpid=0&pubid=0&msisdn="+phonenumber+"&productId="+this.selectedPack+"",'_self');
+            window.open("http://lp.games2play.co/9NGLandingPage/landingpage/nigeria?cpid=0&kpid=0&pubid=0&msisdn="+phonenumber+"&productId="+this.selectedPack+"",'_self');
           }
         }
       })
